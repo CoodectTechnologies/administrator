@@ -1,0 +1,68 @@
+<div>
+    <!--begin::Card-->
+    <div class="card">
+        <!--begin::Card header-->
+        <div class="card-header border-0 pt-6">
+            <!--begin::Card title-->
+            <div class="card-title">
+                
+            </div>
+            <!--begin::Card title-->
+            <!--begin::Card toolbar-->
+            <div class="card-toolbar">
+                @include('admin.blog.category.create')
+            </div>
+            <!--end::Card toolbar-->
+        </div>
+        <!--end::Card header-->
+        <!--begin::Card body-->
+        <div class="card-body py-4">
+            <!--begin::Table-->
+            <div class="table-responsive">
+                <table class="table align-middle table-row-dashed fs-6 gy-5">
+                    <!--begin::Table head-->
+                    <thead>
+                        <!--begin::Table row-->
+                        <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                            <th class="">Nombre</th>
+                            <th class="">Posts</th>
+                            <th class="">Fecha</th>
+                            <th class="">Acciones</th>
+                        </tr>
+                        <!--end::Table row-->
+                    </thead>
+                    <!--end::Table head-->
+                    <!--begin::Table body-->
+                    <tbody class="text-gray-600 fw-bold">
+                        @foreach ($blogCategories as $blogCategory)
+                        <!--begin::Table row-->
+                        <tr>
+                            <td>{{ $blogCategory->name }}</td>
+                            <td>{{ count($blogCategory->blogPosts) }}</td>
+                            <td>{{ $blogCategory->dateToString() }}</td>
+                            <!--begin::Action=-->
+                            <td class="">
+                                @include('admin.blog.category.edit')
+                                @include('admin.blog.category.delete')
+                            </td>
+                            <!--end::Action=-->
+                        </tr>
+                        <!--end::Table row-->
+                        @endforeach
+                    </tbody>
+                    <!--end::Table body-->
+                </table>
+            </div>
+            <!--end::Table-->
+        </div>
+        <!--end::Card body-->
+    </div>
+    <!--end::Card-->
+    @push('footer')
+    <script>
+            Livewire.on('render', function(){
+                $('.modal').modal('hide');
+            });
+    </script>
+    @endpush
+</div>
