@@ -116,7 +116,6 @@ De ser así puedes seguir leyendo la documentación para su mantenimiento a futu
 
 ## Templates utilizados 🌐​
 * Metronic v8 (admin)
-* Polo (web)
 
 ## Comenzando ​🕛​
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local._
@@ -135,7 +134,7 @@ _Que cosas necesitas para instalar el software y como instalarlas_
 _1.- Deberás de instalar las dependencias de laravel con el siguiente comando_
 
 ```
-git clone git@github.com:CoodectTechnologies/administrator.git
+git clone https://github.com/CoodectTechnologies/administrator.git
 
 composer install
 
