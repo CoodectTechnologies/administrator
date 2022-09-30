@@ -130,7 +130,7 @@ _Que cosas necesitas para instalar el software y como instalarlas_
 
 ```
 
-### Instalación 🔧
+### a: Instalación 🔧
 _1.- Deberás de instalar las dependencias de laravel con el siguiente comando_
 
 ```
@@ -149,6 +149,23 @@ php artisan key:generate
 _3.- Deberás de rellenar las variables del archivo .env.example, una vez finalizado le podrás cambiar el nombre a .env_
 __
 
+_4.- Ejecutando las migraciones_
+
+```
+php artisan migrate:fresh --seed
+
+```
+### b: Instalación con  docker compose
+- `git clone https://github.com/CoodectTechnologies/administrator.git && cd administrator`
+- `cp .env.example .env`
+- `docker compose up -d --build` ( despues configurar credenciales de email)
+- `docker compose exec app sh -s 'composer install'`
+- `docker compose exec app sh -s 'php artisan key:generate'`
+- `docker compose exec app sh -s 'php artisan migrate:fresh --seed'`
+- `docker compose exec app sh -s 'php artisan storage:link'`
+
+acceder a : https://localhost/admin
+
 ### Configuración ​⚙️​
 
 **Correo:**
@@ -157,13 +174,6 @@ _1.- Deberás de configurar las variables de entorno MAIL con tus datos de acces
 **Google Socialite:**
 _1.- Habilitar la API de google analytics en [Console Cloud Google](https://console.cloud.google.com/)_
 _2.- Deberás de obtener tus credenciales y remplazar las variables de GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URL_
-
-## Ejecutando las migraciones ​⚙️​
-
-```
-php artisan migrate:fresh --seed
-
-```
 
 ## Ejecutar comando schedule ​⚙️​
 **_El sistema cuenta con 3 comandos por default en Kernel_**
