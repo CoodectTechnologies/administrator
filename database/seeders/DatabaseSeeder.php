@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(ModuleWebSeeder::class);
-        
+
         //Web
         $this->call(AboutSeeder::class);
         // $this->call(VideoSeeder::class);
@@ -31,11 +31,11 @@ class DatabaseSeeder extends Seeder
         //Ecommerce
         // $this->call(CountrySeeder::class);
         // $this->call(StateSeeder::class);
-        // $this->call(ProductCategorySeeder::class);
-        // $this->call(ProductGenderSeeder::class);
-        // $this->call(ProductSeeder::class);
-        // $this->call(ShippingZoneSeeder::class);    
+        $this->call(ProductCategorySeeder::class);
+        $this->call(ProductGenderSeeder::class);
+        $this->call(ProductSeeder::class);
+        // $this->call(ShippingZoneSeeder::class);
         // $this->call(OrderSeeder::class);
-        // $this->call(ShippingAddressSeeder::class);    
+        // $this->call(ShippingAddressSeeder::class);
     }
 }

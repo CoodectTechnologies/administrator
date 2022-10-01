@@ -15,6 +15,15 @@
             <!--begin::Input group-->
             <div class="fv-row mb-7">
                 <label class="fs-6 fw-bold form-label mb-2">
+                    <span class="required">Precio</span>
+                </label>
+                <input type="number" required wire:model.defer="size.price" class="form-control form-control-solid @error('size.price') 'invalid-feedback' @enderror" placeholder="Ej: XL" name="" />
+                @error('size.price') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
+            </div>
+            <!--end::Input group-->
+            <!--begin::Input group-->
+            <div class="fv-row mb-7">
+                <label class="fs-6 fw-bold form-label mb-2">
                     <span class="required">Colores relacionados</span>
                 </label>
                 <!--begin::Select2-->
