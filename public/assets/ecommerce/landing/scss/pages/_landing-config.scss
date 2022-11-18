@@ -1,0 +1,14 @@
+@include set (
+    (
+        header: (
+            letter-spacing: -.01em,
+            middle: (
+                background-color: transparent,
+                color: #fff,
+                font-weight: 600
+            )
+        )
+    )
+);
+
+$primary-color: #2879fe;

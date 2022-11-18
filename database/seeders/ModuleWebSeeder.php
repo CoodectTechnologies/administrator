@@ -15,15 +15,19 @@ class ModuleWebSeeder extends Seeder
     public function run()
     {
         $moduleWebs = [
-            ['name' => 'Inicio'],
-            ['name' => 'Nosotros'],
-            ['name' => 'Servicios'],
-            ['name' => 'Portafolio'],
-            ['name' => 'Team'],
-            ['name' => 'Blog'],
-            ['name' => 'Productos'],
-            ['name' => 'Videos'],
-            ['name' => 'Contacto']
+            //Web
+            ['name' => 'Inicio'], //Id: 1
+            ['name' => 'Nosotros'], //Id: 2
+            ['name' => 'Servicios'], //Id: 3
+            ['name' => 'Portafolio'], //Id: 4
+            ['name' => 'Team'], //Id: 5
+            ['name' => 'Blog'], //Id: 6
+            ['name' => 'Videos'], //Id: 7
+            ['name' => 'Videos'], //Id: 8
+            ['name' => 'Contacto'], //Id: 9
+            //Ecommerce
+            ['name' => 'Ecommerce principal'], //Id: 10
+            ['name' => 'Ecommerce secondario'], //Id: 11
         ];
         ModuleWeb::insert($moduleWebs);
     }

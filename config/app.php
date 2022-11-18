@@ -60,6 +60,8 @@ return [
 
     'logo2' => env('APP_LOGO2'),
 
+    'logo3' => env('APP_LOGO3'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

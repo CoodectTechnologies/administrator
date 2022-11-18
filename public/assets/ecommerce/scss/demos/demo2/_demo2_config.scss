@@ -1,0 +1,91 @@
+@include set (
+    (
+        base: (
+            _container-width: 1400px,
+            title-tab: (
+                    tab-nav-box: (
+                        padding: .6rem 0 .7rem,
+                        nav-link: (
+                            padding: 13px 22px 13px 22px,
+                            letter-spacing: -.025em,
+                            font-weight: 700
+                        )
+                    )
+            ),
+            title-link: (
+                icon: (
+                    font-size: 1.5rem,
+                    font-weight: 600
+                )
+            )
+        ),
+        header: (
+            middle: (
+                padding-top: 3.2rem,
+                padding-bottom: 3.3rem
+            ),
+            main-nav: (
+                margin-left: 5.1rem
+            ),
+            cart: (
+                count: (
+                    background: $secondary-color
+                )
+            ),
+            compare: (
+                margin: -0.3rem 2.7rem 0 0
+            ),
+            wishlist: (
+                margin-top: .1rem
+            ),
+            category: (
+                toggle: (
+                    padding: 2.4rem 2.3rem 2.3rem 2.5rem,
+                    text-transform: capitalize,
+                    _link-active-color: #fff
+                )
+            ),
+            search: (
+                expanded: (
+                    width: none,
+                ),
+                btn: (
+                    width: 4.6rem
+                )
+            ),
+            call: (
+                margin-right: 6.1rem,
+                info: (
+                    margin-top: .5rem
+                ),
+                chat: (
+                    color: $primary-color
+                )
+            )
+        ),
+        product: (
+            body: (
+                padding-top: 1.7rem
+            ),
+            name: (
+                margin-bottom: .7rem
+            ),
+            rating: (
+                margin-bottom: .3rem
+            )
+        ),
+        post: (
+            body: (
+                padding-top: 1.8rem,
+            ),
+            title: (
+                font-size: 1.5rem,
+                letter-spacing: -.025em,
+                margin-bottom: 0.6rem
+            ),
+            content: (
+                margin-bottom: 1.1rem
+            )
+        )
+    )
+)

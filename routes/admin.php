@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Test\TestController;
 use App\Http\Controllers\Admin\About\AboutController;
 use App\Http\Controllers\Admin\Banner\BannerController;
 use App\Http\Controllers\Admin\Blog\CategoryController;
@@ -118,6 +119,8 @@ Route::prefix('catalog')->name('catalog.')->group(function (){
 });
 //Order
 Route::middleware(['can:ordenes'])->resource('/order', OrderController::class)->names('order');
+//Test
+Route::get('/test', [TestController::class, 'index']);
 //Tools
 Route::get('storage-link', function(){
     try{

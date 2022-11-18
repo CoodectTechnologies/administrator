@@ -1,0 +1,237 @@
+/*--------------------------------------
+    Buttons
+        - Button
+            - Default
+            - Primary
+        - Rounded
+--------------------------------------*/
+
+// Button 
+.btn {
+    display: inline-block;
+    border: 2px solid #eeeeee;
+    background-color: #fff;
+    color: #747474;
+    outline: 0;
+    border-radius: 0;
+    font: {
+        family: $font-family;
+        weight: 600;
+        size: 1.4rem;
+    }
+    // Height 44px, Width 120px for default
+    padding: 0.929em 1.934em;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color .3s, border-color .3s, background-color .3s, box-shadow .3s;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: #666;
+        border-color:   darken( #eee , 7% );
+        background-color: darken( #eee , 7% );  
+    }
+}
+
+// Outlined Button
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid;
+    &.light {
+        padding: .996em 2em;
+        border: 1px solid;
+    }
+}
+
+// Colored Button Styles
+.btn-dark {
+    @include button-variant($dark-color);
+}
+
+.btn-white {
+    @include button-variant($white-color);
+    color: $dark-color;
+    &.btn-outline:hover,
+    &.btn-outline:active,
+    &.btn-outline:focus {
+        color: $dark-color;
+        border-color: #fff;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        &:not(.btn-underline) {
+            color: #fff;
+            background-color: $dark-color;
+            border-color: $dark-color;
+        }
+    }
+}
+
+.btn {
+    &.btn-rounded {
+        border-radius: 4px;
+    }
+    &.btn-block {
+        display: block;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -4px;
+        }
+    }
+    &.btn-sm {
+        font-size: 1.3rem;
+        padding: .77em 1.38em ;
+    }
+    &.btn-lg {
+        font-size: 1.8rem;
+        font-weight: 600;
+        padding: 0.917em 1.831em;
+    }
+    &.btn-icon-right {
+        i {
+            margin-right: 0;
+            margin-left: .5rem;
+        }
+    }
+
+    &.btn-icon-left {
+        i {
+            margin-right: .5rem;
+            margin-left: 0;
+        }
+    }
+}
+
+.btn-gradient {
+    position: relative;
+    padding: 1.072em 2.089em;
+    overflow: hidden;
+    border: 0;
+    letter-spacing: 0;
+    z-index: 1;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        background: linear-gradient(75deg, #c54fff 25%, #3f73fe 75%);
+        opacity: .2;
+        z-index: -1;
+        transition: .4s;
+    }
+
+    &:hover,
+    &:focus,
+    &.active,
+    &.grad-reverse {
+        &::before {
+            width: 150%;
+            padding-top: 150%;
+            opacity: 1;
+        }
+    }
+
+    &.grad-reverse {
+        &:hover,
+        &.active,
+        &:focus {
+            &::before {
+                width: 0;
+                padding-top: 0;
+            }
+        }
+    }
+
+    &.grad-boxed {
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            transition: border-color .4s;
+        }
+        &:not(.active):not(:hover)::after {
+            border-color: #999;
+        }
+    }
+
+    &.btn {
+        color: #fff;
+    }
+}
+
+// Linked Button
+.btn-link {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    @include only-for-ie() {
+        overflow: visible;
+    }
+
+    &:not(.btn-underline) {
+        padding-bottom: 3px;
+    }
+
+    &:hover,
+    &.active,
+    &:focus {
+        background: transparent;
+    }
+}
+
+// Underlined Button
+.btn-underline {
+    &:hover,
+    &:active,
+    &:focus {
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+    &::after {
+        display: block;
+        margin-top: 3px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 2px;
+        border-top: 3px solid;
+        transform: scaleX(0);
+        transition: transform .3s;
+        content: '';
+    }
+    &.sm::after {
+        width: 46%;
+    }
+    &.lg::after {
+        margin-left: -16.5%;
+        margin-right: -16.5%;
+        width: 133%;
+    }
+}
+
+// Icon Button
+.btn-icon-left,
+.btn-icon-right {
+    i {
+        line-height: 0;
+    }
+}

@@ -12,7 +12,7 @@ use Livewire\WithFileUploads;
 class Form extends Component
 {
     use WithFileUploads;
-    
+
     public $banner;
     public $method;
     public $imageTmp, $videoTmp;
@@ -32,8 +32,9 @@ class Form extends Component
     }
     public function mount(Banner $banner, $method){
         $this->banner = $banner;
-        $this->method = $method; 
+        $this->method = $method;
         $this->order = $banner->order;
+        $banner->type = 'Imagen';
     }
     public function render(){
         $this->loadLastOrder();

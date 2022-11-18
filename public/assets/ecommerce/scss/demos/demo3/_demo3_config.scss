@@ -1,0 +1,86 @@
+@include set (
+    (
+        base: (
+            _container-width: 1280px
+        ),
+        header: (
+            middle: (
+                padding-bottom: 3.1rem
+            ),
+            bottom: (
+                background: #333,
+                color: #fff
+            ),
+            category: (
+                toggle: (
+                    padding-bottom: 1.8rem,
+                    background: $primary-color,
+                    text-transform: capitalize,
+                )
+            ),
+            compare: (
+                margin-top: -.3rem
+            ),
+            wishlist: (
+                margin-top: .1rem
+            ),
+            call: (
+                chat: (
+                    font-weight: 500
+                )
+            )
+        ),
+        menu: (
+            ancestor: (
+                padding-top: 2rem
+            ),
+            active: (
+                color: #fff
+            ),
+            tip: (
+                _hot-color: #333
+            )
+        ),
+        category-menu: (
+            ancestor: (
+                padding: 1.4rem 1rem 1.2rem,
+                _split-line: 1px solid #e1e1e1,
+                font-weight: 400,
+            )
+        ),
+        product: (
+            rating: (
+                margin-bottom: .4rem,
+                _star-color: #333
+            ),
+            body: (
+                padding-top: 1.6rem
+            ),
+            name: (
+                margin-bottom: .7rem
+            ),
+        ),
+        product-single: (
+            ratings: (
+                _star-color: #666
+            )
+        ),
+        vendor: (
+            widget-banner: (
+                name: (
+                    margin-bottom: .3rem
+                ),
+                details: (
+                    padding-bottom: 2.8rem
+                )
+            )
+        ),
+        post: (
+            title: (
+                margin-bottom: 1.3rem,
+                font-size: 1.5rem,
+                letter-spacing: -.025em
+            ),
+        )
+    )
+)

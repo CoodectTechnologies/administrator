@@ -1,0 +1,432 @@
+@charset 'UTF-8';
+
+/**
+ * 1. Config
+ * 2. Mixins
+ * 3. Plugins
+ * 4. Base
+ * 5. Components
+ * 6. Header
+ * 7. Footer
+ * 8. Pages
+ */
+
+/* 1. Config */
+@import 'config/variables';
+
+/* 2. Mixins */
+@import 'mixins/breakpoint';
+@import 'mixins/core';
+@import 'mixins/buttons';
+
+/* 3. Plugins */
+@import 'components/slider';
+@import 'components/nouislider';
+
+/* 4. Base */
+@import 'base/base';
+@import 'base/layout';
+@import 'base/grid';
+@import 'base/spacing';
+@import 'base/type';
+@import 'base/helper';
+
+
+/* 5. Component */
+@import 'components/accordion';
+@import 'components/alert';
+@import 'components/animation';
+@import 'components/banner';
+@import 'components/breadcrumb';
+@import 'components/blog';
+@import 'components/buttons';
+@import 'components/calendar';
+@import 'components/categories';
+@import 'components/comments';
+@import 'components/font-icons';
+@import 'components/forms';
+@import 'components/icons';
+@import 'components/icon-boxes';
+@import 'components/instagram';
+@import 'components/overlay';
+@import 'components/page-header';
+@import 'components/pagination';
+@import 'components/popup';
+@import 'components/products';
+@import 'components/product-single';
+@import 'components/progress-bar';
+@import 'components/sidebar';
+@import 'components/social-icons';
+@import 'components/tab';
+@import 'components/testimonial';
+@import 'components/timeline';
+@import 'components/titles';
+@import 'components/tooltip';
+@import 'components/widget';
+
+
+/* 6. Header */
+@import 'base/header/header';
+@import 'base/header/dropdown';
+@import 'base/header/menu';
+
+/* 7. Footer */
+@import 'base/footer/footer';
+
+
+/* 8. Pages */
+@import 'pages/about-us';
+@import 'pages/blog';
+@import 'pages/buttons';
+@import 'pages/categories';
+@import 'pages/cart';
+@import 'pages/checkout';
+@import 'pages/contact-us';
+@import 'pages/coming-soon';
+@import 'pages/faq';
+@import 'pages/instagrams';
+@import 'pages/my-account';
+@import 'pages/products';
+@import 'pages/product-single';
+@import 'pages/shop';
+@import 'pages/wishlist';
+
+/* Header */
+.has-center .header-center {
+    margin-right: 0;
+    margin-left: 0;
+}
+.header-middle {
+    padding-top: 2.8rem;
+    padding-bottom: 2.8rem;
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255,255,255,.1);
+    .btn-gradient {
+        margin-left: 4.9rem;
+    }
+}
+@include mq(md) {
+    .header-middle .logo {
+        margin-left: 0;
+    }
+}
+.header-transparent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    background-color: transparent;
+}
+.menu > li {
+    &:hover,
+    &.active {
+        a:not(.menu-title) {
+            color: #fff;
+        }
+    }
+}
+.header-right i {
+    font-size: 2.7rem;
+    color: #fff;
+}
+.btn-gradient {
+    position: relative;
+    padding: 1.072em 1.95em;
+    overflow: hidden;
+    border: 0;
+    letter-spacing: 0;
+    z-index: 1;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        background: linear-gradient(75deg, #c54fff 25%, #3f73fe 75%);
+        opacity: .2;
+        z-index: -1;
+        transition: .4s;
+    }
+
+    &:hover,
+    &:focus,
+    &.active,
+    &.grad-reverse {
+        &::before {
+            width: 150%;
+            padding-top: 150%;
+            opacity: 1;
+        }
+    }
+    &.grad-reverse {
+        &:hover,
+        &.active,
+        &:focus {
+            &::before {
+                width: 0;
+                padding-top: 0;
+            }
+        }
+    }
+}
+.mobile-menu-toggle svg {
+    width: 3rem;
+    height: 3rem;
+    fill: #fff;
+}
+.page-header {
+    background-attachment: fixed;
+    min-height: 54.6rem;
+    .container {
+        margin-top: 14rem;
+        z-index: 11;
+    }
+    .page-title {
+        font-size: 5rem;
+    }
+    p {
+        font-size: 2rem;
+        color: rgba(255,255,255,.5);
+    }
+    input.input-search {
+        padding-left: 2rem;
+        border-radius: 3rem;
+        min-height: 5.5rem;
+        color: #777;
+    }
+    .btn-search {
+        min-width: 6.2rem;
+        padding-bottom: .2rem;
+        i {
+            margin-bottom: 0;
+            font-size: 1.8rem;
+        }
+    }
+}
+h5 {
+    font-size: 1.8rem;
+}
+h6 {
+    font-size: 1.6rem;
+}
+.icon-box {
+    &.text-center .icon-box-icon {
+        margin-bottom: 2rem;
+    }
+    .icon-box-title {
+        margin-bottom: 1.5rem;
+    }
+    p {
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+    i {
+        font-size: 5rem;
+        font-weight: 600;
+        color: #666;
+    }
+}
+
+.main-content {
+    .title {
+        font-size: 2.6rem;
+    }
+}
+
+.list-circle li {
+    padding-left: 0;
+}
+
+code,
+mark {
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 1.2em;
+    color: $primary-color;
+    background-color: rgba(51, 102, 153, 0.06);
+}
+code + code {
+    margin-left: .5em;
+}
+mark {
+    background: yellow;
+    font-weight: 700;
+}
+pre {
+    max-height: 30rem;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    background: #f5f7f9;
+    font-size: 1.2em;
+    overflow: auto;
+
+    code,
+    mark {
+        border: 1px solid #e1e1e1;
+        font-size: 1em;
+    }
+}
+
+.page-header .widget-search {
+    max-width: 54rem;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.toolbox-wrap .widget-body {
+    margin-bottom: 0;
+}
+
+.search-pane {
+    position: relative;
+    padding-top: 3rem;
+    margin-bottom: 5rem;
+    border-top: 3px solid #e1e1e1;
+}
+.search-result {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+.sidebar + .main-content > .title {
+    transition: padding-left .3s;
+}
+.sidebar.closed + .main-content > .title {
+    padding-left: 14rem;
+}
+.sidebar-toggle-remain.sidebar.closed .toggle-remain i::before {
+    content: "\e933";
+}
+.shop-sidebar .sidebar-toggle-btn {
+    padding-left: 0;
+}
+
+.docs .widget-title {
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+}
+
+.search-count {
+    display: block;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    color: #fff;
+    background: #2b579a;
+    font-size: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 3rem;
+    box-shadow: 0 0 1rem #2b579a;
+}
+
+.page-content {
+    min-height: 640px;
+}
+.table {
+    margin-bottom: 3rem;
+
+    th,
+    td {
+        border: 1px solid $border-color;
+        padding: .5rem 1rem;
+        min-height: 3.3rem;
+    }
+    th {
+        text-align: left;
+        padding: 1rem;
+        @include css( background, base, _grey-section-bg );
+    }
+}
+
+@include mq(xs, max) {
+    .table {
+        tr {
+            display: block;
+            margin-bottom: 2rem;
+            td {
+                display: block;
+                width: 100%;
+                border: 1px solid #e1e1e1;
+                &:first-child {
+                    background: #e1e1e1;
+                }
+                &:not(:last-child) {
+                    border-bottom: 0;
+                }
+            }
+        }
+        th {
+            display: none;
+        }
+    }
+}
+
+.document-content {
+    a {
+        color: #007bff;
+        &:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    }
+    h5 {
+        font-weight: 600;
+    }
+}
+
+h6 {
+    margin-bottom: .5rem;
+}
+/* Footer */
+.footer {
+    .section-title {
+        font-weight: 800;
+        font-size: 4rem;
+    }
+    .section-subtitle {
+        margin: 1.9rem 0 3rem;
+        font-weight: 800;
+        font-size: 3rem;
+    }
+    .section-desc {
+        filter: opacity(.6);
+        max-width: 85rem;
+        font-size: 1.6rem;
+        line-height: 1.65;
+    }
+    .footer-middle {
+        padding: 16.4rem 0 4.6rem;
+        border-bottom-color: #2b2e31;
+    }
+    .footer-bottom {
+        padding: 3.1rem 0 3.2rem;
+        p {
+            font-size: 1.4rem;
+            color: #999;
+        }
+    }
+}
+@media (max-width: 767px) and (min-width: 480px) {
+    .header-middle .logo {
+        margin-left: 2rem;
+    }
+}
+@include mq(md, max) {
+    .footer .footer-middle {
+        padding-top: 10rem;
+    }
+}

@@ -1,0 +1,90 @@
+@charset 'UTF-8';
+
+/*
+1. config
+2. mixins
+3. plugins
+4. base
+5. components
+6. header
+7. footer
+8. demo
+*/
+
+/* 1. color */
+$secondary-color: #f77c29;
+
+/* 2. config */
+@import '../../config/variables';
+
+/* 3. mixins */
+@import '../../mixins/breakpoint';
+@import '../../mixins/core';
+@import '../../mixins/buttons';
+
+@import 'demo1_config';
+
+/* 4. plugins */
+@import '../../components/slider';
+
+/* 5. base */
+@import '../../base/base';
+@import '../../base/helper';
+@import '../../base/type';
+@import '../../base/layout';
+@import '../../base/grid';
+@import '../../base/spacing';
+
+/* 6. components */
+@import '../../components/animation';
+@import '../../components/banner';
+@import '../../components/blog';
+@import '../../components/buttons';
+@import '../../components/categories';
+@import '../../components/font-icons';
+@import '../../components/forms';
+@import '../../components/icons';
+@import '../../components/icon-boxes';
+@import '../../components/overlay';
+@import '../../components/page-header';
+@import '../../components/pagination';
+@import '../../components/popup';
+@import '../../components/product-single';
+@import '../../components/products';
+@import '../../components/minipopup';
+@import '../../components/sidebar';
+@import '../../components/social-icons';
+@import '../../components/tab';
+@import '../../components/titles';
+@import '../../components/tooltip';
+@import '../../components/widget';
+
+@import '../../pages/categories';
+@import '../../pages/compare';
+@import '../../pages/products';
+@import '../../pages/product-single';
+
+
+
+/* Unused components
+@import '../../components/accordion';
+@import '../../components/alerts';
+@import '../../components/breadcrumb';
+@import '../../components/instagram';
+@import '../../components/page-header';
+@import '../../components/pagination';
+@import '../../components/sidebar';
+@import '../../components/sidebar-shop';
+@import '../../components/testimonials';
+*/
+
+/* 7. header */
+@import '../../base/header/header';
+@import '../../base/header/dropdown';
+@import '../../base/header/menu';
+
+/* 8. footer */
+@import '../../base/footer/footer';
+
+/* 9. Demo */
+@import 'demo1_custom';

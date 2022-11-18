@@ -1,0 +1,103 @@
+/* ----------------------------------------
+    Element Category Page
+------------------------------------------*/
+
+.category-default {
+    img {
+        min-height: 20rem;
+    }
+    .category-content {
+        left: 3rem;
+    }
+    .category-title {
+        margin-bottom: 0;
+        font-size: 2.2em;
+    }
+    .category-count {
+        opacity: .6;
+        line-height: 1.2;
+    }
+}
+
+.category-ellipse-section,
+.category-classic-section,
+.category-icon-section {
+    .owl-stage-outer {
+        padding: 2rem;
+        margin: -2rem;
+    }
+}
+
+.category-ellipse-section {
+    margin-bottom: 5.2rem;
+}
+
+.category-classic-section {
+    background-color: #f8f8f8;
+}
+
+.category-masonry-section {
+    padding-bottom: 3.7rem;
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat( auto-fill, calc( 100% / 4 ) );
+        margin: -1rem;
+        > * {
+            padding: 1rem;
+        }
+    }
+    .grid-item1 {
+        grid-column-end: span 2;
+        grid-row-end: span 2;
+    }
+    .grid-item2 {
+        grid-column-end: span 1;
+        grid-row-end: span 1;
+    }
+    .grid-item3 {
+        grid-column-end: span 1;
+        grid-row-end: span 2;
+        .category-banner, figure, img {
+            height: 100%;
+        }
+    }
+}
+
+@media ( max-width: 991px ) and ( min-width: 768px ) {
+    .category-masonry-section {
+        .category-grid {
+            grid-template-columns: repeat(auto-fill, calc( 100% / 3 ) );
+        }
+        .grid-item3 {
+            grid-row-start: 1;
+            grid-column-start: 3;
+            grid-row-end: span 3;
+        }
+    }
+}
+
+@include mq(md, max) {
+    .category-masonry-section {
+        .category-grid {
+            grid-template-columns: repeat( auto-fill, calc( 100% / 2 ) );
+        }
+    }
+}
+
+@include mq(sm, max) {
+    .page-title {
+        font-size: 3rem;
+    }
+    .page-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+@include mq(xs, max) {
+    .category-masonry-section {
+        .grid-item2, .grid-item3 {
+            grid-row-end: span 1;
+            grid-column-end: span 2;
+        }
+    }
+}

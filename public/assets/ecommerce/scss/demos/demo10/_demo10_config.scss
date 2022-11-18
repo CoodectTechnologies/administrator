@@ -1,0 +1,64 @@
+@include set (
+    (
+        base: (
+            title-link: (
+                title: (
+                    margin-bottom: .7rem
+                ),
+                link: (
+                    margin-bottom: .5rem
+                )
+            )
+        ),
+        header: (
+            search: (
+                _border-color: #e5e5e5
+            ),
+            logo: (
+                margin-right: 0
+            ),
+            middle: (
+                border-bottom: none
+            ),
+            bottom: (
+                background: $dark-color,
+                color: #fff
+            ),
+            category: (
+                toggle: (
+                    padding: 1.9rem 2rem 1.8rem 2.2rem,
+                    background: $primary-color,
+                    text-transform: capitalize,
+                    letter-spacing: -.015em
+                )
+            )
+        ),
+        menu: (
+            active: (
+                color: #fff
+            )
+        ),
+        category-menu: (
+            ancestor: (
+                padding: 1.3rem 1rem 1.3rem 1.1rem,
+                font-weight: 400
+            ),
+            icon: (
+                margin-top: -.2rem,
+                font-size: 1.6rem
+            )
+        ),
+        post: (
+            body: (
+                padding: 1.5rem 0 2.5rem
+            ),
+            info: (
+                margin-bottom: .1rem
+            ),
+            title: (
+                margin-bottom: 1.4rem,
+                font-size: 1.5rem
+            )
+        )
+    )
+)

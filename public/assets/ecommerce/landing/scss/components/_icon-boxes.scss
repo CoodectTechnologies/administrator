@@ -1,0 +1,101 @@
+/* ---------------------------------------
+    Icon Box
+--------------------------------------- */
+
+.icon-box {
+    text-align: center;
+    .icon-box-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -.01em;
+        margin-top: 1rem;
+        line-height: 1.25;
+        text-transform: none;
+    }
+
+    .icon-box-subtitle {
+        font-size: 1.4rem;
+        line-height: 2.4rem;
+        letter-spacing: 0;
+    }
+    // p {
+    //     font-size: 1.4rem;
+    //     margin: 0;
+    //     letter-spacing: 0;
+    //     line-height: 1;
+    //     color: #999;
+    // }
+    .icon-box-content {
+        text-align: center;
+    }
+}
+
+.icon-box-icon {
+    svg {
+        vertical-align: middle;
+        height: auto;
+        fill: #666;
+    }
+}
+
+// .icon-box-icon {
+//     display: inline-block;
+//     margin-bottom: 1.4rem;
+//     svg {
+//         vertical-align: middle;
+//         height: auto;
+//         fill: #666;
+//     }
+//     .icon-box-primary & {
+//         svg {
+//             fill: $primary-color;
+//         }
+//         i {
+//             color: $primary-color;
+//         }
+//     }
+//     .icon-box-secondary & {
+//         svg {
+//             fill: $secondary-color;
+//         }
+//         i {
+//             color: $secondary-color;
+//         }
+//     }
+//     .icon-box-white & {
+//         svg {
+//             fill: $white-color;
+//         }
+//         i {
+//             color: $white-color;
+//         }
+//     }
+//     .icon-box-light & {
+//         svg {
+//             fill: $light-color;
+//         }
+//     }
+//     i {
+//         font-size: 4.8rem;
+//         font-weight: 400;
+//     }
+//     .icon-box-lg & {
+//         i {
+//             font-size: 6rem;
+//         }
+//     }
+// }
+
+// .icon-box-side {
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+
+//     .icon-box-content {
+//         text-align: left;
+//     }
+//     .icon-box-icon {
+//         margin-right: 2rem;
+//         margin-bottom: 0;
+//     }
+// }

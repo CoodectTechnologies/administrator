@@ -1,0 +1,305 @@
+/*-----------------------------------------------
+    Shop Page
+        - Default Shop Banner
+        - List
+        - Category Wrapper
+        - Toolbox
+            (toolbox toolbox-left toolbox-right select-box)
+        - Toolbox Item
+        - Select Menu
+        - Selected Items
+        - Toolbox Pagination
+        - Toolbox Horizontal
+        - Toolbox Navigation
+------------------------------------------------*/
+
+// Shop Banner
+.shop-default-banner {
+    padding: 7.4em 8.7em 7.6em;
+    .banner-subtitle {
+        margin-bottom: 0.2rem;
+        font-size: 2.8em;
+    }
+    .banner-title {
+        margin-bottom: 1.9rem;
+        font-size: 4em;
+    }
+    .btn {
+        padding: 1.25em 1.98em;
+        font-size: 1.4em;
+        i {
+            font-size: 1.7rem;
+        }
+    }
+}
+
+.shop-boxed-banner {
+    padding-left: 4.8em;
+    padding-right: 4.8em;
+    .banner-subtitle {
+        letter-spacing: -.02em;
+    }
+}
+
+// Shop Brands
+.shop-default-brands {
+    padding: .5rem 0;
+}
+
+// Shop Category
+.shop-default-category {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 3.5rem;
+    .category-name {
+        text-transform: capitalize;
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0;
+    }
+    .category-media {
+        border: none;
+        transition: box-shadow .3s, transform .3s;
+    }
+    .category-ellipse:hover {
+        .category-media {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transform: scale(1.1);
+        }
+        .category-name {
+            color: $primary-color;
+        }
+    }
+}
+
+// Shop List
+.product-lists {
+    .product-list {
+        border-top: 1px solid #eee;
+        .product-short-desc {
+            margin-bottom: 1.5rem;
+        }
+    }
+    .product-wrap:last-child .product-list {
+        margin-bottom: 0;
+    }
+}
+
+
+// Toolbox
+.toolbox,
+.toolbox-right,
+.toolbox-left,
+.toolbox-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    label {
+        font-weight: 600;
+        margin-right: 1rem;
+        line-height: 1.5;
+    }
+}
+.toolbox-right {
+    margin-left: auto;
+}
+.toolbox {
+    padding-bottom: 1rem;
+    &.toolbox-pagination {
+        padding: 2.5rem 0;
+        border-top: 1px solid  #f4f4f4;
+    }
+    &, &-left, &-right {
+        >:not(.toolbox-pagination)*:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+    .showing-info {
+        font-size: 1.3rem;
+        color: #aaa;
+        span {
+            margin: 0 .9rem;
+            color: #333;
+        }
+    }
+    .select-box {
+        color: #333;
+        &::before {
+            font-size: 1.1rem;
+            right: 1.2rem;
+            margin-top: -.2rem;
+        }
+    }
+    select {
+        max-width: none;
+        width: 15.4rem;
+        padding: .75em 2.7rem .75em 1.4rem;
+        border-radius: .3rem;
+        cursor: pointer;
+        border: 1px solid #d7d7d7;
+    }
+    .toolbox-show select {
+        padding-left: 1.3rem;
+        padding-right: 2.8rem;
+        width: 9.4rem;
+    }
+    .item-found {
+        color: #a9a9a9;
+        font-size: 1.4rem;
+        letter-spacing: 0;
+        span {
+            color: #333;
+            margin-right: .4rem;
+        }
+    }
+    .left-sidebar-toggle,
+    .right-sidebar-toggle {
+        padding: 0.78em 1.05em;
+        font-size: 1.3rem;
+        i {
+            margin-right: .7rem;
+            margin-left: .3rem;
+            font-size: 1.4rem;
+        }
+    }
+    .left-sidebar-toggle {
+        margin: 0 2rem 1rem 0;
+    }
+    .right-sidebar-toggle {
+        margin-left: 2rem;
+    }
+}
+.toolbox-item {
+    margin-bottom: 1rem;
+}
+
+
+.sticky-toolbox.fixed {
+    background: #fff;
+    padding: 1rem 2rem 0 !important;
+}
+// Selected Items
+.selected-items {
+    display: none;
+    .toolbox + & {
+        font-size: 1.2rem;
+    }
+    > * {
+        display: inline-block;
+        margin: 0 .8rem .5rem 0;
+    }
+    .filter-clean {
+        margin-left: 1.2rem;
+    }
+}
+.selected-item {
+    line-height: 1;
+    letter-spacing: 0;
+    background-color: #f5f5f5;
+    color: #666;
+    padding: 8px 1rem;
+    i {
+        margin-left: 1.1rem;
+    }
+}
+
+// Toolbox Layout
+.toolbox-layout {
+    display: flex;
+    align-items: center;
+    margin-left: 1.9rem;
+}
+
+// Layout button
+.btn-layout {
+    line-height: 1;
+    color: #dadada;
+    transition: color .4s;
+    & + & {
+        margin-left: 1rem;
+    }
+    i {
+        font-size: 1.9rem;
+        color: inherit;
+    }
+    &.active,
+    &:hover {
+        color: $dark-color;
+    }
+}
+
+@include mq('lg') {
+    
+}
+
+@include mq('lg', 'max') {
+    .shop-content {
+        .main-content {
+            width: 100%;
+        }
+    }
+
+    // Shop Sidebar with Toolbox
+    .toolbox {
+        .sidebar-fixed {
+            margin-right: 0;
+        }
+        .sidebar-content {
+            display: block;
+        }
+    }
+}
+
+@include mq(md, max) {
+    .shop-default-banner {
+        padding: 5em;
+        font-size: .9rem;
+    }
+}
+
+@include mq(sm, max) {
+    .shop-default-banner {
+        padding: 4rem 3rem;
+        font-size: .8rem;
+    }
+    .toolbox-left label,
+    .toolbox-right .toolbox-layout {
+        display: none;
+    }
+    .toolbox-right .toolbox-item.toolbox-show {
+        margin-right: 0;
+    }
+    .toolbox-pagination {
+        flex-direction: column;
+    }
+    
+    .product-lists .product-list {
+        border-top: 0;
+    }
+    .toolbox .left-sidebar-toggle {
+        padding: 0.79em .83em;
+        i {
+            margin: 0;
+        }
+        span {
+            display: none;
+        }
+    }
+}
+
+@include mq(xs, max) {
+    .shop-default-banner {
+        font-size: .7rem;
+    }
+    .sticky-toolbox.fixed {
+        padding-right: 1.5rem !important;
+        padding-left: 1.5rem !important;
+    }
+    .toolbox {
+        .left-sidebar-toggle {
+            margin-right: 1rem;
+        }
+        select {
+            max-width: 13.6rem;
+        }
+    }
+}

@@ -2,7 +2,7 @@
     @include('admin.components.errors')
     <!--begin::Form-->
     <form class="form" wire:submit.prevent="{{ $method }}">
-        <!--begin::Input group-->
+        {{-- <!--begin::Input group-->
         <div class="fv-row mb-7">
             <label class="fs-6 fw-bold form-label mb-2">
                 <span class="required">Tipo</span>
@@ -14,7 +14,7 @@
             </select>
             @error('banner.type') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
         </div>
-        <!--end::Input group-->
+        <!--end::Input group--> --}}
         <!--begin::Input group-->
         <div class="row">
             <div
@@ -35,8 +35,8 @@
                     <!--begin::Image input-->
                     <div class="image-input image-input-outline">
                         <!--begin::Preview existing avatar-->
-                        <div 
-                            class="image-input-wrapper w-200px h-125px" 
+                        <div
+                            class="image-input-wrapper w-200px h-125px"
                             @if ($imageTmp)
                                 style="background-image: url('{{ $imageTmp->temporaryUrl() }}')"
                             @else
@@ -62,7 +62,7 @@
                     </div>
                     <!--end::Image input-->
                 </div>
-                @error('imageTmp') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror            
+                @error('imageTmp') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
                 <!-- Progress Bar -->
                 <div x-show="isUploading">
                     <progress max="100" x-bind:value="progress"></progress>
@@ -86,7 +86,7 @@
                     <!--begin::Image input-->
                     <div class="image-input image-input-outline">
                         <!--begin::Preview existing avatar-->
-                        <video 
+                        <video
                             class="w-200px h-125px" controls
                             @if ($videoTmp)
                                 src='{{ $videoTmp->temporaryUrl() }}'
@@ -113,7 +113,7 @@
                     </div>
                     <!--end::Image input-->
                 </div>
-                @error('imageTmp') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror            
+                @error('imageTmp') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
                 <!-- Progress Bar -->
                 <div x-show="isUploading">
                     <progress max="100" x-bind:value="progress"></progress>

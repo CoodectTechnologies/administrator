@@ -20,8 +20,19 @@
                 <!--end::Search-->
             </div>
             <!--begin::Card title-->
+
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
+                <div class="w-100 mw-150px">
+                    <!--begin::Select2-->
+                    <select wire:model="categoryFhaterFilter" class="form-select form-select-solid">
+                        <option value="">Todos</option>
+                        @foreach ($categoriesFather as $categoryFather)
+                            <option value="{{ $categoryFather->id }}">{{ $categoryFather->name }}</option>
+                        @endforeach
+                    </select>
+                    <!--end::Select2-->
+                </div>
                 @include('admin.catalog.category.create')
             </div>
             <!--end::Card toolbar-->
@@ -37,6 +48,8 @@
                         <!--begin::Table row-->
                         <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
                             <th class="min-w-125px">Categoría</th>
+                            <th class="min-w-125px">Categoria padre</th>
+                            <th class="min-w-125px">Categorias hijos</th>
                             <th class="min-w-125px">Productos</th>
                             <th class="min-w-125px">Fecha</th>
                             <th class="min-w-125px">Acciones</th>
@@ -63,6 +76,8 @@
                                     </div>
                                 </div>
                             </td>
+                            <td>{{ $category->parent ? $category->parent->name : 'N/A' }}</td>
+                            <td>{{ count($category->allChildrens) }}</td>
                             <td>{{ count($category->products) }}</td>
                             <td>
                                {{ $category->dateToString() }}

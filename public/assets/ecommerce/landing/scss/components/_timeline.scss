@@ -1,0 +1,105 @@
+/*-------------------------------------
+    Timeline
+        - Timeline Body
+        - Timeline Box
+        - Timeline Content
+        - Timeline Node
+        - Timeline Date
+        - Timeline Box Arrow
+--------------------------------------*/
+@include set-default(
+    (
+        timeline: (
+            box: (
+                position: relative,
+                display: flex,
+                align-items: center,
+                margin-bottom: 2rem,
+                width: 100%
+            ),
+            node: (
+                display: flex,
+                align-items: center,
+                justify-content: center
+            )
+        )
+    )
+);
+
+.timeline {
+    width: 100%;
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
+        width: 3px;
+        height: 100%;
+        background-color: #518de6;
+    }
+}
+
+.timeline-box {
+    @include print_css(timeline, box);
+    &.left {
+        justify-content: flex-start;
+        .timeline-content {
+            text-align: right;
+            padding-right: 1rem;
+        }
+    }
+    &.right {
+        justify-content: flex-end;
+        .timeline-content {
+            text-align: left;
+            order: 2;
+            padding-left: 1rem;
+        }
+    }
+}
+
+.timeline-content {
+    padding: 1rem 2rem;
+    width: calc(50% - 3rem);
+}
+
+.timeline-node {
+    @include print_css(timeline, node);
+    .timeline-box-circle & {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background: #fff;
+    }
+    img {
+        vertical-align: middle;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@include mq('md', 'max') {
+    .timeline {
+        &::before {
+            content: none;
+        }
+        .timeline-box {
+            flex-direction: column;
+            justify-content: center;
+            .timeline-content {
+                text-align: center;
+                width: 100%;
+            }
+            p {
+                max-width: none;
+                margin: auto;
+            }
+            &.left {
+                .timeline-node {
+                    order: -1
+                }
+            }
+        }
+    }
+}

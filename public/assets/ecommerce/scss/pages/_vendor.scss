@@ -1,0 +1,522 @@
+// Vendor Dokan Store Grid Page
+.vendor-toolbox {
+    .toolbox-sort {
+        select {
+            width: 15.2rem;
+            padding: 0.61em 2.5rem .61em 1.5rem;
+            font-size: 1.4rem;  
+            border-color: #edecec;
+        }
+    }
+    .select-box::before {
+        right: 1rem;
+        margin-top: -0.1rem;
+    }
+}
+
+// Vendor  WC Marketplace page
+
+.vendor-map-filter {
+    display: flex;
+    flex-wrap: wrap;
+    background: #f5f5f5;
+    padding: 2rem 2rem 1rem;
+    .form-control {
+        margin-right: 1rem;
+        background: #fff;
+        border: none;
+        min-height: 4.4rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    input {
+        width: 58.9rem;
+    }
+    .select-box::before {
+        z-index: 2;
+        font-size: 1.2rem;
+        right: 2.3rem;
+    }
+    select {
+        min-width: 22rem;
+        font-size: 1.4rem;
+        color: $dark-color;
+        option {
+            font-size: 1.4rem;
+        }
+    }
+    .btn {
+        padding: 0.93em 2.97em;
+    }
+}
+
+.vendor-filter,
+.vendor-filter-left {
+    display: flex;
+    align-items: center;
+}
+
+.vendor-filter {
+    padding: 3rem 0 1rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid $border-color;
+    .select-box::before {
+        font-weight: 400;
+        right: 1.4rem;
+        margin-top: -0.1rem;
+    }
+    select {
+        font-size: 1.3rem;
+        border-color: #ccc;
+        border-radius: .3rem;
+        color: #333;
+        padding-left: 1.5rem;
+        min-width: 19rem;
+        max-width: none;
+        option {
+            font-size: 1.4rem;
+        }
+    }
+    .btn {
+        padding: 0.81em 1.4em;
+        background-color: $border-color;
+        border-color: $border-color;
+        font-size: 1.3rem;
+        color: $dark-color;
+        &:hover, &:focus, &:active {
+            background-color: #dcdcdc;
+            border-color: #dcdcdc;
+        }
+    }
+}
+
+.store-wcmp .store-banner img {
+    min-height: 31.8rem;
+}
+
+.store-wcmp-banner {
+    margin-bottom: 3.5rem;
+    .store-media img {
+        min-height: 39rem;
+    }
+}
+
+.tab-vendor-products {
+    &.tab-nav-underline {
+        .nav-link {
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+            &::after {
+                border-top-width: 2px;
+            }
+        }
+        .nav-item:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+    .toolbox {
+        padding: .7rem 0 1rem;
+        label {
+            font-size: 1.4rem;
+        }
+    }
+    .comments {
+        margin: 0;
+        padding: 0;
+    }
+    .comment {
+        border: none;
+        padding-top: 2rem;
+        font-size: 1.4rem;
+        p {
+            margin-bottom: 0;
+        }
+    }
+    .ratings-container {
+        font-size: 1.4rem;
+        .ratings::before {
+            color: #FF7272;
+        }
+    }
+    .comment-author {
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+    }
+    .comment-date {
+        font-size: 1.4rem;
+        color: $body-color;
+    }
+}
+
+.review-title {
+    font-size: 1.8rem;
+}
+
+.widget-search-products .input-wrapper-inline .form-control {
+    flex: 0 0 calc(100% - 9.3rem);
+    max-width: calc(100% - 9.3rem);
+}
+
+// Vendor WCFM 
+
+.store-wcfm-banner {
+    margin-bottom: 2.7rem;
+    .store-media img {
+        min-height: 46rem;
+    }
+}
+
+.widget-coupons {
+    .coupon {
+        padding: 1.2rem 2rem;
+        width: 100%;
+        background-color: #f5f5f5;
+        border-radius: 3px;
+        font-weight: 600;
+        display: inline-block;
+        border: 1px dashed #666;
+        &:hover {
+            .coupon-tip {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, 2rem);
+            }
+        }
+    }
+    .coupon-tip {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15.8rem;
+        padding: .5rem;
+        font-size: 1rem;
+        font-weight: 400;
+        border: 1px solid #17a2b8;
+        background-color: #fff;
+        border-radius: .5rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s, visibility .3s, transform .3s;
+        z-index: 1;
+        &::before,
+        &::after {
+            position: absolute;
+            content: '';
+            left: 50%;
+            bottom: 100%;
+            transform: translateX(-50%);
+        }
+        &::after {
+            border: 3px solid transparent;
+            border-bottom: 7px solid #fff;
+        }
+        &::before {
+            border: 4px solid transparent;
+            border-bottom: 8px solid #17a2b8;
+        }
+    }
+}
+
+.vendor-sidebar .widget-title i {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: .5rem;
+    margin-top: -0.5rem;
+    line-height: 0;
+    &.w-icon-truck {
+        font-size: 2rem;
+    }
+}
+
+.widget-location .google-map {
+    height: 28rem;
+    background-color: #ddd;
+}
+
+.policies-area {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid $border-color;
+    .title {
+        font-weight: 600;
+        margin-bottom: 3rem;
+    }
+    p {
+        padding-bottom: 2.1rem;
+    }
+}
+
+.tab-vendor-wcfm {
+    .nav-link {
+        padding: 1.5rem 0;
+        font-size: 1.5rem;
+        text-transform: capitalize;
+    }
+    .tab-pane {
+        padding: 3rem 0;
+    }
+}
+
+.review-area {
+    margin-bottom: 3rem;
+    padding: 3rem;
+    border: 1px solid $border-color;
+    border-radius: .3rem;
+    .form-control {
+        margin-bottom: 2.2rem;
+        background: #fff url(../images/vendor/wcfm/write.jpg) no-repeat 10px center;
+        min-width: 4.6rem;
+        padding-left: 3.5rem;
+        color: #777;
+    }
+    .btn {
+        padding-left: 1.35em;
+        padding-right: 1.35em;
+        border-color: $border-color;
+        background-color: $border-color;
+        color: $dark-color;
+        &:hover, &:focus, &:active {
+            border-color: $dark-color;
+            background-color: $dark-color;
+            color: #fff;
+        }
+    }
+}
+
+.reviewers-picture figure {
+    width: 3.6rem;
+    height: 3.6rem;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    &:not(:first-child) {
+        margin-left: -1.5rem;
+    }
+}
+
+.reviewer-name {
+    font-size: 1.6rem;
+    a {
+        color: $dark-color;
+        &:hover {
+            color: $primary-color;
+        }
+    }
+}
+
+.review-ratings {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2.6rem;
+    margin-bottom: 3.5rem;
+    .ratings-container {
+        margin-bottom: 1.3rem;
+        font-size: 1.4rem;
+    }
+    .ratings-full {
+        margin-right: .8rem;
+    }
+    label {
+        white-space: nowrap;
+    }
+    .review-ratings-right {
+        margin-right: 6rem;
+    }
+}
+
+.average-rating {
+    display: inline-block;
+    background: #4e4e4e;
+    color: #fff;
+    font-size: 2.6rem;
+    padding: 0.1rem 1.3rem;
+    border-radius: .3rem;
+    margin-bottom: .5rem;
+}
+
+.user-wrap {
+    display: flex;
+    .review-ratings {
+        display: block;
+        margin-right: 1.5rem;
+        margin-bottom: 0;
+        border: none;
+        padding: 0;
+    }
+}
+
+.user-photo {
+    margin-right: 3.6rem;
+    figure {
+        width: 70px;
+        margin-bottom: 1.5rem;
+    }
+    label {
+        display: block;
+        margin-bottom: .3rem;
+    }
+    .score {
+        background: #666;
+        color: #fff;
+        padding: 0.1rem 1.2rem;
+        border-radius: .3rem;
+    }
+}
+
+.user-info {
+    max-width: 49.4rem;
+    margin-right: auto;
+    padding-right: 2rem;
+    p {
+        font-size: 1.4rem;
+        line-height: 1.78;
+    }
+}
+
+.vendor-wcfm-map .google-map {
+    background-color: #ebebeb;
+}
+
+.widget-filter {
+    .form-control {
+        height: 4.6rem;
+        max-width: 100%;
+        padding-left: 1.5rem;
+        border-color: $border-color;
+        border-radius: .3rem;
+        font-size: 1.3rem;
+        color: $body-color;
+        margin-bottom: 1rem;
+    }
+    .widget-body {
+        padding: .4rem 0 2.3rem;
+    }
+}
+
+.vendor-sidebar .widget-search-form .widget-body {
+    padding: 0 0 3.5rem;
+}
+
+.wcfm-toolbox {
+    padding-bottom: 1rem;
+    select {
+        font-size: 1.3rem;
+        border-color: #eee;
+        width: 24rem;
+        max-width: none;
+        padding-top: .7em;
+        padding-bottom: .7em;
+    }
+    option {
+        font-size: 1.3rem;
+    }
+    .showing-info {
+        color: #333;
+        font-weight: 400;
+    }
+}
+
+.store-wcfm .store-content {
+    max-width: none;
+}
+
+// Elemant Page
+.default-section {
+    margin-bottom: 1.7rem;
+    .owl-theme .owl-nav.disabled+.owl-dots {
+        margin-top: -3.5rem;
+    }
+}
+
+.vendors-section {
+    background-color: #f8f8f8;
+    .vendor-widget {
+        margin-bottom: 0;
+    }
+}
+
+.vendor-page-content {
+    .owl-nav.disabled+.owl-dots {
+        margin-top: 0;
+    }
+    .owl-dots .owl-dot.active span {
+        width: 1.8rem;
+    }
+}
+
+.vendor-banner-section,
+.ultimate-section {
+    .owl-stage-outer {
+        padding: 2rem 2rem 0 2rem;
+        margin: -2rem -2rem 0 -2rem;
+    }
+}
+
+@include mq(1036px, max) {
+    .store-wcfm {
+        .store-footer {
+            padding-top: 5rem;
+        }
+        .seller-brand {
+            right: auto;
+            left: 2rem;
+            top: -39%;
+        }
+    }
+}
+
+@include mq(lg, max) {
+    .store-wcmp .store-banner img {
+        min-height: auto;
+        max-height: 20rem;
+    }
+    .review-area {
+        padding: 2rem;
+    }
+    .default-section {
+        margin-bottom: 5rem;
+    }
+}
+@include mq(md, max) {
+    .review-ratings .review-ratings-right {
+        margin-right: 0;
+    }
+    .user-wrap .review-ratings {
+        display: none;
+    }
+    .user-photo {
+        margin-right: 2rem;
+    }
+    .user-info {
+        padding-right: 0;
+    }
+}
+@include mq(sm, max) {
+    .store-list:hover {
+        .seller-brand img {
+            transform: translateY(-1rem);
+        }
+    }
+}
+@include mq(xs, max) {
+    .wcfm-toolbox {
+        display: block;
+    }
+    .review-ratings {
+        display: block;
+        .ratings-container {
+            justify-content: flex-start;
+        }
+    }
+    .average-rating {
+        margin-top: 1rem;
+    }
+    .tab-vendor-products .nav-tabs {
+        justify-content: center;
+    }
+    .vendor-banner-section,
+.ultimate-section {
+    .owl-stage-outer {
+        padding: 1.5rem 1.5rem 0 1.5rem;
+        margin: -1.5rem -1.5rem 0 -1.5rem;
+    }
+}
+}

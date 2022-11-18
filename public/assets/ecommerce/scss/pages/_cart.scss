@@ -1,0 +1,254 @@
+/*-------------------------------
+    Cart Page
+--------------------------------*/
+.cart {
+    .cart-summary {
+        padding: 2.3rem 3rem 3rem 3rem;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        line-height: 1;
+        .cart-title {
+            margin-bottom: 2.1rem;
+            font-size: 2rem;
+            letter-spacing: -.01em;
+        }
+        label {
+            display: block;
+        }
+        .btn-checkout {
+            letter-spacing: .025em;
+            padding-top: 1.07em;
+            padding-bottom: 1.07em;
+        }
+    }
+    .form-control {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 3px;
+    }
+    .select-box::before {
+        font-size: 1.1rem;
+        color: $dark-color;
+        right: 1rem;
+        // z-index: 10;
+    }
+    .accordion {
+        border-bottom: 1px solid $border-color;
+    }
+    .card-header {
+        text-transform: uppercase;
+        a {
+            padding-left: 0;
+            padding-right: 0;
+            &::after {
+                right: .5rem;
+                font-size: 1.4rem;
+                color: $dark-color;
+            }
+        }
+    }
+    .card-body {
+        margin-bottom: 2rem;
+        padding: 0;
+    }
+    .cart-action {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 2rem 0;
+        input {
+            border-color: #ccc;
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding-left: 1.3rem;
+            max-width: 200px;
+        }
+        .btn {
+            margin-bottom: 1rem;
+        }
+        .btn-shopping i {
+            font-size: 1.9rem;
+        }
+        .btn-clear,
+        .btn-update {
+            padding: 1em 2em;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: $dark-color;
+          &:hover, &:focus, &:active {
+                border-color: #e1e1e1;
+                background-color: #e1e1e1;
+            }
+        }
+        .btn-clear {
+            margin-right: 1rem;
+        }
+        .btn-update.disabled {
+            border-color: #eee;
+            background-color: #eee;
+            color: $body-color;
+            cursor: not-allowed;
+        }
+    }
+    .coupon-title {
+        font-size: 1.6rem;
+    }
+    .coupon {
+        .form-control {
+            border: none;
+            border-bottom: 1px solid #eee;
+            border-radius: 0;
+            &:focus {
+                border-color: #999;
+            }
+        }
+        .btn {
+            padding: 1em 2em;
+            border-width: 1px;
+        }
+    }
+    .order-total {
+        color: #333;
+        font-size: 1.6rem;
+        font-weight: 600;
+        letter-spacing: -.025em;
+        margin-bottom: 2.5rem;
+    }
+}
+
+// Cart Total
+.cart-total {
+    text-align: right;
+    table {
+        margin-top: -3px;
+    }
+    td,th {
+        border-top: 1px solid $border-color;
+        text-transform: uppercase;
+    }
+}
+.cart-subtotal {
+    line-height: 1;
+    font-size: 1.6rem;
+    color: #333;
+    font-weight: 600;
+    padding-bottom: .8rem;
+}
+
+.shipping-methods {
+    .shipping-title {
+        font-size: 1.6rem;
+        line-height: 1.5;
+        letter-spacing: -.025em;
+        padding: 1.1rem 0 .3rem;
+    }
+    .custom-radio { 
+        line-height: 2.7;
+        label { 
+            letter-spacing: 0;
+            padding-left: 2.5rem; 
+        } 
+        .custom-control-label::after {
+            color: #ccc;
+            padding-top: 1px;
+        }
+    }
+}
+
+.shipping-destination {
+    font-size: 1.5rem;
+    margin-bottom: 2.2rem;
+}
+.shipping-calculator-form {
+    .form-group {
+        margin-bottom: 1.5rem;
+        .form-control {
+            padding-left: 1rem;
+            font-size: 1.4rem;
+            color: $body-color;
+            border-color: #eee;
+        }
+    }
+
+    button {
+        margin-bottom: 2.5rem;
+        border-width: 1px;
+    }
+}
+
+.shipping-address {
+    .form-control,
+    .select-box {
+        background-color: #fff;
+        margin-bottom: 2rem;
+    }
+    .form-control {
+        padding: 1.15rem 1.2rem;
+        font-family: $font-family;
+        font-size: 1.3rem;
+        border-color: $border-color;
+        color: #999;
+    }
+    label {
+        color: #333;        
+        text-transform: uppercase;
+    }
+}
+
+.shop-table.cart-table {
+    th {
+        padding: 1rem 0 1.2rem;
+        letter-spacing: -.025em;
+    }
+    .product-price {
+        width: 17.3%;
+    }
+    .product-quantity {
+        width: 25.7%;
+    }
+    .product-subtotal {
+        width: 16%;
+    }
+    .product-name {
+        color: $dark-color;
+    }
+    .product-quantity {
+        .input-group {
+            max-width: 120px;
+        }
+    }
+    .btn-close {
+        top: -8px;
+        right: -7px;
+    }
+    td.product-subtotal {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: $dark-color;
+        letter-spacing: -.05em;
+    }
+    td.product-price {
+        font-weight: 400;
+        font-size: 1.6rem;
+    }
+}
+@include mq('md', 'max') {
+    .cart-table {
+        td.product-subtotal {
+            text-align: center; 
+        }
+        &.shop-table .product-quantity {
+            width: auto;
+        }
+        &.shop-table .product-subtotal {
+            width: auto;
+        }
+    }
+}
+@include mq('sm', 'max') {
+    .cart {
+        .breadcrumb {
+            justify-content: center;
+        }
+    }
+}

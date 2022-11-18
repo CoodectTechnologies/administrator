@@ -17,17 +17,24 @@ class Index extends Component
     protected $queryString = ['search' => ['except' => '']];
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['render'];
+    public $categoryFhaterFilter;
 
     public function updatingSearch(){
         $this->resetPage();
     }
     public function render(){
-        $categories = ProductCategory::query()->with('products')->orderBy('id', 'desc');
+        $categoriesFather = ProductCategory::query()->whereNull('parent_id')->orderBy('id', 'desc')->cursor();
+
+        $categories = ProductCategory::query()->with(['products', 'allChildrens'])->orderBy('id', 'desc');
         if($this->search):
             $categories = $categories->where('name', 'LIKE', "%{$this->search}%");
         endif;
-        $categories = $categories->paginate($this->perPage);    
-        return view('livewire.admin.catalog.category.index', compact('categories'));
+        if($this->categoryFhaterFilter):
+            $categories = $categories->allChildrens($this->categoryFhaterFilter);
+        endif;
+        $categories = $categories->paginate($this->perPage);
+
+        return view('livewire.admin.catalog.category.index', compact('categories', 'categoriesFather'));
     }
     public function destroy(ProductCategory $category){
         try{

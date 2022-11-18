@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CurrencySwitcher;
 use App\Http\Middleware\LanguageSwitcher;
 use App\Http\Middleware\OrderMiddleware;
 use App\Http\Middleware\PanelMiddleware;
@@ -75,6 +76,7 @@ class Kernel extends HttpKernel
         'user' => UserMiddleware::class,
         'order' => OrderMiddleware::class,
         'shippingAddress' => ShippingAddressMiddleware::class,
-        'language' => LanguageSwitcher::class,  
+        'language' => LanguageSwitcher::class,
+        'currency' => CurrencySwitcher::class,
     ];
 }

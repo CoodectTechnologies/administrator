@@ -1,0 +1,326 @@
+/*---------------------------------
+    My Account Page
+----------------------------------*/
+
+.my-account {
+    .breadcrumb-nav {
+        margin-bottom: 3.2rem;
+    }
+    .tab-vertical .nav {
+        width: 24.41%;
+        border: none;
+    }
+    .tab-content {
+        width: 75.59%;
+        padding-left: 1.5rem;
+        border: none;
+    }
+    .nav-link,
+    .link-item {
+        margin-bottom: 0;
+        padding: 1.7rem 0 1.6rem;
+        font-size: 1.6rem;
+        text-transform: none;
+        border-bottom: 1px solid #eee;
+    }
+    .link-item {
+        font-weight: 600;
+        color: $dark-color;
+        line-height: 1;
+        a {
+            color: inherit;
+        }
+        &:hover {
+            color: $primary-color;
+        }
+    }
+    .tab-pane {
+        p {
+            font-size: 1.4rem;
+            line-height: 1.8;
+        }
+    }
+    .icon-box.text-center i { 
+        display: block;
+        font-size: 6rem; 
+        color: #333;
+        transition: transform .4s;
+    }
+    
+    .text-center .icon-box-icon {
+        margin-bottom: 1.9rem; 
+    }
+    
+    .icon-box.text-center:hover {
+        .icon-box-icon i {
+            color: $primary-color;
+            transform: scale(1.1); 
+        }
+        p {
+            text-decoration: underline;
+        }
+    }
+    
+    .icon-box.icon-box-side {
+        .icon-orders, .icon-map-marker { margin-right: 1rem; }
+        .w-icon-download { font-size: 2.4rem; }
+        .icon-account { margin-right: .8rem; }
+    }
+    .form-control {
+        transition: border-color .4s;
+        &:focus {
+            border-color: $primary-color;
+        }
+    }
+    .icon-box-light {
+        display: inline-flex;
+        i {
+            font-size: 2.5rem;
+            color: #999;
+        }
+        .icon-box-title {
+            font-size: 2rem;
+        }
+        
+    }
+    .order:not(th) {
+        padding-top: .9rem;
+        .order-table {
+            padding: 1.1rem 2.9rem 0;
+        }
+    }
+}
+
+// tab pane
+#account-dashboard {
+    &.tab-pane {
+        padding-top: 1.5rem;
+    }
+    p.greeting {
+        font-size: 1.6rem;
+    }
+    p a:hover {
+        text-decoration: underline;
+    }
+    .icon-box {
+        padding: 4rem 2rem;
+        border: 1px solid $border-color;
+        border-radius: 3px;
+        transition: all .4s;
+        &:hover {
+            box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+            p { color: $primary-color; }
+        }
+        p {
+            margin-bottom: 0;
+            font-size: 1.4rem;
+            color: #666;
+            transition: color;
+        }
+    }
+    .icon-box-title {
+        font-size: 1.8rem;
+        text-transform: capitalize;
+    }
+}
+
+#account-downloads {
+    &.tab-pane {
+        padding-top: .9rem;
+    }
+    .icon-box-side .w-icon-download {
+        font-size: 2.5rem;
+        margin-top: -.5rem;
+    }
+    .icon-box {
+        margin-bottom: 1.4rem;
+    }
+}
+
+#account-orders {
+    &.tab-pane {
+        padding-top: .8rem;
+    }
+    .icon-box {
+        margin-bottom: 1.8rem;
+    }
+    .account-orders-table {
+        th {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        td {
+            padding-top: 2.1rem;
+            padding-bottom: 2.1rem;
+        }
+        .order-id {
+            padding-left: 1rem;
+            width: 20.77%;
+        }
+        .order-date {
+            width: 20.1%;
+        }
+        .order-status {
+            width: 20%;
+        }
+        .order-total {
+            width: 25.48%;
+        }
+        .order-action {
+            width: 13.78%;
+            padding-right: 1rem;
+        }
+        td {
+            &.order-total {
+                letter-spacing: 0;
+            }
+        }
+    }
+    .order-action {
+        .btn {
+            color: #333;
+            border-color: #ccc;
+            transition: color .4s, border-color .4s, background-color .4s;
+            &:hover {
+                background-color: #333;
+                border-color: #333;
+                color: #fff;
+            }
+        }
+    }
+}
+
+#account-details {
+    &.tab-pane {
+        padding-top: .9rem;
+        .w-icon-user {
+            margin-bottom: .3rem;
+        }
+    }
+    .icon-box {
+        margin-bottom: 1.4rem;
+    }
+    .account-details-form {
+        label {
+            color: #666;
+            font-size: 1.4rem;
+            line-height: 2.3;
+        }
+        .form-control {
+            margin-bottom: 1.6rem;
+            border-radius: .3rem;
+            font-size: 1.4rem;
+            color: $body-color;
+        }
+        p {
+            font-size: 1.2rem;
+            letter-spacing: -.015em;
+            line-height: 2.1;
+        }
+    }
+    .card {
+        border: 1px solid $border-color;
+    }
+    .title-password {
+        font-size: 1.8rem;
+    }
+}
+
+
+#account-addresses {
+    &.tab-pane {
+        padding-top: .8rem;
+        p {
+            margin-bottom: 2.1rem;
+            line-height: 1.6;
+        }
+    }
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 1.7rem;
+        padding-bottom: 1.4rem;
+    }
+    .title-underline::after {
+        background-color: #e5e5e5;
+    }
+    address {
+        font-style: normal;
+    }
+    .address-table {
+        th, td {
+            padding: .3rem 0;
+        }
+        th {
+            font-weight: normal;
+            text-align: left;
+            width: 100px;
+            color: $light-color;
+        }
+        td {
+            color: #333;
+        }
+    }
+}
+@include mq('md', 'max') {
+    .my-account .tab-vertical {
+        .nav-tabs, .tab-content {
+            width: 100%;
+        }
+    }
+    #account-orders {
+        .account-orders-table {
+            td {
+                padding-top: .5rem;
+                padding-bottom: .5rem;
+                word-break: break-all;
+            }
+            .order-id {
+                width: 10%;
+                padding-left: 0;
+            }
+        }
+        .order-action .btn {
+            padding: 0;
+            border: none;
+            text-align: left;
+            &:hover, &:active, &:focus {
+                background-color: transparent;
+                border: none;
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+// login page
+.login-page {
+    .login-popup {
+        margin: 4.2rem auto 5rem;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .checkbox-round + label {
+        &::before {
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            background: transparent;
+        }
+        &::after {
+            content: '';
+            width: 0.8rem;
+            height: 0.8rem;
+            background-color: #333;
+            position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 5px;
+            opacity: 0;
+        }
+    }
+    .checkbox-round.active + label::after {
+        opacity: 1;
+    }
+    .login-vendor {
+        display: none;
+    }
+}

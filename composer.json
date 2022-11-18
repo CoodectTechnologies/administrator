@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "amrshawky/laravel-currency": "^5.0",
         "asantibanez/livewire-charts": "^2.4",
         "cviebrock/eloquent-sluggable": "^8.0",
         "cyrildewit/eloquent-viewable": "^6.1",

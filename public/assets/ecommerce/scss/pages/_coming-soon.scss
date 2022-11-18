@@ -1,0 +1,130 @@
+/*------------------------
+    Coming Soon page
+--------------------------*/
+
+.coming-content-wrapper {
+    min-height: 100vh;
+}
+.coming-content {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 1rem;
+    font-size: 1rem;
+    .logo {
+        display: inline-block;
+        margin-bottom: 2.5rem;
+    }
+    .coming-title {
+        margin-bottom: 1rem;
+        font-size: 8em;
+        font-weight: 800;
+        color: #fff;
+        text-transform: uppercase;
+        line-height: 1;
+        span {
+            color: #1b1c25;
+            -webkit-text-stroke: 1px #f79645;
+        }
+    }
+    p {
+        color: #999;
+        font-size: 1.3rem;
+        letter-spacing: 0;
+        margin-bottom: 4.5rem;
+        max-width: 55rem;
+        &.copyright {
+            font-size: 1.4rem;
+        }
+    }
+    .countdown-row {
+        display: flex;
+        align-items: center;
+    }
+    .countdown-section {
+        position: relative;
+        letter-spacing: -.025em;
+        &:not(:first-child) {
+            margin-left: 3.5rem;
+            .countdown-amount {
+                &::before {
+                    content: ':';
+                    position: absolute;
+                    left: -2.2rem;
+                    color: #999;
+                    font-size: 3rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+    .countdown-amount {
+        display: inline-block;
+        position: relative;
+        padding: .62em .583em;
+        border-radius: 3px;
+        font-size: 3.6em;
+        font-weight: 600;
+        background-color: #333;
+        color: #fff;
+        line-height: 1;
+        margin-bottom: .6rem;
+    }
+    .countdown-period {
+        display: block;
+        position: absolute;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.4rem;
+        color: #bbb;
+        text-align: center;
+    }
+    .social-icons {
+        margin-bottom: 1.4rem;
+    }
+    .social-icon {
+        margin-right: 1rem;
+    }
+}
+
+.countdown-coming {
+    margin-bottom: 6.8rem;
+}
+
+.coming-soon-bg {
+    min-height: 100vh;
+    @include only-for-ie() {
+        height: 1px;
+    }
+}
+
+@include mq(lg, max) {
+    .coming-content {
+        flex: auto;
+        max-width: 100%;
+        padding: 0 2rem;
+        font-size: .9rem;
+        text-align: center;
+        .countdown-row {
+            justify-content: center;
+        }
+        p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+@include mq(md, max) {
+    .coming-content {
+        font-size: .7rem;
+    }
+}
+
+@include mq(xs, max) {
+    .coming-content {
+        font-size: .5rem;
+    }
+}

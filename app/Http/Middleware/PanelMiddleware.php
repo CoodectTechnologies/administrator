@@ -17,9 +17,9 @@ class PanelMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user() && Auth::user()->roles->count()){
+        if(Auth::user() && Auth::user()->roles->count()):
             return $next($request);
-        }
+        endif;
         return redirect()->route('login');
     }
 }

@@ -1,0 +1,81 @@
+@charset 'UTF-8';
+
+/*-------------------
+    Demo 7
+    Do not change import order
+--------------------*/
+
+/*
+1. config
+2. mixins
+3. plugins
+4. base
+5. components
+6. header
+7. footer
+8. demo
+*/
+
+/* 1. Config */
+@import '../../config/variables';
+
+// Demo 7 unique color options
+$primary-color: #ed711b;
+
+/* 2. Mixins */
+@import '../../mixins/breakpoint';
+@import '../../mixins/core';
+@import '../../mixins/buttons';
+
+// Demo Config
+@import 'demo7_config';
+
+/* 3. Plugins */
+@import '../../components/slider';
+
+/* 4. Base */
+@import '../../base/base';
+@import '../../base/helper';
+@import '../../base/type';
+@import '../../base/layout';
+@import '../../base/grid';
+@import '../../base/spacing';
+
+/* 5. Components */
+@import '../../components/animation';
+@import '../../components/banner';
+@import '../../components/blog';
+@import '../../components/buttons';
+@import '../../components/cta';
+@import '../../components/font-icons';
+@import '../../components/forms';
+@import '../../components/icons';
+@import '../../components/icon-boxes';
+@import '../../components/instagram';
+@import '../../components/minipopup';
+@import '../../components/overlay';
+@import '../../components/products';
+@import '../../components/product-single';
+@import '../../components/progress-bar';
+@import '../../components/popup';
+@import '../../components/social-icons';
+@import '../../components/sidebar';
+@import '../../components/tab';
+@import '../../components/tooltip';
+@import '../../components/titles';
+@import '../../components/widget';
+@import '../../components/vendor';
+
+@import '../../pages/products';
+@import '../../pages/compare';
+
+/* 6. Header */
+@import '../../base/header/header';
+@import '../../base/header/dropdown';
+@import '../../base/header/menu';
+
+/* 7. Footer */
+@import '../../base/footer/footer';
+
+/* 8. Demo */
+@import 'demo7_custom';

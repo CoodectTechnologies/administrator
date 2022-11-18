@@ -1,0 +1,25 @@
+/* ---------------------------------------
+    Highlight 
+--------------------------------------- */
+
+.highlight-word {
+    position: relative;
+    display: inline-block;
+}
+.highlight-word .highlight {
+    position: absolute;
+    background: url(../images/Reasons/pencil-line.png) no-repeat;
+    background-size: 100% auto;
+    width: 0;
+    opacity: 0;
+    height: 1.1rem;
+    left: -5%;
+    bottom: -20%;
+    overflow: hidden;
+    transition: width ease 1s,opacity ease 1s;
+}
+
+.highlight-word .highlight.animated {
+    opacity: 1;
+    width: 113%;
+}

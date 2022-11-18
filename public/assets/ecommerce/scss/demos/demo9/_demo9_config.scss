@@ -1,0 +1,53 @@
+@include set (
+    (
+        base: (
+            _container-width: 1400px,
+            title-link: (
+                margin-bottom: 1rem,
+                link: (
+                    margin-bottom: .2rem,
+                    color: $dark-color
+                )
+            )
+        ),
+        header: (
+            middle: (
+                padding-bottom: 1.1rem,
+                border-bottom: none
+            ),
+            search: (
+                expanded: (
+                    width: 61.5rem
+                )
+            )
+        ),
+        product: (
+            name: (
+                margin-bottom: .8rem
+            ),
+            rating: (
+                _star-color: $secondary-color
+            )
+        ),
+        post: (
+            body: (
+                padding-top: 1.6rem
+            ),
+            title: (
+                margin-bottom: 1.3rem,
+                font-size: 1.5rem,
+                letter-spacing: -.025em,
+            ),
+            btn: (
+                font-weight: 400
+            )
+        ),
+        footer: (
+            category-box:(
+                items: (
+                    color: $light-color
+                )
+            )
+        )
+    )
+)

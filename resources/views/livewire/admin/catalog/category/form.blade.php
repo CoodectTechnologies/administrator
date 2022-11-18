@@ -22,8 +22,8 @@
                         <!--begin::Image input-->
                         <div class="image-input image-input-outline">
                             <!--begin::Preview existing avatar-->
-                            <div 
-                                class="image-input-wrapper w-200px h-125px" 
+                            <div
+                                class="image-input-wrapper w-200px h-125px"
                                 @if ($imageTmp)
                                     style="background-image: url('{{ $imageTmp->temporaryUrl() }}')"
                                 @else
@@ -49,13 +49,35 @@
                         </div>
                         <!--end::Image input-->
                     </div>
-                    @error('imageTmp') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror            
+                    @error('imageTmp') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
                     <!-- Progress Bar -->
                     <div x-show="isUploading">
                         <progress max="100" x-bind:value="progress"></progress>
                     </div>
                 </div>
                 <!--end::Image input wrapper-->
+            </div>
+            <!--end::Input group-->
+            <!--begin::Input group-->
+            <div class="fv-row mb-7">
+                <label class="fs-6 fw-bold form-label mb-2">
+                    <span class="">Categoría padre @json($category->parent_id)</span>
+                </label>
+                <div>
+                    <!--begin::Select2-->
+                    <select wire:model="category.parent_id" multiple="multiple" class="form-select mb-2 @error('category.parent_id') 'invalid-feedback' @enderror" style="height: 200px;">
+                        <option value="0">Sin categoria padre</option>
+                        @foreach ($categories as $categoryFhater)
+                            <option {{ $categoryFhater->id == $category->id ? 'disabled' : ''  }} value="{{ $categoryFhater->id }}" style="font-weight: bold;">{{ $categoryFhater->name }}</option>
+                            @include('admin.catalog.category.partials.form._category', ['categoryFhater' => $categoryFhater])
+                        @endforeach
+                    </select>
+                </div>
+                <!--end::Select2-->
+                @error('category.parent_id') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
+                <!--begin::Description-->
+                <div class="text-muted fs-7 mb-7">Puedes seleccionar la categoria padre en caso de que se requiera.</div>
+                <!--end::Description-->
             </div>
             <!--end::Input group-->
             <!--begin::Input group-->

@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('head')
-    <title>Categorías</title>    
+    <title>Categorías</title>
 @endsection
 
 @section('toolbar')

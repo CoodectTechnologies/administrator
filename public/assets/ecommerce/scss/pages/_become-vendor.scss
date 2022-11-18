@@ -1,0 +1,189 @@
+/* Become a Vendor page */
+
+.become-a-vendor {
+    img {
+        width: 100%;
+    }
+    .title {
+        font-size: 3.4rem;
+    }
+}
+
+/* Create Store */
+.create-store {
+    h4 {
+        margin-bottom: 1.6rem;
+    }
+    .title {
+        margin-bottom: 1.3rem;
+        font-size: 4rem;
+    }
+    p {
+        margin-bottom: 3.3rem;
+    }
+    .btn {
+        margin-bottom: .6rem;
+        padding: 1.2em 2.44em;
+    }
+}
+
+@include mq(lg) {
+    .create-store {
+        .row > div:last-child {
+            padding: 0 9rem 0 1.1rem;
+        }
+        .title {
+            max-width: 47rem;
+        }
+    }
+}
+@include mq(md) {
+    .create-store img {
+        min-height: 43.5rem;
+    }
+}
+
+/* How to Trade */
+.how-trade {
+    h4 {
+        margin-bottom: 1.7rem;
+    }
+    .title {
+        margin-bottom: 1.3rem;
+        line-height: 1.25;
+    }
+    .stage-item p {
+        margin-left: 1.2rem;
+        font-size: 1.6rem;
+        line-height: 1.5;
+    }
+    svg {
+        fill: $primary-color;
+        min-width: 6.1rem;
+        width: 6.1rem;
+        height: 6.1rem;
+    }
+    img {
+        max-height: 52rem;
+    }
+}
+.stage-get .stage-item p {
+    margin-left: .7rem;
+}
+/* Few Fees */
+.few-fees {
+    padding-bottom: 2.3rem;
+}
+.listing-fee .counter {
+    margin: 0 5.8rem 0 auto;
+}
+.final-fee .counter {
+    margin: 0 auto 0 5.8rem;
+}
+.become-a-vendor .counter {
+    max-width: 29rem;
+    span {
+        font-size: 9rem;
+        font-weight: 800;
+        color: #ccc;
+        line-height: 1.26;
+        letter-spacing: -.06em;
+    }
+    h4 {
+        margin-bottom: 1.2rem;
+        font-size: 2rem;
+    }
+}
+
+/* Wolmart Sellers */
+.become-a-vendor {
+    .testimonial-boxed {
+        padding-top: 4rem;
+        padding-bottom: 3.7rem;
+        blockquote {
+            margin-bottom: 1.2rem;
+        }
+    }
+    .owl-theme {
+        .owl-dots .owl-dot {
+            span {
+                border-color: $light-color;
+                background-color: $light-color;
+            }
+            &:hover {
+                span {
+                    border-color: $primary-color;
+                    background-color: $primary-color;
+                }
+            }
+            &.active span {
+                width: 1.8rem;
+                background-color: $primary-color;
+                border-color: $primary-color;
+            }
+        }
+        .owl-nav.disabled + .owl-dots {
+            margin-top: 2.5rem;
+        }
+    }
+}
+.wolmart-sellers {
+    h4 {
+        margin: 4.7rem 0 1.9rem;
+    }
+    h2 {
+        margin-bottom: 1.4rem;
+        line-height: 1.22;
+    }
+    p {
+        margin-bottom: 2.6rem;
+    }
+}
+
+/* Questions */
+.questions {
+    padding-top: 4.7rem;
+    h4 {
+        margin-bottom: 1.8rem;
+    }
+    .title {
+        margin-bottom: 3.8rem;
+    }
+    p {
+        margin-bottom: 4.8rem;  
+    }
+}
+
+/* Banner */
+.become-a-vendor .banner {
+    padding: 6.2rem 6.2rem 6.9rem;
+    .banner-content {
+        max-width: 60rem;
+        margin: 0 auto;
+    }
+    .title {
+        margin-bottom: 3.1rem;
+        line-height: 1.25;
+    }
+    .btn {
+        padding: 1.22em 2.1em;
+    }
+}
+
+/* Responsive */
+@include mq(lg, max) {
+    .become-a-vendor .title {
+        font-size: 2.8rem;
+    }
+    .questions p {
+        margin-bottom: 3rem;
+    }
+}
+@include mq(md, max) {
+    .few-fees .counter {
+        margin: 0 auto;
+    }
+    .become-a-vendor .banner {
+        padding: 5rem 2rem;
+    }
+}

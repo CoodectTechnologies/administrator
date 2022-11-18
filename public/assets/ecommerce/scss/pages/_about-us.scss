@@ -1,0 +1,182 @@
+/*----------------------------------
+    About Us
+        - Icon Box
+        - Timeline
+-----------------------------------*/
+
+.about-us {
+    .introduce {
+        .title {
+            margin-bottom: 1.3rem;
+            font-size: 4rem;
+        }
+        p {
+            margin-bottom: 4.3rem;
+            max-width: 57rem;
+        }
+        img {
+            min-height: 20rem;
+        }
+    }
+
+    .customer-service {
+        .card-header {
+            font-size: 1.8rem;
+        }
+        p {
+            font-size: 1.4rem;
+            color: $dark-color;
+        }
+    }
+
+    .customer-service,
+    .boost-section {
+        img {
+            width: 100%;
+        }
+    }
+
+    .customer-service,
+    .boost-section,
+    .member-section {
+        .title {
+            font-size: 3.4rem;
+        } 
+    }
+
+    .counter {
+        span {
+            font-size: 6rem;
+            font-weight: 800;
+            color: #ccc;
+            letter-spacing: -.05em;
+            line-height: 1.54;
+        }
+        .title {
+            margin-bottom: 1.2rem;
+        }
+    }
+
+    .owl-dots .owl-dot {
+        span {
+            background-color: #efefef;
+            border-color: #efefef;
+        }
+        &.active span {
+            width: 1.8rem;
+            background-color: #999;
+            border-color: #999;
+        }
+    }
+
+    .boost-section {
+        background-color: #fafafb;
+    }
+
+    .boost-section {
+        .title {
+            line-height: 1.25;
+            margin-bottom: 1.3rem;
+        }
+        .btn {
+            padding: 1.23em 2.35em;
+        }
+    }
+
+    .awards-wrapper {
+        .title {
+            font-size: 3rem;
+        }
+        img {
+            width: auto;
+            margin: 0 auto 2rem;
+        }
+        p {
+            margin-bottom: 0;
+            font-size: 2rem;
+            color: $dark-color;
+            line-height: 1.6;
+            letter-spacing: -.025em;
+        }
+    }
+
+    .member-section {
+        figure {
+            position: relative;
+            max-width: 29.5rem;
+            margin: 0 auto 2.5rem;
+            &:hover {
+                .overlay {
+                    padding-top: 0;
+                    opacity: 1;
+                }
+            }
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 10rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 1.3rem;
+            opacity: 0;
+            border-radius: 1.3rem;
+            transition: opacity .3s, padding-top .3s;
+            cursor: pointer;
+            p {
+                margin-bottom: 0;
+                text-transform: uppercase;
+            }
+        }
+        .member-name {
+            margin-bottom: 0;
+        }
+        .social-icon {
+            width: 4.6rem;
+            height: 4.6rem;
+            font-size: 2.4rem;
+            line-height: 4.1rem;
+            border-color: #fff;
+            color: #fff;
+            &:hover {
+                &.social-facebook {
+                    background-color: $social-facebook;
+                    border-color: $social-facebook;
+                }
+                &.social-twitter {
+                    background-color: $social-twitter;
+                    border-color: $social-twitter;
+                }
+                &.social-instagram {
+                    background-color: $social-instagram;
+                    border-color: $social-instagram;
+                }
+            }
+        }
+    }
+}
+
+@include mq(lg, max) {
+    .about-us {
+        .customer-service,
+        .boost-section {
+            .title {
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+@include mq(md, max) {
+    .about-us {
+        .introduce .title {
+            font-size: 3rem;
+        }
+    }
+}

@@ -1,0 +1,101 @@
+@include set(
+    (
+        base: (
+            _container-width: 1400px,
+        ),
+        header: (
+            _link-active-color: #fff,
+            top: (
+                letter-spacing: -.03em
+            ),
+            middle: (
+                border-bottom: none
+            ),
+            bottom: (
+                background: #333,
+                color: #fff,
+            ),
+            search: (
+                _border-color: $border-color
+            ),
+            category: (
+                toggle: (
+                    padding: 1.9rem 2rem 1.8rem 2.2rem,
+                    background: $primary-color,
+                    text-transform: capitalize,
+                    letter-spacing: -.015em,
+                    icon: (
+                        font-size: 1.6rem
+                    )
+                ),
+            ),
+            logo: (
+                margin-right: 0
+            ),
+            call: (
+                _color: $dark-color
+            ),
+            compare: (
+                margin-right: 2.9rem
+            )
+        ),
+        menu: (
+            active: (
+                color: #fff
+            )
+        ),
+        category-menu: (
+            ancestor: (
+                _split-line: 1px solid #e1e1e1
+            )
+        ),
+        product: (
+            body: (
+                padding-top: 1.6rem
+            ),
+            rating: (
+                margin-bottom: .3rem
+            )
+        ),
+        post: (
+            body: (
+                padding-top: 1.6rem
+            ),
+            title: (
+                font-size: 1.6rem
+            )
+        ),
+        product-single: (
+            ratings: (
+                _star-color: $secondary-color
+            )
+        ),
+        footer: (
+            background: #f5f5f5,
+            top: (
+                padding: 5.6rem 0 0,
+                border-top: 1px solid #e5e5e5,
+                border-bottom: 0,
+                widget: (
+                    margin-bottom: 3.9rem,
+                    title: (
+                        font-weight: 700
+                    )
+                )
+            ),
+            bottom: (
+                padding-bottom: 3.1rem,
+                background: #222,
+                color: $light-color
+            ),
+            about: (
+                logo: (
+                    margin-bottom: 1.1rem
+                ),
+                call: (
+                    margin-bottom: .8rem
+                )
+            )
+        )
+    )
+)

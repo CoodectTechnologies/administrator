@@ -1,0 +1,77 @@
+/*------------------------------------------------
+    Banner
+        - Default
+        - Video Banner
+        - Newsletter Banner
+            - Simple
+            - With Dark Background
+        - Banner Divider
+------------------------------------------------*/
+// Default - Background Attached
+.banner {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-size: 1rem;
+    overflow: hidden;
+    figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .banner-content {
+        position: relative;
+        z-index: 1;
+        a:not(.btn) {
+            color: inherit;
+            &:hover,
+            &.active {
+                color: $primary-color;
+            }
+        }
+    }
+    .banner-info {
+        line-height: 1.45;
+        margin-bottom: 1rem;
+    }
+    &.banner-sm {
+        .btn {
+            font-size: 1.3rem;
+            padding: .769em 1.43em;
+        }
+        .btn-link {
+            padding: 0;
+        }
+    }
+}
+
+.banner-title {
+    line-height: 1.2;
+    letter-spacing: -.025em;
+}
+
+.banner-subtitle {
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+// Fixed - Image Attached
+.banner-fixed {
+    > .container,
+    > .container-fluid,
+    > .banner-content {
+        position: absolute;
+        z-index: 1;
+    }
+
+    > .container,
+    > .container-fluid {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+}
+

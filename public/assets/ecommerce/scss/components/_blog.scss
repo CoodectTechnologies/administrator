@@ -1,0 +1,400 @@
+/*------------------------------------
+    Blog
+        - Default
+        - List
+        - Mask
+        - Widget
+------------------------------------*/
+
+// Variables
+@include set-default(
+    (
+        post: (
+            padding: false,
+            body: (
+                padding: 1.7rem 0 2.5rem
+            ),
+
+            // Calendar
+            calendar: (
+                width: 4.1rem,
+                height: 4.2rem,
+                background: #fff,
+                color: #333,
+                font-family: false,
+                font-weight: 600,
+                line-height: 1,
+                letter-spacing: false,
+                z-index: 3,
+                border-radius: .3rem,
+                day: (
+                    font-size: 1.4rem
+                ),
+                month: (
+                    font-size: 1rem,
+                    text-transform: uppercase
+                )
+            ),
+
+            // Title
+            title: (
+                font-family: false,
+                font-weight: 600,
+                font-size: 1.8rem,
+                line-height: 1.2,
+                letter-spacing: false,
+                color: false,
+                margin-bottom: 1rem
+            ),
+
+            // Content
+            content: (
+                font-size: 1.3rem,
+                font-family: false,
+                line-height: 1.9,
+                letter-spacing: -.025em,
+                _row-count: 3,
+                margin-bottom: 1.8rem
+            ),
+
+            // Info
+            info: (
+                display: inline-flex,
+                flex-wrap: wrap,
+                align-items: center,
+                color: #999999,
+                font-size: 1.3rem,
+                font-weight: 600,
+                font-family: $font-family,
+                line-height: 1.7,
+                letter-spacing: false,
+                margin-bottom: .3rem
+            ),
+
+            // Button
+            btn: (
+                font-weight: 700,
+                text-transform: capitalize,
+                _icon-gap: 8px
+            )
+        )
+    )
+);
+
+// Default
+.post {
+    @include print_css( post );
+    font-size: 1rem;
+    .btn {
+        @include print_css( post, btn );
+        i {
+            font-size: 1.8rem;
+            @include css( margin-left, post, btn, _icon-gap );
+            &::before {
+                margin: 0;
+            }
+        }
+    }
+    .post-details > *:last-child {
+        margin-bottom: 0;
+    }
+}
+.post-calendar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    @include print_css( post, calendar );
+    .post-day {
+        display: block;
+        margin-bottom: .1rem;
+        @include print_css( post, calendar, day );
+    }
+    .post-month {
+        display: block;
+        @include print_css( post, calendar, month );
+    }
+}
+.post-media {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0;
+    overflow: hidden;
+    img {
+        display: block;
+        width: 100%;
+        transition: transform .3s;
+    }
+    .post-calendar {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+}
+.post-details {
+    @include print_css( post, body );
+}
+.post-title {
+    // white-space: nowrap;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    @include print_css( post, title );
+    &:hover {
+        color: $primary-color;
+    }
+    a {
+        color: inherit;
+    }
+}
+.post-content p {
+    @include text-block( #{get(post, content, _row-count)} );
+    @include print_css( post, content );
+}
+.post-meta {
+    @include print_css( post, info );
+    a {
+        font-weight: 600;
+        font-size: 1.4rem;
+        color: #333;
+        white-space: nowrap;
+        &:hover {
+            color: $primary-color;
+            span {
+                color: inherit;
+            }
+        }
+    }
+    .post-author {
+        margin: 0 .4rem;
+    }
+    .post-date {
+        margin: 0 2rem 0 .4rem;
+        font-weight: 400;
+    }
+    .post-comment {
+        display: flex;
+        align-items: center;
+        color: inherit;
+        font-weight: 400;
+        i {
+            font-size: 1.8rem;
+        }
+        span {
+            margin: 0 .4rem 0 .8rem;
+            font-weight: 600;
+            color: #333;
+            transition: inherit;
+        }
+    }
+}
+
+.post-cats {
+    margin-bottom: .6rem;
+    color: #fff;
+    a {
+        color: inherit;
+        font-size: 1.4rem;
+        &:not(:first-child) {
+            margin-left: .3rem;
+        }
+    }
+}
+
+.post-date {
+    font-weight: 400;
+}
+// List
+.post-list {
+    display: flex;
+    align-items: center;
+    .post-media {
+        max-width: 43.1%;
+        flex: 0 0 43.1%;
+        margin-right: 2rem;
+        align-self: stretch;
+    }
+    img {
+        width: 100%; 
+        height: 100%;   
+        object-fit: cover;
+    }
+    .post-details {
+        padding: 2.3rem 0 2.4rem;
+    }
+}
+
+@include mq(md) {
+    .post-list .post-title {
+        white-space: normal;
+    }
+}
+
+// Grid
+.post-grid .post-details {
+    padding-top: 1.6rem;
+}
+
+// Mask
+.post-mask {
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        height: 50%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: .75;
+        background: linear-gradient(to bottom,rgba(125,185,232,0) 0%,#000 100%);
+        transition: all 0.3s;
+        pointer-events: none;
+        z-index: 1;
+    }
+    .post-details {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 0;
+        right: 0;
+        transform: translateY(100%);
+        padding: 0 3rem;
+        z-index: 2;
+        transition: transform .3s;
+    }
+    .post-details-visible {
+        position: absolute;
+        bottom: 100%;
+        left: 3rem;
+        right: 3rem;
+    }
+    .post-title {
+        letter-spacing: 0;
+    }
+    .post-meta {
+        color: #fff;
+        opacity: 0;
+        transition: opacity .3s;
+        i {
+            margin-right: .8rem;
+        }
+    }
+    a {
+        position: relative;
+        color: inherit;
+        &:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+    }
+    .post-comment {
+        padding-left: 2.8rem;
+        &::before {
+            content: '\e96b';
+            font-family: 'wolmart';
+            position: absolute;
+            font-size: 1.8rem;
+            left: 0;
+        }
+    }
+    &:hover {
+        .post-details {
+            transform: translateY(0);
+        }
+        .post-meta {
+            opacity: 1;
+        }
+    }
+}
+
+// Post Widget
+.post-widget {
+    display: flex;
+    align-items: center;
+    .post-media {
+        flex: 0 0 28.6%;
+        max-width: 28.6%;
+    }
+    .post-details {
+        // flex: 0 0 70.5%;
+        // max-width: 70.5%;
+        margin-left: 1.6rem;
+        padding: 0;
+    }
+    .post-meta {
+        margin-bottom: .5rem;
+    }
+    .post-date {
+        margin: 0;
+        font-size: 1.3rem;
+        color: $body-color;
+    }
+    .post-title {
+        @include text-block();
+        margin-bottom: .1rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+        line-height: 1.45;
+        white-space: normal;
+    }
+}
+
+// .post-lg {
+//     &.text-center .post-details {
+//         padding: 1.8rem 6rem;
+//     }
+// }
+
+.post-md {
+    .post-details {
+        padding-top: 1.8rem;
+    }
+    .post-content p {
+        -webkit-line-clamp: 3;
+    }
+}
+
+// .post-sm {
+//     .post-title {
+//         font-size: 1.5rem;
+//         letter-spacing: 0;
+//         margin-bottom: .7rem;
+//     }
+//     .post-details {
+//         padding: 1.8rem 1rem;
+//     }
+// }
+
+// Responsive
+@include mq(sm) {
+    .post-list {
+        .post-details {
+            flex: 1;
+        }
+    }
+}
+
+@include mq(lg, max) {
+    .post-lg.text-center,
+    .post-md.text-center {
+        .post-details {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+    .post-details {
+        padding-bottom: 0;
+    }
+    .post-section .owl-nav.disabled + .owl-dots {
+        margin-top: .5rem;
+    }
+}
+
+@include mq(md, max) {
+    .post-list {
+        display: block;
+        .post-media {
+            margin-right: 0;
+            max-width: none;
+        }
+    }
+}

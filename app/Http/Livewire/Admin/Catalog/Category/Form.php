@@ -8,41 +8,63 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class Form extends Component
-{    
+{
     use WithFileUploads;
-    
+
     public $category;
     public $method;
     public $imageTmp;
 
     protected function rules(){
         return [
+            'category.parent_id' => 'nullable|max:1',
             'category.name' => 'required',
-            'imageTmp' => 'image|nullable',
+            'imageTmp' => 'image|nullable'
         ];
     }
     public function mount(ProductCategory $category, $method){
         $this->category = $category;
-        $this->method = $method; 
+        $this->method = $method;
     }
     public function render(){
-        return view('livewire.admin.catalog.category.form');
+        $categories = ProductCategory::with(['allChildrens' => function($query){
+            $query->orderBy('name', 'asc');
+        }])->whereNull('parent_id')->orderBy('name', 'asc')->cursor();
+        return view('livewire.admin.catalog.category.form', compact('categories'));
     }
     public function store(){
         $this->validate();
+        $this->saveCategoryParent();
         $this->category->save();
         $this->saveImage();
         $this->category = new ProductCategory();
         $this->reset('imageTmp');
-        $this->emit('alert', 'success', 'Categoría agregado con éxito');
+        $this->emit('alert', 'success', 'Categoría agregada con éxito');
         $this->emit('render');
     }
     public function update(){
         $this->validate();
+        $this->saveCategoryParent();
         $this->category->update();
         $this->saveImage();
         $this->emit('alert', 'success', 'Actualización con éxito');
         $this->emit('render');
+    }
+    private function saveCategoryParent(){
+        if(isset($this->category->parent_id[0])): //Si se eligio una categoria padre
+            if($this->category->parent_id[0]): //Si no es 0, ya que 0 es "Sin categoría padre"
+                $parentId = $this->category->parent_id[0];
+            else:
+                $parentId = null;
+            endif;
+        else: //No eligio una categoria padre
+            if($this->category->parent_id): //Se pondrá el parent_id que ya se tiene registrado
+                $parentId = $this->category->parent_id;
+            else:
+                $parentId = null;
+            endif;
+        endif;
+        $this->category->parent_id = $parentId;
     }
     public function saveImage(){
         if($this->imageTmp):

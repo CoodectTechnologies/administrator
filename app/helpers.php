@@ -1,6 +1,8 @@
 <?php
 
+use AmrShawky\LaravelCurrency\Facade\Currency;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
 
@@ -32,6 +34,15 @@ if(!function_exists('formatBytes')):
         $base = log($size, 1024);
         $suffixes = array('', 'KB', 'MB', 'GB', 'TB');
         return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
+    }
+endif;
+if(!function_exists('currency')):
+    function currency($price){
+        $priceCurrency = $price;
+        if(Session::get('currency') && Session::get('currency') != 'MXN'):
+            $priceCurrency = Currency::convert()->from('MXN')->to(Session::get('currency'))->amount($price)->get();
+        endif;
+        return $priceCurrency;
     }
 endif;
 if(!function_exists('imageManager')):

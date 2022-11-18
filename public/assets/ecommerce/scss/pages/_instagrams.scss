@@ -1,0 +1,32 @@
+/*---------------------------------------
+    Element Instagram Page
+---------------------------------------*/
+.instagram-masonry-grid {
+    .height-x1 {
+        height: 240px;
+    }
+    .height-x2 {
+        height: 480px;
+    }
+    .grid-item {
+        padding: 1rem;
+    }
+    img {
+        height: 100%;
+        object-fit: cover;
+    }
+    .instagram {
+        height: 100%;
+    }
+}
+
+@include mq('md', 'max') {
+    .instagram-masonry-grid {
+        .height-x1 {
+            height: 200px;
+        }
+        .height-x2 {
+            height: 400px;
+        }
+    }
+}

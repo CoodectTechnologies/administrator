@@ -1,0 +1,95 @@
+@include set (
+    (
+        base: (
+            _container-width: 1400px,
+            title: (
+                letter-spacing: .025em
+            ),
+            title-tab: (
+                tab-nav-box: (
+                    margin-bottom: .3rem
+                )
+            )
+        ),
+        header: (
+            top: (
+                text-transform: uppercase,
+                letter-spacing: -.03em
+            ),
+            middle: (
+                padding-top: 3.1rem,
+                padding-bottom: 3.2rem,
+                border: none
+            ),
+            bottom: (
+                background: #333,
+                color: #fff
+            ),
+            main-nav: (
+                margin-left: 5.2rem
+            ),
+            compare: (
+                margin: -0.3rem 2.7rem 0 0
+            ),
+            wishlist: (
+                margin-top: .1rem
+            ),
+            search: (
+                expanded: (
+                    width: none
+                )
+            ),
+            category: (
+                toggle: (
+                    padding: 2.4rem 2.3rem 2.3rem 2.5rem,
+                    background: $primary-color,
+                    text-transform: capitalize,
+                    letter-spacing: -.01em
+                )
+            ),
+            call: (
+                margin-right: 6.1rem,
+                num: (
+                    font-weight: 600
+                )
+            )
+        ),
+        category-menu: (
+            padding: 1rem 0 .8rem
+        ),
+        product: (
+            body: (
+                background: transparent,
+                padding-top: 1.7rem,
+            ),
+            name: (
+                margin-bottom: .7rem
+            ),
+            rating: (
+                margin-bottom: .4rem
+            )
+        ),
+        vendor: (
+            detail: (
+                padding: 1.8rem 0 1.5rem
+            )
+        ),
+        post: (
+            body: (
+                padding: 1.6rem 0 2.4rem
+            ),
+            info: (
+                font-weight: 400,
+                margin-bottom: .5rem
+            ),
+            title: (
+                margin-bottom: 1.3rem,
+                font-size: 1.5rem,
+                letter-spacing: -.025em
+            ),
+            btn: (
+                font-weight: 400
+            )
+        )
+    )
+)

@@ -9,7 +9,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Cviebrock\EloquentSluggable\Sluggable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use AmrShawky\LaravelCurrency\Facade\Currency;
 
 class Product extends Model implements Viewable
 {
@@ -70,6 +72,7 @@ class Product extends Model implements Viewable
     public function shippingClass(){
         return $this->belongsTo(ShippingClass::class);
     }
+    //Gets
     public function imagePreview(){
         $image = asset('assets/admin/media/svg/files/blank-image.svg');
         if($this->image):
@@ -85,11 +88,18 @@ class Product extends Model implements Viewable
         return views($this)->unique()->count();
     }
     public function priceToString(){
+        $sessionCurrency = Session::get('currency');
+        $priceToString = '$'.number_format(currency($this->price), 2).$sessionCurrency;
         if($this->price_promotion):
-            return '<del>'.'$'.number_format($this->price, 2).'</del> '.'$'.number_format($this->price_promotion, 2);
-        else: 
-            return '$'.number_format($this->price, 2);
+            $pricePromotion = '$'.number_format(currency($this->price_promotion), 2).$sessionCurrency;
+            $priceToString = '<del>'.$priceToString.'</del> '.$pricePromotion;
+        else:
+            if($priceMax = $this->productSizes()->max('price')):
+                $priceMax = '$'.number_format(currency($priceMax), 2).$sessionCurrency;
+                $priceToString = $priceToString.' - '.$priceMax;
+            endif;
         endif;
+        return $priceToString;
     }
     public function promotionPercentage(){
         return number_format((($this->price_promotion * 100) / $this->price) - 100, 2);
@@ -102,6 +112,22 @@ class Product extends Model implements Viewable
         else:
             return '<div class="badge badge-light-danger">Desconocido</div>';
         endif;
+    }
+    public function isNew(){
+        $isNew = false;
+        $daysExpiredNew = 7; //Si un producto llega a los 7 días de ser creado, ya no será considerado nuevo
+        $diffTime = Carbon::parse($this->created_at)->diffInDays(date('Y-m-d'));
+        if($diffTime <= $daysExpiredNew):
+            $isNew = true;
+        endif;
+        return $isNew;
+    }
+    public function hasPromotion(){
+        $hasPromotion = false;
+        if($this->price_promotion):
+            $hasPromotion = true;
+        endif;
+        return $hasPromotion;
     }
     public function dateToString(){
         return Carbon::parse($this->created_at)->toFormattedDateString();

@@ -1,0 +1,48 @@
+@charset 'UTF-8';
+
+/*
+1. config
+2. mixins
+3. plugins
+4. base
+5. components
+6. header
+7. footer
+8. page
+*/
+
+/* 1. config */
+@import 'config/variables';
+
+/* 2. mixins */
+@import 'mixins/breakpoints';
+@import 'mixins/core';
+@import 'mixins/buttons';
+
+@import 'pages/landing-config';
+
+/* 3. plugins */
+
+/* 4. base */
+@import 'base/base';
+@import 'base/grid';
+@import 'base/layout';
+@import 'base/spacing';
+@import 'base/helper';
+@import 'base/type';
+
+/* 5. components */
+@import 'components/animation';
+@import 'components/banner';
+@import 'components/buttons';
+@import 'components/icon-boxes';
+@import 'components/social-icons';
+@import 'components/highlight';
+@import 'components/parallax';
+@import 'components/timeline';
+
+/* 6. header */
+@import 'base/header/menu';
+
+/* 8. page */
+@import 'pages/landing';

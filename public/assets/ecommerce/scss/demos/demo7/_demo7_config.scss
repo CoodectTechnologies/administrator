@@ -1,0 +1,111 @@
+/*-------------------
+    Demo 7 Config
+--------------------*/
+@include set(
+    (
+        base: (
+            _container-width: 1400px,
+            title-link: (
+                link: (
+                    color: #333
+                )
+            )
+        ),
+        header: (
+            top: (
+                background: #fff,
+                border-bottom: 1px solid $border-color,
+                text-transform: capitalize
+            ),
+            middle: (
+                border-bottom: 0
+            ),
+            bottom: (
+                background: #333,
+                color: #fff
+            ),
+            category: (
+                toggle: (
+                    padding: 1.9rem 2.1rem 1.8rem 2rem,
+                    background: $primary-color,
+                    text-transform: capitalize,
+                    label: (
+                        letter-spacing: -.01em
+                    )
+                )
+            ),
+            call: (
+                _color: $dark-color,
+            ),
+            search: (
+                expanded: (
+                    width: 67.5rem
+                )
+            ),
+            logo: (
+                margin-bottom: .2rem
+            )
+        ),
+        menu: (
+            ancestor: (
+                padding-top: 1.9rem
+            )
+        ),
+        product: (
+            rating: (
+                _star-color: $body-color
+            ),
+            name: (
+                margin-bottom: .6rem
+            )
+        ),
+        vendor: (
+            banner: (
+                _min-height: 16.5rem
+            ),
+            widget-banner: (
+                details: (
+                    margin-top: -5.5rem,
+                    padding-bottom: 1.8rem
+                ),
+                logo: (
+                    margin: 0 auto 1.8rem auto
+                ),
+                name: (
+                    margin-bottom: 1.1rem,
+                    text-transform: capitalize
+                )
+            ),
+            button: (
+                color: $primary-color
+            )
+        ),
+        post: (
+            body: (
+                padding: 1.5rem 0 2.5rem
+            ),
+            info: (
+                font-weight: 400,
+                color: #666,
+                margin-bottom: 0.1rem
+            ),
+            title: (
+                margin-bottom: 1.4rem,
+                font-size: 1.5rem
+            ),
+            btn: (
+                font-weight: 400
+            )
+        ),
+        footer: (
+            top: (
+                padding: 6.9rem 0 0.8rem
+            ),
+            category-box: (
+                items: (
+                    color: #999
+                )
+            )
+        )
+    )
+)

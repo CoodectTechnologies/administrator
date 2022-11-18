@@ -1,0 +1,31 @@
+/*-----------------------------------
+    FAQs
+------------------------------------*/
+.faq {
+    .title {
+        letter-spacing: .02em;
+    }
+    .card-header {
+        letter-spacing: -.0125em;
+    }
+    .card-body p {
+        letter-spacing: -.005em;
+    }
+}
+
+.content-title-section {
+    .subtitle {
+        font-size: 1.4rem;
+        letter-spacing: -.025em;
+        margin-bottom: .5rem;
+    }
+    .title {
+        max-width: 55.5rem;
+        margin: 0 auto .7rem;
+        font-size: 2.4rem;
+    }
+    .description {
+        margin-bottom: 4.8rem;
+        font-size: 1.3rem;
+    }
+}

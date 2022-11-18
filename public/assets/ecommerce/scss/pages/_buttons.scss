@@ -1,0 +1,118 @@
+/*----------------------------
+    Element Button Page
+        - Page Header
+        - Button Section
+            - Title
+----------------------------*/
+.btn-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: -2rem;
+    margin-top: .5rem;    
+    .btn-wrap {
+        min-width: 16.9rem;
+        margin-left: 2rem;
+        margin-bottom: 2rem;    
+        text-align: center;
+        .btn:not(.btn-simple) {
+            padding-left: 0;
+            padding-right: 0;
+            width: 100%;
+        }
+    }
+}
+
+.btn-section {
+    margin-bottom: 3.6rem;
+    
+    p {
+        position: relative;
+        font-size: 1.3rem;
+        padding-right: 2rem;
+        line-height: 1.9;
+        &::after {
+            content: '';
+            position: absolute;
+            top: .5rem;
+            right: 1rem;
+            background: $border-color;
+            height: 44px;
+            width: 2px;
+        }
+    }
+    .title-line::after {
+        position: absolute;
+        right: 0;
+        width: calc(75% + 1.5rem);
+    }
+}
+
+.btn-block-section {
+    .btn-group {
+        margin-left: -1rem;
+        margin-top: .6rem;
+    }
+}
+
+.btn-size-section {
+    margin-bottom: 2.6rem;
+    .btn-group {
+        margin-top: -.5rem;
+    }
+    .btn {
+        margin-left: 2rem;
+        margin-bottom: 2rem;
+    }
+    p::after {
+        top: .7rem;
+    }
+}
+
+.btn-simple-section {
+    margin-bottom: 3.2rem;
+    .btn-group {
+        margin-top: 1.6rem;
+        .btn-link:not(.btn-underline) {
+            padding-bottom: 6px;
+        }
+        .btn-wrap {
+            min-width: 13.7rem;
+            .btn {
+                width: auto;
+            }
+        }
+    }
+}
+
+.btn-parallax-section {
+    padding: 5.6rem 0 4.2rem;
+    margin-bottom: 0;
+    p {
+        opacity: .4;
+        &::after {
+            opacity: .6;
+        }
+    }
+
+    .btn-group {
+        &::before {
+            background-color: #484443;
+        }
+    }
+}
+
+@include mq('lg', 'max') {
+    .btn-section {
+        .title-line {
+            &::after {
+                position: relative;
+                margin-left: 3.3rem;
+            }
+        }
+
+        p::after {
+            content: none;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+
+/** Variables **/
+
+// 1. Colors
+$primary-color: #336699 !default;
+$primary-color-light: #d7e8f8 !default;
+$secondary-color: #ff9742 !default;
+$secondary-color-light: #fde2cc !default;
+$success-color: #799b5a !default;
+$success-color-light: #c4df9b !default;
+$error-color: #cfaf11 !default;
+$error-color-light: #faf6de !default;
+$dark-color: #333 !default;
+$white-color: #fff !default;
+$body-color: #666 !default;
+$border-color: #eee !default;
+$border-color-light: #ccc !default;
+$grey-color: #00baa3 !default;
+$grey-color-light: #f5f5f5 !default;
+$link-color: #1914fe !default;
+$light-color: #999 !default;
+
+// 2. Font-families
+$alt-font-family: sans-serif !default;
+$font-family: Poppins, $alt-font-family !default;
+$second-font-family: 'Open Sans', $alt-font-family !default;
+$third-font-family: 'Segoe Script' !default;
+
+// 3. Breakpoints
+$breakpoints: (xs: 480px, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1600px, xlst: 1920px);
+$max-breakpoints: (xs: 479px, sm: 575px, md: 767px, lg: 991px, xl: 1199px, xxl: 1599px);
+
+// 4. Social Link Color
+$social-facebook: #1b4f9b;
+$social-twitter: #00adef;
+$social-instagram: #cc0001;
+$social-youtube: #2c567e;
+$social-pinterest: #f96a02;
+
+
+

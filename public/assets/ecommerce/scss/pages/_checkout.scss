@@ -1,0 +1,266 @@
+/*------------------------------------
+    Checkout Page
+-------------------------------------*/
+.checkout {
+    .shop-breadcrumb {
+        margin-bottom: 2.2rem;
+    }
+    .login-toggle,
+    .coupon-toggle {
+        line-height: 1.1;
+    }
+    .login-toggle {
+        margin-bottom: 1.5rem;
+    }
+    .coupon-toggle {
+        margin-bottom: 2.8rem;
+    }
+    .show-login,
+    .show-coupon {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .login-content, 
+    .coupon-content,
+    .checkbox-content {
+        display: none;
+        margin-bottom: 2.4rem;
+        padding: 3rem;
+        border: 1px solid #eee;
+        border-top-width: 3px;
+    }
+    .login-content {
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 1.6rem;
+        }
+        .form-group label {
+            margin-bottom: .2rem;
+        }
+        .form-control {
+            margin-bottom: 1.7rem;
+        }
+        .checkbox {
+            margin-bottom: 1.7rem;
+            label {
+                padding-left: 2.6rem;
+            }
+            a {
+                color: $primary-color;
+                &:hover {
+                    text-decoration: underline;
+                }
+            } 
+        }
+    }
+    .btn-login, {
+        padding-left: 1.88em;
+        padding-right: 1.88em;
+        background: #f1f1f1;
+        border-color: #f1f1f1;
+        color: #333;
+    }
+    .coupon-content {
+        padding-bottom: 2rem;
+        p {
+            margin-bottom: 1.9rem;
+            line-height: 1.7;
+        }
+        .input-wrapper-inline {
+            max-width: 40rem;
+        }
+    }
+    .btn-coupon {
+        border-color: #eee;
+        background-color: #eee;
+        color: $dark-color;
+    }
+    .btn-login,
+    .btn-coupon {
+        &:hover, &:active, &:focus {
+            background-color: $primary-color;
+            border-color: $primary-color;
+            color: #fff;
+        }
+    }
+    .form-control {
+        margin-bottom: 1.3rem;
+        padding-left: 2rem;
+        border-radius: .3rem;
+        font-size: 1.4rem;
+    }
+    .form-group {
+        label {
+            display: inline-block;
+            margin-bottom: 0.1rem;
+            line-height: 2.1;
+        }
+        .select-box::before {
+            font-size: 1.1rem;
+            right: 1.4rem;
+            margin-top: -.2rem;
+            color: $light-color;
+        }
+        select {
+            padding-left: 1.4rem;
+            max-width: 100%;
+        }
+    }
+    .custom-checkbox + label {
+        padding-left: 2.8rem;
+    }
+    select {
+        -webkit-appearance: none;
+    }
+    textarea {
+        padding-top: 1.5rem;
+        min-height: 13rem;
+    }
+    .order-summary-wrapper {
+        padding: 2.5rem 3rem 3rem;
+        border: 1px solid #eee;
+        border-radius: 3px;
+        > .title {
+            margin-bottom: .9rem;
+            padding-bottom: 0;
+        }
+    }
+    .checkbox-content {
+        border: none;
+        padding: 0;
+    }
+    .form-control:focus {
+        border-color: #999;
+    } 
+}
+
+.order-table {
+    tr {
+        border-bottom: 1px solid #eee;
+    }
+    th {
+        text-align: left;
+        padding: .9rem 0;
+    }
+    td {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    b {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #333;
+        letter-spacing: 0;
+        margin-bottom: 0;
+    }
+    td {
+        padding-top: 1.5rem;
+
+        &:last-child {
+            text-align: right;
+        }
+    }
+    .product-name {
+        font-size: 1.4rem;
+        font-weight: 400;
+        i {
+            font-size: 11px;
+            margin-left: .5rem;
+            margin-right: .5rem;
+        }
+    }
+    .product-total {
+        font-size: 1.4rem;
+        letter-spacing: -.05em;
+    }
+    .shipping-methods {
+        .title {
+            font-size: 1.5rem;
+        }
+    }
+    .cart-subtotal {
+        td {
+            padding-top: 2rem;
+            padding-bottom: .9rem;
+        }
+    }
+    .order-total {
+        th, td {
+            padding-top: 1.8rem;
+            padding-bottom: 1.9rem;
+        }
+    }
+}
+
+.order-summary {
+    .payment-methods {
+        padding-top: 2.5rem;
+        border-bottom: 1px solid #eee;
+        .title {
+            font-size: 1.6rem;
+        }
+    }
+    .card-header {
+        a {
+            padding: 1rem 2.7rem;
+            font-size: 1.4rem;
+            color: #666;
+            font-weight: 400;
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                width: 18px;
+                height: 18px;
+                border: 1px solid #ccd;
+                border-radius: 50%;  
+                transform: translateY(-50%);              
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                left: 5px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: $dark-color;
+                opacity: 0;
+                transition: opacity .4s;
+            }
+            &.collapse {
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .card-body {
+        padding: 0 0 1.5rem;
+        p {
+            padding-left: 2.7rem;
+            font-size: 1.4rem;
+            line-height: 1.7;
+            letter-spacing: -.025em;
+        }
+    }
+}
+
+.payment-accordion {
+    margin-bottom: 1.7rem;
+}
+
+.paypal-que {
+    position: absolute;
+    top: 1rem;
+    left: 8rem;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@include mq(xs, max) {
+    .coupon-content .input-wrapper-inline {
+        display: block;
+    }
+}

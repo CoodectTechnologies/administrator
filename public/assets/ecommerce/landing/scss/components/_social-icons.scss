@@ -1,0 +1,28 @@
+/*-------------------------------
+    Social Links
+        - Default Style
+        - Other Styles
+            - No Border
+            - Inline Style
+--------------------------------*/
+
+// Default Style
+.social-icons {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    a>* {
+        transition: .4s;
+    }
+
+    a:hover, a:focus {
+        svg {
+            fill: #fff;
+            g:last-child path {
+                fill: #333;
+            }
+        }
+
+    }
+}

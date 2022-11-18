@@ -1,0 +1,203 @@
+/*-------------------------
+    Order Page
+-------------------------*/
+
+.order {
+    .shop-breadcrumb {
+        margin-bottom: 2.2rem;
+    }
+    .order-table {
+        padding: .6rem 3rem 3rem;
+        border: 1px solid #e1e1e1;
+        border-collapse: separate;
+        thead th {
+            padding-bottom: 1.7rem;
+            font-size: 1.8rem;
+        }
+        thead th,
+        tfoot th,
+        tfoot td {
+            border-bottom: 1px solid #e1e1e1;
+        }
+        td {
+            border: none;
+        }
+        tbody {
+            td:first-child {
+                min-width: 16rem;
+                padding-top: 3rem;
+                padding-bottom: 0;
+            }
+            a {
+                color: $primary-color;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            strong {
+                color: $dark-color;
+            }
+        }
+        tfoot {
+            font-size: 1.6rem;
+            
+            th, td {
+                padding-top: 1.5rem;
+                padding-bottom: 1.8rem;
+                font-weight: 600;
+            }
+            th {
+                color: $dark-color;
+            }
+        }
+        .total td {
+            font-weight: 700;
+            font-size: 2rem;
+            color: #333;
+        }
+    }
+    .alert {
+        border: 1px dashed #e5e5e5;
+        i {
+            color: #799b5a;
+        }
+    }
+    .address-table td {
+        color: $body-color !important;
+    }
+    #billing-account-addresses {
+        border-bottom: 1px solid #e1e1e1;
+        .email td {
+            padding-top: 3.5rem;
+        }
+    }
+    .btn-back {
+        padding: 0.85em 1.4em;
+    }
+}
+
+.order-success {
+    padding: 3.6rem 1.5rem;
+    border: 2px solid #e1e1e1;
+    font-size: 2.4rem;
+    i {
+        font-size: 28px;
+        vertical-align: middle;
+        margin-right: 0.8rem;
+    }
+}
+
+.order-view {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin: 3.2rem 0;
+    li {
+        flex-grow: 1;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.8rem;
+    }
+    strong {
+        color: $dark-color;
+        display: block;
+    }
+}
+
+.order-subtable {
+    thead {
+        tr {
+            border-bottom: 1px solid #e1e1e1;
+        }
+        th {
+            padding-bottom: 2rem;
+            font-size: 1.8rem;
+            color: #333;
+            text-align: left;
+            font-weight: 600;
+        }
+    }
+    td {
+        white-space: nowrap;
+    }
+    tbody td {
+        border: none;
+        padding: 1.5rem 0;
+    }
+    strong {
+        display: block;
+        color: #333;
+    }
+    .order {
+        width: 12.5%;
+    }
+    .date {
+        width: 21.13%;
+    }
+    .status {
+        width: 14.11%;
+    }
+    .total {
+        width: 32%;
+        color: $dark-color;
+    }
+    .action {
+        text-align: right;
+    }
+    tbody {
+        tr:first-child td {
+            padding-top: 3.4rem;
+        }
+        .order {
+            color: $primary-color;
+        }
+        .btn {
+            padding: 0.72em 1.2em;
+            color: $dark-color;
+            border-color: #eee;
+            background-color: #eee;
+            &:hover, &:active, &:focus {
+                color: #fff;
+                border-color: $dark-color;
+                background-color: $dark-color;
+            }
+        }
+    }
+    thead th:not(:last-child),
+    tbody td:not(:last-child) {
+        padding-right: 1rem;
+    }
+}
+
+@include mq(md, max) {
+    .order-view {
+        display: block;
+        li {
+            display: flex;
+            text-align: left;
+        }
+        label {
+            max-width: 50%;
+            flex: 0 0 50%;
+            padding-right: 1rem;
+        }
+    }
+}
+
+@include mq(md, max) {
+    .order-subtable {
+        display: block;
+        overflow-x: auto;
+        min-width: 100%;
+    }
+}
+
+@include mq(xs, max) {
+    .order-view li {
+        font-size: 1.5rem;
+    }
+    .order .order-table {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}

@@ -1,0 +1,67 @@
+/*--------------------------
+    Contact US
+        - Icon Box
+        - Contact Section
+            - Contact Us Form
+----------------------------*/
+.contact-us {
+    .icon-box-content {
+        .icon-box-title {
+            font-size: 1.8rem;
+            line-height: 1.3;
+            margin-bottom: .5rem;
+            text-transform: none;
+        }
+        p {
+            font-size: 1.4rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+    .icon-box {
+        .icon-email { margin: .3rem 0 1.5rem; }
+        .icon-headphone { margin-bottom: 2.3rem; }
+        .icon-map-marker { margin-bottom: 1.9rem; }
+        .icon-fax { margin: 0.4rem 0 2.2rem; }
+        .w-icon-envelop-closed { font-size: 5.2rem; }
+        .w-icon-headphone { font-size: 4.8rem; }
+        .w-icon-map-marker { font-size: 5.1rem; }
+        .w-icon-fax { font-size: 4.5rem; }
+    }
+    .description { margin-bottom: 4.9rem; }
+}
+
+.contact-information-section {
+    padding-bottom: .9rem;
+}
+
+.contact-section {
+    .card-header {
+        font-size: 1.4rem;
+        letter-spacing: 0;
+        a {
+            padding-top: 1.5rem;
+        }
+    }
+}
+.contact-us-form {
+    .form-group {
+        label {
+            color: #333;
+            line-height: 2;
+        }
+        .form-control {
+            margin-bottom: 1.4rem;
+            min-height: 4.6rem;
+            border-radius: .3rem;
+        }
+        textarea.form-control {
+            margin-bottom: 2.1rem;
+        }
+    }
+}
+
+.contact-google-map {
+    background-color: #ddd;
+}

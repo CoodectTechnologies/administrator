@@ -1,0 +1,405 @@
+/*------------------------------------------
+    Menu
+        - Default
+        - Menu(Main Menu)
+
+        -Mobile Menu
+            - MobileMenuWrapper
+            - MobileMenuContainer
+            - MobileMenu
+            - MobileMenuOverlay
+            - MobileMenuCloseButtonn
+-----------------------------------------*/
+
+@include set-default (
+    (
+        menu: (
+            // Active Color
+            active: (
+                color: #fff
+            ),
+            // Ancestor
+            ancestor: (
+                _gap: 3rem,
+                padding: 1rem 0,
+                font-family: false,
+                font-weight: 600,
+                font-size: 1.4rem,
+                letter-spacing: 0,
+                line-height: 1.1,
+                text-transform: uppercase,
+                color: false,
+                _active-color: false
+            ),
+            // Tip
+            tip: (
+                padding: 0.4rem 0.6rem .2rem,
+                border-radius: .2rem,
+                font-size: .9rem,
+                line-height: 1,
+                color: #fff,
+                text-transform: uppercase,
+                _hot-color: false,
+                _new-color: $primary-color
+            )
+        ),
+
+        mobile-menu: (
+            color: #eeeeee,
+            text-transform: uppercase,
+            font-size: 13px,
+            font-weight: 600,
+            line-height: 1.5,
+            letter-spacing: -.025em,
+            // Menu Container
+            container: (
+                max-width: 290px,
+                padding: 2rem 1.5rem,
+                background: #333,
+                border-color: #444444,
+                font-family: $font-family
+            ),
+            // Mobile Menu Item
+            item: (
+                padding: 1.3rem .6rem 1.3rem 1rem
+            ),
+            // Active
+            active: (
+                background: #333,
+                color: false,
+                border: false
+            ),
+            // Title
+            title: (
+                text-transform: uppercase,
+                font-size: 1.4rem,
+                font-family: false,
+                font-weight: 600,
+                color: #fff
+            ),
+            // Overlay
+            overlay: (
+                background: #000,
+                opacity: .8
+            )
+        )
+    )
+);
+
+// Default Menu Style
+.menu {
+    display: flex;
+    align-items: center;
+    a {
+        display: inline-block;
+        color: inherit;
+        &:hover {
+            color: $primary-color;
+        }
+    }
+    .menu-title {
+        margin-bottom: 2rem;
+        @include print_css( menu, megamenu, title );
+    }
+    li {
+        position: relative;
+        @include css( line-height, menu, submenu, line-height );
+    }
+    > li {
+        @include css( margin-right, menu, ancestor, _gap );
+        > a {
+            position: relative;
+            @include print_css( menu, ancestor );
+            &::after {
+                margin-left: .6rem;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                margin-top: 1.7rem;
+                width: 100%;
+                height: .3rem;
+                border-top: 1px solid;
+                border-bottom: 2px solid;
+                border-color: inherit;
+                transform-origin: right center;
+                transform: scale(0, 1);
+                transition: transform .3s ease;
+            }
+        }
+        &:hover,
+        &.active {
+            > a {
+                &:not(.menu-title) {
+                    @include css( color, menu, active, color );
+                }
+                &::before {
+                    transform-origin: left center;
+                    transform: scale(1, 1);
+                }
+            }
+        }
+    }
+}
+
+
+// MobileMenu
+// Mobile Menu Wrapper
+.mobile-menu-wrapper {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    font-family: $font-family;
+}
+
+.loaded .mobile-menu-wrapper {
+    transition: visibility .4s;
+}
+
+// Mobile Menu Container
+.mobile-menu-container {
+    @include css( max-width, mobile-menu, container, max-width );
+    @include css( padding, mobile-menu, container, padding );
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    @include css( background, mobile-menu, container, background );
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.5);
+    transform: translateX(-#{get( mobile-menu, container, max-width )});
+    transition: transform .4s;
+    .input-wrapper {
+        display: flex;
+        margin-bottom: .6rem;
+        align-items: center;
+        .form-control {
+            color: #7a8088;
+            border: 1px solid;
+            @include css( border-color, mobile-menu, container, border-color);
+            border-right: 0;
+            background-color: transparent;
+        }
+        .btn-search {
+            padding: 0;
+            min-width: 4.7rem;
+            background-color: $primary-color;
+            border-color: $primary-color;
+            color: #fff;
+            font-size: 2rem;
+            align-self: stretch;
+            i {
+                margin: 0;
+                transform: rotateZ(-90deg);
+            }
+        }
+    }
+    .mobile-menu {
+        margin-bottom: .5rem;
+        @include css( background, mobile-menu, container, background );
+    }
+    .tab-content {
+        background-color: transparent;
+    }
+    .nav {
+        border-width: 2px;
+        flex-wrap: nowrap;
+    }
+    .nav-link {
+        margin-bottom: -2px;
+        color: #fff;
+        border-bottom: 2px solid;
+    }
+    .tab-nav-boxed .nav-item {
+        margin-right: 0;
+    }
+    .nav-item:hover .nav-link {
+        color: #fff;
+        border-color: transparent;
+    }
+    .nav-item.show .nav-link,
+    .nav-item .nav-link.active {
+        color: $secondary-color;
+        border-color: $secondary-color;
+    }
+    .nav-item + .nav-item { margin-left: 1px; }
+    &.scrollable::-webkit-scrollbar-thumb, .sidebar-content::-webkit-scrollbar-thumb {
+        margin-right: 2px;
+        background: rgba(255,255,255,.1);
+        border-radius: 7px;
+        cursor: pointer;
+    }
+}
+// MobileMenu
+.mobile-menu {
+    text-transform: uppercase;
+    font: {
+        size: 1.2rem;
+        weight: 700;
+    }
+    line-height: 1.5;
+    letter-spacing: -.025em;
+    @include print_css( mobile-menu );
+
+    ul {
+        display: none;
+        width: 100%;
+    }
+
+    > li {
+        a {
+            display: flex;
+            align-items: center;
+            svg {
+                width: 15px;
+                height: 15px;
+                margin-right: 10px;
+                stroke: #fff;
+                fill: #fff;
+                vertical-align: middle;
+                transition: color .3s;
+            }
+        }
+        &:hover,
+        &.active {
+            svg {
+                stroke: $secondary-color;
+                fill: $secondary-color;
+            }
+        }
+        &:first-child {
+            padding-top: .5rem;
+        }
+        &:last-child {
+            padding-bottom: .5rem;
+        }
+    }
+
+    li {
+        a {
+            display: block;
+            position: relative;
+            @include css( padding, mobile-menu, item, padding);
+            color: inherit;
+            transition: color .3s;
+        }
+        i {
+            display: inline-block;
+            margin-bottom: 1px;
+            font-size: 2rem;
+            margin-right: .5rem;
+            line-height: 0;
+            vertical-align: middle;
+        }
+        // List Padding
+        li { 
+            a {
+                padding-left: 2.4rem;
+            }
+
+            li {
+                a {
+                    padding-left: 3.6rem;
+                }
+            }
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #2e3237;
+        }
+        &.expanded,
+        &.active,
+        &:hover {
+            > a {
+                @include print_css( mobile-menu, active );
+                color: $secondary-color;
+            }
+        }
+    }
+}
+
+.mobile-menu-title {
+    margin-bottom: .5rem;
+    @include print_css( mobile-menu, title );
+}
+// MobileMenu Overlay
+.mobile-menu-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    @include css( background, mobile-menu, overlay, background);
+    opacity: 0;
+    transition: opacity .4s;
+}
+// MobileMenu Close Button
+.mobile-menu-close {
+    position: fixed;
+    left: calc(100vw - 50px);
+    top: 25px;
+    i {
+        font-size: 2.8rem;
+        color: #e1e1e1;
+    }
+    transition: opacity .3s;
+    opacity: 0;
+}
+.mmenu-active {
+    overflow: hidden;
+    .mmenu-anim {
+        > li,
+        & {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .page-wrapper {
+        // if page wrapper has margin-left, then recalculate it's movement
+        margin-left: #{get( mobile-menu, container, max-width )};
+        margin-right: -#{
+            get( mobile-menu, container, max-width ) - 
+            if( get( base, page-wrapper, margin-left ), get( base, page-wrapper, margin-left ), 0 )
+        };
+    }
+    .mobile-menu-wrapper {
+        visibility: visible;
+    }
+    .mobile-menu-container {
+        transform: translateX(0);
+    }
+    .mobile-menu-overlay {
+        @include css( opacity, mobile-menu, overlay, opacity);
+    }
+
+    .mobile-menu-close {
+        opacity: 1;
+    }
+}
+// MobileMenu SlideToggle Button
+.toggle-btn {
+    display: block;
+    position: absolute;
+    padding: 6px;
+    right: 0;
+    top: 50%;
+    transform: translateY( -50% );
+    opacity: .6;
+
+    &::before {
+        content: "\f054";
+        display: block;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: 'Font Awesome 5 Free';
+        line-height: 1;
+        transition: transform .5s;
+
+        .show > a & {
+            transform: rotate(630deg);
+        }
+    }
+}

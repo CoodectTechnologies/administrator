@@ -1,0 +1,125 @@
+@include set (
+    (
+        base: (
+            _container-width: 1420px,
+            title-link: (
+                title: (
+                    margin-bottom: .7rem
+                ),
+                link: (
+                    margin-bottom: .2rem,
+                    font-weight: 600,
+                    letter-spacing: -.025em,
+                    color: $dark-color
+                ),
+                icon: (
+                    position: relative,
+                    top: -0.1rem,
+                    margin-left: .8rem,
+                    font-size: 1.5rem,
+                    font-weight: 600
+                )
+            )
+        ),
+        header: (
+            top: (
+                background: $primary-color,
+                color: #fff,
+                border-bottom: 1px solid,
+                border-color: rgba(238, 238, 238, 0.2)
+            ),
+            middle: (
+                background: $primary-color,
+                color: #fff,
+                border-bottom: 0
+            ),
+            bottom: (
+                border: 1px solid $border-color
+            ),
+            search: (
+                _border-color: #fff,
+                expanded: (
+                    width: 69.6rem
+                )
+            ),
+            cart: (
+                count: (
+                    background: $secondary-color
+                )
+            ),
+            wishlist: (
+                label: (
+                    color: #eee
+                )
+            ),
+            compare: (
+                label: (
+                    color: #eee
+                )
+            ),
+            category: (
+                toggle: (
+                    padding: 1.8rem 1.8rem 1.8rem 2rem
+                )
+            )
+        ),
+        menu: (
+            ancestor: (
+                padding: 1.8rem 0
+            )
+        ),
+        category-menu: (
+            padding: 1rem 0 0.8rem,
+            ancestor: (
+                _split-line: 1px solid #e1e1e1
+            )
+        ),
+        product-single: (
+            ratings: (
+                margin-bottom: 1.8rem,
+                _star-color: $secondary-color,
+                font-size: 1.3rem
+            ),
+            old-price: (
+                margin-right: 1rem,
+                font-size: 1.8rem,
+                color: $light-color
+            )
+        ),
+        post: (
+            body: (
+                padding: 1.5rem 0 2.3rem
+            ),
+            title: (
+                margin-bottom: 1.9rem,
+                font-size: 1.6em,
+                line-height: 1.5
+            ),
+            btn: (
+                font-weight: 400,
+                text-transform: lowercase,
+                _icon-gap: .6rem
+            )
+        ),
+        footer: (
+            background: #f5f5f5,
+            top: (
+                padding: 5.8rem 0 0.7rem,
+                border-top: 1px solid #e5e5e5
+            ),
+            bottom: (
+                padding: 3.1rem 0 3rem,
+                background: #222,
+                color: $light-color
+            ),
+            about: (
+                call: (
+                    margin-bottom: .8rem
+                ),
+                logo: (
+                    margin-bottom: 1.1rem
+                )
+            )
+        )
+    )
+)

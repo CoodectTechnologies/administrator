@@ -1,0 +1,59 @@
+/*----------------------------------------
+    Calendar
+-----------------------------------------*/
+.calendar {
+    font-size: 1.3rem;
+    letter-spacing: 0;
+    text-align: center;
+    .calendar-header {
+        position: relative;
+        padding: 1.7rem 1rem;
+        background-color: $primary-color;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1;
+        text-align: center;
+        text-transform: capitalize;
+        border-radius: .3rem;
+        a {
+            color: inherit;
+        }
+    }
+    thead {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #333;
+        text-transform: uppercase;
+    }
+    th {
+        padding: 1.8rem 0 .9rem;
+    }
+    td {
+        padding: .9rem 0;
+    }
+    .btn-calendar {
+        position: absolute;
+        display: inline-block;
+        vertical-align: middle;
+        i {
+            font-weight: 600;
+        }
+        &.btn-calendar-prev {
+            left: 2rem;
+        }
+        &.btn-calendar-next {
+            right: 2rem;
+        }
+        &:hover {
+            color: #fff;
+        }
+    }
+    .disabled {
+        color: #999;
+    }
+    .today {
+        color: $primary-color;
+        font-weight: 600;
+    }
+}
