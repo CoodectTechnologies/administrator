@@ -1,0 +1,32 @@
+<div>
+    <div class="footer-newsletter bg-primary pt-6 pb-6">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-xl-5 col-lg-6">
+                    <div class="icon-box icon-box-side text-white">
+                        <div class="icon-box-icon d-inline-flex">
+                            <i class="w-icon-envelop3"></i>
+                        </div>
+                        <div class="icon-box-content">
+                            <h4 class="icon-box-title text-white text-uppercase mb-0">Suscribete a nuestro Newsletter</h4>
+                            <p class="text-white">Obtenga toda la información más reciente sobre nuestras ofertas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-6 col-md-9 mt-4 mt-lg-0 ">
+                    @include('ecommerce.components.alert')
+                    <form wire:submit.prevent="store" class="input-wrapper input-wrapper-inline input-wrapper-rounded">
+                        <input wire:model.defer="email" type="email" class="form-control mr-2 bg-white" name="email" id="email" placeholder="Ingresa tu correo electronico" />
+                        <button wire:loading.attr="disabled" wire:target="store" class="btn btn-dark btn-rounded" type="submit">
+                            Suscribete
+                            <span wire:loading.class="spinner-grow" wire:target="store"></span>
+                            <i wire:loading.class.remove="w-icon-long-arrow-right"></i>
+                        </button>
+                    </form>
+                    @error('email') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

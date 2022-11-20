@@ -1,7 +1,7 @@
 <div class="product-wrap">
     <div class="product text-center">
         <figure class="product-media">
-            <a href="#">
+            <a href="{{ route('ecommerce.product.show', $product) }}">
                 <img src="{{ $product->imagePreview() }}" alt="{{ $product->name }}" height="338">
                 @if (count($product->images))
                     <img src="{{ $product->images->first()->imagePreview() }}" alt="{{ $product->name }}" height="">
@@ -26,7 +26,9 @@
             </div>
         </figure>
         <div class="product-details">
-            <h4 class="product-name"><a href="#">{{ $product->name }}</a></h4>
+            <h4 class="product-name">
+                <a href="{{ route('ecommerce.product.show', $product) }}">{{ $product->name }}</a>
+            </h4>
             <div class="ratings-container">
                 <div class="ratings-full">
                     <span class="ratings" style="width: 50%;"></span>

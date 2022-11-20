@@ -12,6 +12,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 //Currency
 Route::get('/currency/{currency}', CurrencyController::class)->name('currency');
 //Category
-Route::resource('/categorias', CategoryController::class)->names('category');
+Route::resource('/categorias', CategoryController::class)->parameters(['categorias' => 'category'])->names('category');
 //Product
-Route::resource('/productos', ProductController::class)->names('product');
+Route::resource('/productos', ProductController::class)->parameters(['productos' => 'product'])->names('product');

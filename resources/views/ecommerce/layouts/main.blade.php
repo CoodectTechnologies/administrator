@@ -25,6 +25,7 @@
 
     {{-- Css --}}
     <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/var.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/ecommerce') }}/vendor/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/ecommerce') }}/vendor/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/ecommerce') }}/vendor/animate/animate.min.css">
@@ -64,6 +65,7 @@
 
     {{-- Scripts --}}
     <script src="{{ asset('assets/ecommerce') }}/vendor/jquery/jquery.min.js"></script>
+    <script src="{{ asset('assets/ecommerce/js/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/ecommerce') }}/vendor/jquery.plugin/jquery.plugin.min.js"></script>
     <script src="{{ asset('assets/ecommerce') }}/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="{{ asset('assets/ecommerce') }}/vendor/owl-carousel/owl.carousel.min.js"></script>

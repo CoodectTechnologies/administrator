@@ -65,7 +65,7 @@
     <!-- End of .intro-section -->
 
     <div class="container">
-        <div class="owl-carousel owl-theme row cols-md-4 cols-sm-3 cols-1 icon-box-wrapper appear-animate br-sm mt-6 mb-10 appear-animate"
+        <div class="owl-carousel owl-theme row cols-md-4 cols-sm-3 cols-1 icon-box-wrapper br-sm mt-6 mb-10 appear-animate"
             data-owl-options="{
             'nav': false,
             'dots': false,
@@ -246,199 +246,88 @@
         @endforeach
         <!-- End of Banner Product Wrapper -->
 
-        <h2 class="title text-left text-capitalize mb-5 appear-animate">Tus recientes vistas</h2>
-        <div class="owl-carousel owl-theme appear-animate viewed-products row cols-xl-8 cols-lg-6 cols-md-4 cols-2 mb-7"
-            data-owl-options="{
-            'nav': false,
-            'dots': true,
-            'margin': 20,
-            'responsive': {
-                '0': {
-                    'items': 2
-                },
-                '576': {
-                    'items': 3
-                },
-                '768': {
-                    'items': 5
-                },
-                '992': {
-                    'items': 6
-                },
-                '1200': {
-                    'items': 8,
-                    'dots': true
+        @if ($productsViewRecents)
+            <h2 class="title text-left text-capitalize mb-5 appear-animate">Tus recientes vistas</h2>
+            <div class="owl-carousel owl-theme appear-animate viewed-products row cols-xl-8 cols-lg-6 cols-md-4 cols-2 mb-7"
+                data-owl-options="{
+                'nav': false,
+                'dots': true,
+                'margin': 20,
+                'responsive': {
+                    '0': {
+                        'items': 2
+                    },
+                    '576': {
+                        'items': 3
+                    },
+                    '768': {
+                        'items': 5
+                    },
+                    '992': {
+                        'items': 6
+                    },
+                    '1200': {
+                        'items': 8,
+                        'dots': true
+                    }
                 }
-            }
-            }">
-            <div class="product-wrap">
-                <div class="product text-center product-absolute">
-                    <figure class="product-media">
-                        <a href="product-defaproduct-default.html">
-                            <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/products/3-5-1.jpg" alt="Category image"
-                                width="300" height="338" style="background-color: #fff" />
-                        </a>
-                    </figure>
-                    <h4 class="product-name">
-                        <a href="product-default.html">Charge &amp; Alarm Machine</a>
-                    </h4>
-                </div>
+                }">
+                @foreach ($productsViewRecents as $productsViewRecent)
+                    <div class="product-wrap">
+                        <div class="product text-center product-absolute">
+                            <figure class="product-media">
+                                <a href="{{ route('ecommerce.product.show', $productsViewRecent) }}">
+                                    <img src="{{ $productsViewRecent->imagePreview() }}" alt="{{ $productsViewRecent->name }}"
+                                        width="300" style="background-color: #fff" />
+                                </a>
+                            </figure>
+                            <h4 class="product-name">
+                                <a href="{{ route('ecommerce.product.show', $productsViewRecent) }}">{{ $productsViewRecent->name }}</a>
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- End of Product Wrap -->
+                @endforeach
             </div>
-            <!-- End of Product Wrap -->
-            <div class="product-wrap">
-                <div class="product text-center product-absolute">
-                    <figure class="product-media">
-                        <a href="product-defaproduct-default.html">
-                            <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/products/4-2-1.jpg" alt="Category image"
-                                width="300" height="338" style="background-color: #fff" />
-                        </a>
-                    </figure>
-                    <h4 class="product-name">
-                        <a href="product-default.html">Women's Comforter</a>
-                    </h4>
-                </div>
-            </div>
-            <!-- End of Product Wrap -->
-            <div class="product-wrap">
-                <div class="product text-center product-absolute">
-                    <figure class="product-media">
-                        <a href="product-defaproduct-default.html">
-                            <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/products/3-2-1.jpg" alt="Category image"
-                                width="300" height="338" style="background-color: #fff" />
-                        </a>
-                    </figure>
-                    <h4 class="product-name">
-                        <a href="product-default.html">Gold Watch</a>
-                    </h4>
-                </div>
-            </div>
-            <!-- End of Product Wrap -->
-            <div class="product-wrap">
-                <div class="product text-center product-absolute">
-                    <figure class="product-media">
-                        <a href="product-defaproduct-default.html">
-                            <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/products/3-6-1.jpg" alt="Category image"
-                                width="300" height="338" style="background-color: #fff" />
-                        </a>
-                    </figure>
-                    <h4 class="product-name">
-                        <a href="product-default.html">Mini Wireless Earphone</a>
-                    </h4>
-                </div>
-            </div>
-            <!-- End of Product Wrap -->
-            <div class="product-wrap">
-                <div class="product text-center product-absolute">
-                    <figure class="product-media">
-                        <a href="product-defaproduct-default.html">
-                            <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/products/4-1-1.jpg" alt="Category image"
-                                width="300" height="338" style="background-color: #fff" />
-                        </a>
-                    </figure>
-                    <h4 class="product-name">
-                        <a href="product-default.html">White Schoolbag</a>
-                    </h4>
-                </div>
-            </div>
-            <!-- End of Product Wrap -->
-            <div class="product-wrap">
-                <div class="product text-center product-absolute">
-                    <figure class="product-media">
-                        <a href="product-defaproduct-default.html">
-                            <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/products/3-7-1.jpg" alt="Category image"
-                                width="300" height="338" style="background-color: #fff" />
-                        </a>
-                    </figure>
-                    <h4 class="product-name">
-                        <a href="product-default.html">High Quality Screen Tablet</a>
-                    </h4>
-                </div>
-            </div>
-            <!-- End of Product Wrap -->
-            <div class="product-wrap">
-                <div class="product text-center product-absolute">
-                    <figure class="product-media">
-                        <a href="product-defaproduct-default.html">
-                            <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/products/4-4.jpg" alt="Category image"
-                                width="300" height="338" style="background-color: #fff" />
-                        </a>
-                    </figure>
-                    <h4 class="product-name">
-                        <a href="product-default.html">Beyond OTP Shirt</a>
-                    </h4>
-                </div>
-            </div>
-            <!-- End of Product Wrap -->
-            <div class="product-wrap">
-                <div class="product text-center product-absolute">
-                    <figure class="product-media">
-                        <a href="product-defaproduct-default.html">
-                            <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/products/4-3.jpg" alt="Category image"
-                                width="300" height="338" style="background-color: #fff" />
-                        </a>
-                    </figure>
-                    <h4 class="product-name">
-                        <a href="product-default.html">Blue Training Shoes</a>
-                    </h4>
-                </div>
-            </div>
-            <!-- End of Product Wrap -->
-        </div>
-        <!-- End of Owl Carousel -->
+            <!-- End of Owl Carousel -->
+        @endif
 
-        <h2 class="title text-left mb-5 appear-animate">Nuestros clientes</h2>
-        <div class="owl-carousel owl-theme row cols-xl-8 cols-lg-6 cols-md-4 cols-sm-3 cols-2 brands-wrapper br-sm mb-10 appear-animate"
-            data-owl-options="{
-            'nav': false,
-            'dots': false,
-            'autoplay': true,
-            'autoplayTimeout': 4000,
-            'loop': true,
-            'margin': 20,
-            'responsive': {
-                '0': {
-                    'items': 2
-                },
-                '576': {
-                    'items': 3
-                },
-                '768': {
-                    'items': 4
-                },
-                '992': {
-                    'items': 6
-                },
-                '1200': {
-                    'items': 8
+        @if (count($partners))
+            <h2 class="title text-left mb-5 appear-animate">Nuestros clientes</h2>
+            <div class="owl-carousel owl-theme row cols-xl-8 cols-lg-6 cols-md-4 cols-sm-3 cols-2 brands-wrapper br-sm mb-10 appear-animate"
+                data-owl-options="{
+                'nav': false,
+                'dots': false,
+                'autoplay': true,
+                'autoplayTimeout': 4000,
+                'loop': true,
+                'margin': 20,
+                'responsive': {
+                    '0': {
+                        'items': 2
+                    },
+                    '576': {
+                        'items': 3
+                    },
+                    '768': {
+                        'items': 4
+                    },
+                    '992': {
+                        'items': 6
+                    },
+                    '1200': {
+                        'items': 8
+                    }
                 }
-            }
-            }">
-            <figure>
-                <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/brands/1.png" alt="Brand" width="290" height="100" />
-            </figure>
-            <figure>
-                <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/brands/2.png" alt="Brand" width="290" height="100" />
-            </figure>
-            <figure>
-                <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/brands/3.png" alt="Brand" width="290" height="100" />
-            </figure>
-            <figure>
-                <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/brands/4.png" alt="Brand" width="290" height="100" />
-            </figure>
-            <figure>
-                <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/brands/5.png" alt="Brand" width="290" height="100" />
-            </figure>
-            <figure>
-                <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/brands/6.png" alt="Brand" width="290" height="100" />
-            </figure>
-            <figure>
-                <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/brands/7.png" alt="Brand" width="290" height="100" />
-            </figure>
-            <figure>
-                <img src="{{ asset('assets/ecommerce') }}/images/demos/demo2/brands/8.png" alt="Brand" width="290" height="100" />
-            </figure>
-        </div>
-        <!-- End of Brands Wrapper -->
+                }">
+                @foreach ($partners as $partner)
+                    <figure>
+                        <img src="{{ $partner->imagePreview() }}" alt="{{ $parnet->name }}" width="290"/>
+                    </figure>
+                @endforeach
+            </div>
+            <!-- End of Brands Wrapper -->
+        @endif
     </div>
     <!-- End of Container -->
 @endsection
