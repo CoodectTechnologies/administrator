@@ -135,8 +135,7 @@
                 <div class="product-countdown countdown-compact ml-1 font-weight-bold" data-until="+1d"
                     data-relative="true" data-compact="true">10days,00:00:00</div> --}}
             </div>
-            <a href="#" class="font-weight-bold ls-25">{{ __('More products') }}<i
-                    class="w-icon-long-arrow-right"></i></a>
+            <a href="{{ route('ecommerce.product.index') }}" class="font-weight-bold ls-25">{{ __('More products') }}<i class="w-icon-long-arrow-right"></i></a>
         </div>
         <!-- End of .title-link-wrapper -->
 
@@ -203,7 +202,7 @@
                         <h2 class="title text-left"><a href="{{ route('ecommerce.product.index', ['category' => $categoryFhater->slug]) }}">{{ $categoryFhater->name }}</a></h2>
                         <ul class="list-style-none mb-4">
                             @foreach ($categoryFhater->allChildrens as $categoryChildren)
-                                <li><a href="{{ route('ecommerce.product.index', ['categoryChildren' => $categoryChildren->slug]) }}">{{ $categoryChildren->name }}</a></li>
+                                <li><a href="{{ route('ecommerce.product.index', ['category' => $c->slug]) }}">{{ $categoryChildren->name }}</a></li>
                             @endforeach
                         </ul>
                         @if (count($categoryFhater->allChildrens) >= 9)
@@ -247,7 +246,7 @@
         <!-- End of Banner Product Wrapper -->
 
         @if ($productsViewRecents)
-            <h2 class="title text-left text-capitalize mb-5 appear-animate">Tus recientes vistas</h2>
+            <h2 class="title text-left text-capitalize mb-5 appear-animate">{{ __('Recently viewed') }}</h2>
             <div class="owl-carousel owl-theme appear-animate viewed-products row cols-xl-8 cols-lg-6 cols-md-4 cols-2 mb-7"
                 data-owl-options="{
                 'nav': false,
@@ -293,7 +292,7 @@
         @endif
 
         @if (count($partners))
-            <h2 class="title text-left mb-5 appear-animate">Nuestros clientes</h2>
+            <h2 class="title text-left mb-5 appear-animate">{{ __('Our clients') }}</h2>
             <div class="owl-carousel owl-theme row cols-xl-8 cols-lg-6 cols-md-4 cols-sm-3 cols-2 brands-wrapper br-sm mb-10 appear-animate"
                 data-owl-options="{
                 'nav': false,

@@ -9,8 +9,8 @@
                 <div class="dropdown">
                     <a href="#currency"><span class="text-uppercase">{{ Session::get('currency') }}</span></a>
                     <div class="dropdown-box">
-                        <a href="{{route('ecommerce.currency', 'MXN')}}">MXN</a>
-                        <a href="{{route('ecommerce.currency', 'USD')}}">USD</a>
+                        <a href="{{ route('ecommerce.currency', 'MXN') }}">MXN</a>
+                        <a href="{{ route('ecommerce.currency', 'USD') }}">USD</a>
                     </div>
                 </div>
                 <!-- End of DropDown Menu -->
@@ -20,11 +20,11 @@
                         <img src="{{ asset('assets/ecommerce') }}/images/flags/{{ Session::get('language') }}.png" alt="{{ Session::get('language') }} {{ config('app.name') }}" width="14" height="8" class="dropdown-image" /> <span class="text-uppercase">{{ Session::get('language') }}</span>
                     </a>
                     <div class="dropdown-box">
-                        <a href="{{route('web.language', 'es')}}">
+                        <a href="{{ route('ecommerce.language', 'es') }}">
                             <img src="{{ asset('assets/ecommerce') }}/images/flags/es.png" alt="MX {{ Session::get('language') }}" width="14" height="8" class="dropdown-image" />
                             ES
                         </a>
-                        <a href="{{route('web.language', 'en')}}">
+                        <a href="{{ route('ecommerce.language', 'en') }}">
                             <img src="{{ asset('assets/ecommerce') }}/images/flags/en.png" alt="USA {{ config('app.name') }}" width="14" height="8" class="dropdown-image" />
                             EN
                         </a>
@@ -59,7 +59,7 @@
                 <a href="{{ route('ecommerce.home.index') }}" class="logo ml-lg-0">
                     <img src="{{ config('app.logo') }}" alt="logo" width="200" />
                 </a>
-                @include('ecommerce.layouts.menu')
+                @include('ecommerce.layouts.menu.index')
             </div>
             <div class="header-right ml-4">
                 <div class="header-call d-xs-show d-lg-flex align-items-center">

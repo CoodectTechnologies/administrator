@@ -61,7 +61,7 @@
     <a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="fas fa-chevron-up"></i></a>
     <!-- End of Scroll Top -->
 
-    @include('ecommerce.layouts.menu-mobile')
+    @include('ecommerce.layouts.menu.mobile')
 
     {{-- Scripts --}}
     <script src="{{ asset('assets/ecommerce') }}/vendor/jquery/jquery.min.js"></script>
