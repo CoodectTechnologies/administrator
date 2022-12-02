@@ -28,8 +28,6 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->string('sku')->nullable();
             $table->integer('quantity')->nullable();
-            $table->float('price');
-            $table->float('price_promotion')->nullable();
             $table->boolean('featured')->nullable()->default(false);
             $table->enum('status', ['Publicado', 'Borrador'])->default('Publicado');
             $table->string('iframe_url')->nullable();

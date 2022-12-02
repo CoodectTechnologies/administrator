@@ -262,6 +262,14 @@ return [
                     'canany' => ['estados'],
                     'submodules' => []
                 ],
+                [
+                    'name' => 'Ciudades',
+                    'icon' => 'fa-solid fa-city',
+                    'urlName' => 'admin.setting.city',
+                    'active' => 'admin.setting.city',
+                    'canany' => ['ciudades'],
+                    'submodules' => []
+                ],
             ]
         ],
     ],

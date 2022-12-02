@@ -34,7 +34,22 @@
                     <!--end::Select2-->
                 </div>
                 <!--end::Item-->
-                @include('admin.setting.state.create')
+                <div class="w-100 mw-150px">
+                    <!--begin::Select2-->
+                    <select wire:model="filterState" class="form-select form-select-solid">
+                        @if (count($states))
+                            <option value="">Estados</option>
+                            @foreach ($states as $state)
+                                <option value="{{ $state->id }}">{{ $state->name }}</option>
+                            @endforeach
+                        @else
+                            <option value="">Selecciona algun país</option>
+                        @endif
+                    </select>
+                    <!--end::Select2-->
+                </div>
+                <!--end::Item-->
+                @include('admin.setting.city.create')
             </div>
             <!--end::Card toolbar-->
         </div>
@@ -48,8 +63,9 @@
                     <thead>
                         <!--begin::Table row-->
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                            <th class="min-w-125px">Nombre</th>
-                            <th class="min-w-250px">País</th>
+                            <th class="min-w-100px">Ciudad</th>
+                            <th class="min-w-100px">Estado</th>
+                            <th class="min-w-100px">País</th>
                             <th class="min-w-100px">Acciones</th>
                         </tr>
                         <!--end::Table row-->
@@ -57,33 +73,34 @@
                     <!--end::Table head-->
                     <!--begin::Table body-->
                     <tbody class="fw-bold text-gray-600">
-                        @foreach ($states as $state)
-                        <tr>
-                            <td>{{ $state->name }}</td>
-                            <td>{{ $state->country->name }}</td>
-                            <td>
-                                @include('admin.setting.state.edit')
-                                @include('admin.setting.state.delete')
-                            </td>
-                            <!--end::Action=-->
-                        </tr>
+                        @foreach ($cities as $city)
+                            <tr>
+                                <td>{{ $city->name }}</td>
+                                <td>{{ $city->state->name }}</td>
+                                <td>{{ $city->country->name }}</td>
+                                <td>
+                                    @include('admin.setting.city.edit')
+                                    @include('admin.setting.city.delete')
+                                </td>
+                                <!--end::Action=-->
+                            </tr>
                         @endforeach
                     </tbody>
                     <!--end::Table body-->
                 </table>
             </div>
             <!--end::Table-->
-            {{ $states->links() }}
+            {{ $cities->links() }}
         </div>
         <!--end::Card body-->
     </div>
     <!--end::Card-->
     @push('footer')
-    <script>
-        Livewire.on('render', function(){
-            $('.modal').modal('hide');
-        });
-    </script>
+        <script>
+            Livewire.on('render', function(){
+                $('.modal').modal('hide');
+            });
+        </script>
     @endpush
     <!--end::Content-->
 </div>

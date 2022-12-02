@@ -9,15 +9,17 @@ class Form extends Component
 {
     public $country;
     public $method;
-    
+
     public function mount(Country $country, $method){
         $this->country = $country;
         $this->method = $method;
     }
     protected function rules(){
         return [
+            'country.code' => 'required|unique:countries,code,'.$this->country->id,
             'country.name' => 'required|unique:countries,name,'.$this->country->id,
-            'country.status' => 'required'
+            'country.status' => 'required',
+            'country.phonecode' => 'nullable',
         ];
     }
     public function render(){

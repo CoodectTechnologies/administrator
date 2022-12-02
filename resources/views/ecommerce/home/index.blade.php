@@ -202,7 +202,7 @@
                         <h2 class="title text-left"><a href="{{ route('ecommerce.product.index', ['category' => $categoryFhater->slug]) }}">{{ $categoryFhater->name }}</a></h2>
                         <ul class="list-style-none mb-4">
                             @foreach ($categoryFhater->allChildrens as $categoryChildren)
-                                <li><a href="{{ route('ecommerce.product.index', ['category' => $c->slug]) }}">{{ $categoryChildren->name }}</a></li>
+                                <li><a href="{{ route('ecommerce.product.index', ['category' => $categoryChildren->slug]) }}">{{ $categoryChildren->name }}</a></li>
                             @endforeach
                         </ul>
                         @if (count($categoryFhater->allChildrens) >= 9)

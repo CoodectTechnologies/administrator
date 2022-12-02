@@ -51,6 +51,12 @@ class Product extends Model implements Viewable
     public function comments(){
         return $this->morphMany(Comment::class, 'commentable');
     }
+    public function currency(){
+        return $this->belongsToMany(Currency::class)->withTimestamps()->withPivot(['price']);
+    }
+    public function productPromotions(){
+        return $this->belongsToMany(ProductPromotion::class)->withTimestamps();
+    }
     public function orders(){
         return $this->belongsToMany(Order::class)->withTimestamps()->withPivot(['color', 'size', 'quantity', 'price', 'subtotal', 'created_at']);
     }
@@ -101,6 +107,13 @@ class Product extends Model implements Viewable
         endif;
         return $priceToString;
     }
+    public function hasPromotion(){
+        $hasPromotion = false;
+        if($this->price_promotion):
+            $hasPromotion = true;
+        endif;
+        return $hasPromotion;
+    }
     public function promotionPercentage(){
         return number_format((($this->price_promotion * 100) / $this->price) - 100, 2);
     }
@@ -121,13 +134,6 @@ class Product extends Model implements Viewable
             $isNew = true;
         endif;
         return $isNew;
-    }
-    public function hasPromotion(){
-        $hasPromotion = false;
-        if($this->price_promotion):
-            $hasPromotion = true;
-        endif;
-        return $hasPromotion;
     }
     public function dateToString(){
         return Carbon::parse($this->created_at)->toFormattedDateString();

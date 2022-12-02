@@ -13,7 +13,7 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $perPage = 10;
+    public $perPage = 100;
     public $search;
     protected $queryString = ['search' => ['except' => '']];
     protected $paginationTheme = 'bootstrap';
@@ -37,7 +37,7 @@ class Index extends Component
         if($this->filterCountry):
             $states = $states->where('country_id', $this->filterCountry);
         endif;
-        return $states->paginate($this->perPage);    
+        return $states->paginate($this->perPage);
     }
     public function destroy(State $state){
         try{

@@ -5,10 +5,28 @@
         <!--begin::Input group-->
         <div class="fv-row mb-7">
             <label class="fs-6 fw-bold form-label mb-2">
+                <span class="required">Código del país</span>
+            </label>
+            <input wire:model.defer="country.code" class="form-control form-control-solid @error('country.code') 'invalid-feedback' @enderror" placeholder="Ej: MX" name="" />
+            @error('country.code') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="fv-row mb-7">
+            <label class="fs-6 fw-bold form-label mb-2">
                 <span class="required">Nombre del país</span>
             </label>
             <input wire:model.defer="country.name" class="form-control form-control-solid @error('country.name') 'invalid-feedback' @enderror" placeholder="Ej: México" name="" />
             @error('country.name') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="fv-row mb-7">
+            <label class="fs-6 fw-bold form-label mb-2">
+                <span class="required">Código de teléfono</span>
+            </label>
+            <input wire:model.defer="country.phonecode" class="form-control form-control-solid @error('country.phonecode') 'invalid-feedback' @enderror" placeholder="Ej: 52" name="" />
+            @error('country.phonecode') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
         </div>
         <!--end::Input group-->
         <!--begin::Input group-->

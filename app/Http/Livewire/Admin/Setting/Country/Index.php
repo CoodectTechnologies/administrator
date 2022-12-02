@@ -11,7 +11,7 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $perPage = 50;
+    public $perPage = 100;
     public $search;
     protected $queryString = ['search' => ['except' => '']];
     protected $paginationTheme = 'bootstrap';
@@ -25,7 +25,7 @@ class Index extends Component
         if($this->search){
             $countries = $countries->where('name', 'LIKE', "%{$this->search}%");
         }
-        $countries = $countries->paginate($this->perPage);       
+        $countries = $countries->paginate($this->perPage);
         return view('livewire.admin.setting.country.index', compact('countries'));
     }
     public function destroy(Country $permission){

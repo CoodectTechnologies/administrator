@@ -37,7 +37,8 @@
                     <thead>
                         <!--begin::Table row-->
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                            <th class="min-w-125px">Nombre</th>
+                            <th class="min-w-100px">Código</th>
+                            <th class="min-w-100px">Nombre</th>
                             <th class="min-w-250px">Estados</th>
                             <th class="min-w-250px">Status</th>
                             <th class="min-w-100px">Acciones</th>
@@ -49,6 +50,7 @@
                     <tbody class="fw-bold text-gray-600">
                         @foreach ($countries as $country)
                         <tr>
+                            <td>{{ $country->code }}</td>
                             <td>{{ $country->name }}</td>
                             <td>{{ count($country->states) }}</td>
                             <td>{{ $country->status ? 'Activo' : 'Inactivo' }}</td>

@@ -50,9 +50,11 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'producto géneros']);
         Permission::create(['name' => 'países']);
         Permission::create(['name' => 'estados']);
+        Permission::create(['name' => 'ciudades']);
         Permission::create(['name' => 'zonas de envío']);
         Permission::create(['name' => 'clases de envío']);
         Permission::create(['name' => 'cuenta bancaria']);
+        Permission::create(['name' => 'monedas']);
         Permission::create(['name' => 'pasarelas de pago']);
     }
 }

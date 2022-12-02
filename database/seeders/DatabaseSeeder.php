@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Currency;
 use App\Models\ShippingAddress;
 use Illuminate\Database\Seeder;
 
@@ -30,12 +31,14 @@ class DatabaseSeeder extends Seeder
 
         //Ecommerce
         $this->call(BannerSeeder::class);
-        // $this->call(CountrySeeder::class);
-        // $this->call(StateSeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(StateSeeder::class);
+        $this->call(CitySeeder::class);
+        $this->call(CurrencySeeder::class);
         $this->call(ProductCategorySeeder::class);
         $this->call(ProductGenderSeeder::class);
-        $this->call(ProductSeeder::class);
-        // $this->call(ShippingZoneSeeder::class);
+        // $this->call(ProductSeeder::class);
+        $this->call(ShippingZoneSeeder::class);
         // $this->call(OrderSeeder::class);
         // $this->call(ShippingAddressSeeder::class);
     }

@@ -1,5 +1,5 @@
 <!--begin::Delete-->
-<button onclick="event.preventDefault(); confirmDestroystate({{ $state->id }})" class="btn btn-icon btn-active-light-danger w-30px h-30px">
+<button onclick="event.preventDefault(); confirmDestroyState({{ $state->id }})" class="btn btn-icon btn-active-light-danger w-30px h-30px">
     <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
     <span class="svg-icon svg-icon-3">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -15,7 +15,7 @@
 @once
     @push('footer')
         <script>
-                function confirmDestroystate(id){
+                function confirmDestroyState(id){
                     swal.fire({
                         title: "¿Estás seguro?",
                         text: "No podrá recuperar este estado.",

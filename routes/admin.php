@@ -25,8 +25,10 @@ use App\Http\Controllers\Admin\QuestionAnswer\QuestionAnswerController;
 use App\Http\Controllers\Admin\Service\ServiceController;
 use App\Http\Controllers\Admin\Setting\AccessPayment\AccessPaymentController;
 use App\Http\Controllers\Admin\Setting\Backup\BackupController;
+use App\Http\Controllers\Admin\Setting\City\CityController;
 use App\Http\Controllers\Admin\Setting\Contact\ContactController;
 use App\Http\Controllers\Admin\Setting\Country\CountryController;
+use App\Http\Controllers\Admin\Setting\Currency\CurrencyController;
 use App\Http\Controllers\Admin\Setting\InfoAccountBank\InfoAccountBankController;
 use App\Http\Controllers\Admin\Setting\Log\LogController;
 use App\Http\Controllers\Admin\Setting\ModuleWeb\ModuleWebController;
@@ -67,7 +69,9 @@ Route::prefix('setting')->name('setting.')->group(function (){
     Route::middleware(['can:clases de envío'])->get('/shipping-class', [ShippingclassController::class, 'index'])->name('shipping-class');
     Route::middleware(['can:países'])->get('/country', [CountryController::class, 'index'])->name('country');
     Route::middleware(['can:estados'])->get('/state', [StateController::class, 'index'])->name('state');
+    Route::middleware(['can:ciudades'])->get('/city', [CityController::class, 'index'])->name('city');
     Route::middleware(['can:cuenta bancaria'])->get('/info-account-bank', [InfoAccountBankController::class, 'index'])->name('info-account-bank');
+    Route::middleware(['can:monedas'])->get('/currency', [CurrencyController::class, 'index'])->name('currency');
     Route::middleware(['can:pasarelas de pago'])->get('/access-payment', [AccessPaymentController::class, 'index'])->name('access-payment');
 });
 //User

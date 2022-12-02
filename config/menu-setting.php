@@ -83,11 +83,25 @@ return [
                     'canany' => ['estados'],
                 ],
                 [
+                    'name' => 'Ciudades',
+                    'icon' => 'fa-solid fa-city',
+                    'urlName' => 'admin.setting.city',
+                    'active' => 'admin.setting.city',
+                    'canany' => ['ciudades'],
+                ],
+                [
                     'name' => 'Cuenta bancaría',
                     'icon' => 'fa-solid fa-money-check',
                     'urlName' => 'admin.setting.info-account-bank',
                     'active' => 'admin.setting.info-account-bank',
                     'canany' => ['cuenta bancaria'],
+                ],
+                [
+                    'name' => 'Monedas',
+                    'icon' => 'fa-solid fa-dollar-sign',
+                    'urlName' => 'admin.setting.currency',
+                    'active' => 'admin.setting.currency',
+                    'canany' => ['monedas'],
                 ],
                 [
                     'name' => 'Accesos a pasarelas de pago',

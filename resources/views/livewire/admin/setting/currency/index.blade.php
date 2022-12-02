@@ -16,25 +16,14 @@
                         </svg>
                     </span>
                     <!--end::Svg Icon-->
-                    <input wire:model="search" type="search" class="form-control form-control-solid w-250px ps-14" placeholder="Buscar..." />
+                    <input wire:model="search" type="search" class="form-control form-control-solid w-250px ps-14" placeholder="Buscar por código" />
                 </div>
                 <!--end::Search-->
             </div>
             <!--end::Card title-->
             <!--begin::Card toolbar-->
-            <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                <div class="w-100 mw-150px">
-                    <!--begin::Select2-->
-                    <select wire:model="filterCountry" class="form-select form-select-solid">
-                        <option value="">Paises</option>
-                        @foreach ($countries as $country)
-                            <option value="{{ $country->id }}">{{ $country->name }}</option>
-                        @endforeach
-                    </select>
-                    <!--end::Select2-->
-                </div>
-                <!--end::Item-->
-                @include('admin.setting.state.create')
+            <div class="card-toolbar">
+                @include('admin.setting.currency.create')
             </div>
             <!--end::Card toolbar-->
         </div>
@@ -49,7 +38,7 @@
                         <!--begin::Table row-->
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                             <th class="min-w-125px">Nombre</th>
-                            <th class="min-w-250px">País</th>
+                            <th class="min-w-250px">Código</th>
                             <th class="min-w-100px">Acciones</th>
                         </tr>
                         <!--end::Table row-->
@@ -57,13 +46,13 @@
                     <!--end::Table head-->
                     <!--begin::Table body-->
                     <tbody class="fw-bold text-gray-600">
-                        @foreach ($states as $state)
+                        @foreach ($currencies as $currency)
                         <tr>
-                            <td>{{ $state->name }}</td>
-                            <td>{{ $state->country->name }}</td>
+                            <td>{{ $currency->name }}</td>
+                            <td>{{ $currency->code }}</td>
                             <td>
-                                @include('admin.setting.state.edit')
-                                @include('admin.setting.state.delete')
+                                @include('admin.setting.currency.edit')
+                                @include('admin.setting.currency.delete')
                             </td>
                             <!--end::Action=-->
                         </tr>
@@ -73,17 +62,16 @@
                 </table>
             </div>
             <!--end::Table-->
-            {{ $states->links() }}
         </div>
         <!--end::Card body-->
     </div>
     <!--end::Card-->
     @push('footer')
-    <script>
-        Livewire.on('render', function(){
-            $('.modal').modal('hide');
-        });
-    </script>
+        <script>
+            Livewire.on('render', function(){
+                $('.modal').modal('hide');
+            });
+        </script>
     @endpush
     <!--end::Content-->
 </div>
