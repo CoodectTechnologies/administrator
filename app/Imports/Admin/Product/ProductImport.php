@@ -27,7 +27,6 @@ class ProductImport implements ToModel, WithBatchInserts, WithChunkReading, With
             'quantity' => $row['cantidad'],
             'sku' => $row['sku'],
             'price' => $row['precio'],
-            'price_promotion' => $row['precio_promocion'],
             'featured' => $row['destacado'] ? true : false,
             'iframe_url' => $row['iframe_youtube'],
             'meta_title' => $row['nombre'],

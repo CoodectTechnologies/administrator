@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(){
-        return view('admin.catalog.product.general.index');
+        return view('admin.catalog.product.product.index');
     }
     public function create(){
-        return view('admin.catalog.product.general.create');
+        return view('admin.catalog.product.product.create');
     }
     public function edit(Product $product){
-        return view('admin.catalog.product.general.edit', compact('product'));
+        return view('admin.catalog.product.product.edit', compact('product'));
     }
 }

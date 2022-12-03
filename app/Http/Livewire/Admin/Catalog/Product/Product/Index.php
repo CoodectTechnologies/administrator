@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Catalog\Product\General;
+namespace App\Http\Livewire\Admin\Catalog\Product\Product;
 
 use App\Exports\Admin\Product\ProductExport;
 use App\Imports\Admin\Product\ProductImport;
@@ -38,8 +38,8 @@ class Index extends Component
         if($this->statusFilter):
             $products = $products->where('status', $this->statusFilter);
         endif;
-        $products = $products->paginate($this->perPage);    
-        return view('livewire.admin.catalog.product.general.index', compact('products'));
+        $products = $products->paginate($this->perPage);
+        return view('livewire.admin.catalog.product.product.index', compact('products'));
     }
     public function destroy(Product $product){
         try{

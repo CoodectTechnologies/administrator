@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('head')
-    <title>{{ $product->name }}</title>    
+    <title>{{ $product->name }}</title>
 @endsection
 
 @section('toolbar')
@@ -41,7 +41,7 @@
 @section('content')
     <!--begin::Container-->
     <div id="kt_content_container" class="container-xxl">
-        @livewire('admin.catalog.product.general.form', ['product' => $product, 'method' => 'update'], key($product->id))
+        @livewire('admin.catalog.product.product.form', ['product' => $product, 'method' => 'update'], key($product->id))
     </div>
     <!--end::Container-->
 @endsection

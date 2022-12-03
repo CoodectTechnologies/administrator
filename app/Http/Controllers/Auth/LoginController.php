@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -41,6 +42,7 @@ class LoginController extends Controller
     }
 
     public function authenticated($request , $user){
+        Auth::logoutOtherDevices($request->password);
         if($user->roles()->count()){
             return redirect()->route('admin.dashboard.general.index');
         }

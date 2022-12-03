@@ -5,7 +5,7 @@
         <!--begin::Col-->
         <div class="col-lg-12 justify-content-between d-flex flex-column">
             @forelse ($comments as $comment)
-                @livewire('admin.catalog.product.general.comment', ['comment' => $comment], key($comment->id))
+                @livewire('admin.catalog.product.product.comment', ['comment' => $comment], key($comment->id))
             @empty
                 <!--begin::Alert-->
                 <div class="alert alert-dismissible bg-light-primary border border-primary d-flex flex-column flex-sm-row p-5 mb-10">

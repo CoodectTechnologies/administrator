@@ -4,37 +4,32 @@ namespace App\Http\Livewire\Admin\Setting\Currency;
 
 use App\Models\Currency;
 use Exception;
-use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Index extends Component
 {
-    use WithPagination;
-
-    public $perPage = 50;
     public $search;
     protected $queryString = ['search' => ['except' => '']];
-    protected $paginationTheme = 'bootstrap';
     protected $listeners = ['render'];
 
-    public function updatingSearch(){
-        $this->resetPage();
-    }
     public function render(){
-        if(Cache::has('currency')):
-            $currencies = Cache::get('currency');
-        else:
-            $currencies = Currency::orderBy('name')->get();
-            Cache::put('currency', $currencies);
-        endif;
+        $currencies = Currency::orderBy('id');
         if($this->search):
-            $currencies = $currencies->where('code', 'LIKE', "%{$this->search}%");
+            $currencies = $currencies->where('code', 'LIKE', "%{$this->search}%")->orWhere('name', 'LIKE', "%{$this->search}%");
         endif;
+        $currencies = $currencies->cursor();
         return view('livewire.admin.setting.currency.index', compact('currencies'));
     }
     public function destroy(Currency $currency){
         try{
+            if(Currency::count() == 1):
+                $this->emit('alert', 'warning', 'No puedes eliminar todas las monedas, deberá de existir minimo 1');
+                return;
+            endif;
+            if($currency->default):
+                $this->emit('alert', 'warning', 'No puedes eliminar esta moneda, primero deberás de asignar a otra moneda la opcion por default');
+                return;
+            endif;
             $currency->delete();
             $this->emit('alert', 'success', 'Eliminación con éxito');
         }catch(Exception $e){

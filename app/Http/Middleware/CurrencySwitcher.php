@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 
 class CurrencySwitcher
@@ -19,7 +20,14 @@ class CurrencySwitcher
     public function handle(Request $request, Closure $next)
     {
         if (!Session::has('currency')):
-            Session::put('currency', 'MXN');
+            $currencies = Cache::get('currencies') ? Cache::get('currencies')->where('active', true) : [];
+            if($currencies):
+               if($currencyDefault = $currencies->where('default', true)->first()):
+                    Session::put('currency', $currencyDefault->code);
+               endif;
+            else:
+                Session::put('currency', 'MXN');
+            endif;
         endif;
         return $next($request);
     }

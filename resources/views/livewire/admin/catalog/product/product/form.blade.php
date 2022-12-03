@@ -1,13 +1,13 @@
 <div>
     @once
-    @push('head')
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/custom/summernote/summernote-lite.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/custom/summernote/summernote-bs5.min.css') }}">
-    @endpush
+        @push('head')
+            <link rel="stylesheet" href="{{ asset('assets/admin/plugins/custom/summernote/summernote-lite.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/admin/plugins/custom/summernote/summernote-bs5.min.css') }}">
+        @endpush
     @endonce
     <div class="gap-7 gap-lg-10 mb-5">
         <!--begin:::Menu-->
-        @include('admin.catalog.product.general.partials.form._menu')
+        @include('admin.catalog.product.product.partials.form._menu')
         <!--end:::Menu-->
     </div>
     @include('admin.components.errors')
@@ -15,10 +15,10 @@
     <div class="tab-content">
         <!--begin::Tab pane general-->
         <div wire:ignore.self class="tab-pane fade {{ $submodule === null ? 'show active' : '' }}" id="kt_ecommerce_add_product_general" role="tab-panel">
-            @include('admin.catalog.product.general.partials.form._form')
+            @include('admin.catalog.product.product.partials.form._form')
         </div>
         <!--end::Tab pane general-->
-        @if ($product->id)
+        @if ($product->exists)
             <!--begin::Tab pane color-->
             <div wire:ignore.self class="tab-pane fade {{ $submodule === 'colors' ? 'show active' : '' }}" id="kt_ecommerce_add_product_colors" role="tab-panel">
                 @livewire('admin.catalog.product.color.index', ['product' => $product], key('product-color-'.$product->id))
@@ -30,12 +30,12 @@
             </div>
             <!--end::Tab pane comments-->
             <div wire:ignore.self class="tab-pane fade {{ $submodule === 'comments' ? 'show active' : '' }}" id="kt_ecommerce_comment" role="tap-panel">
-                @include('admin.catalog.product.general.comment.index')
+                @include('admin.catalog.product.product.comment.index')
             </div>
         @endif
     </div>
     <!-- Modals -->
-    @include('admin.catalog.product.general.partials.form._modal')
+    @include('admin.catalog.product.product.partials.form._modal')
     @once
     @push('footer')
         @livewireChartsScripts

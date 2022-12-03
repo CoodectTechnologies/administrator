@@ -11,7 +11,6 @@ use CyrildeWit\EloquentViewable\InteractsWithViews;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use AmrShawky\LaravelCurrency\Facade\Currency;
 
 class Product extends Model implements Viewable
 {
@@ -51,8 +50,8 @@ class Product extends Model implements Viewable
     public function comments(){
         return $this->morphMany(Comment::class, 'commentable');
     }
-    public function currency(){
-        return $this->belongsToMany(Currency::class)->withTimestamps()->withPivot(['price']);
+    public function currencies(){
+        return $this->morphToMany(Currency::class, 'currenciable')->withTimestamps()->withPivot(['price']);
     }
     public function productPromotions(){
         return $this->belongsToMany(ProductPromotion::class)->withTimestamps();
@@ -79,33 +78,44 @@ class Product extends Model implements Viewable
         return $this->belongsTo(ShippingClass::class);
     }
     //Gets
-    public function imagePreview(){
-        $image = asset('assets/admin/media/svg/files/blank-image.svg');
-        if($this->image):
-            if(Storage::exists($this->image->url)):
-                $image = Storage::url($this->image->url);
-            else:
-                $image = $this->image->url;
-            endif;
-        endif;
-        return $image;
-    }
     public function viewUniques(){
         return views($this)->unique()->count();
     }
+    public function getPrice(){
+        $sessionCurrency = Session::get('currency');
+        $currencyProduct = $this->currencies()->where('code', $sessionCurrency)->first();
+        $price = $currencyProduct->pivot->price;
+        return $price;
+    }
     public function priceToString(){
         $sessionCurrency = Session::get('currency');
-        $priceToString = '$'.number_format(currency($this->price), 2).$sessionCurrency;
-        if($this->price_promotion):
-            $pricePromotion = '$'.number_format(currency($this->price_promotion), 2).$sessionCurrency;
-            $priceToString = '<del>'.$priceToString.'</del> '.$pricePromotion;
-        else:
-            if($priceMax = $this->productSizes()->max('price')):
-                $priceMax = '$'.number_format(currency($priceMax), 2).$sessionCurrency;
-                $priceToString = $priceToString.' - '.$priceMax;
+        $priceToString = '$'.number_format($this->getPrice(), 2).$sessionCurrency;
+        // if($this->price_promotion):
+        //     $pricePromotion = '$'.number_format(currency($this->price_promotion), 2).$sessionCurrency;
+        //     $priceToString = '<del>'.$priceToString.'</del> '.$pricePromotion;
+        // else:
+            $priceMaxSize = $this->getPriceSizeMax();
+            if($priceMaxSize):
+                $priceMaxSize = '$'.number_format($priceMaxSize, 2).$sessionCurrency;
+                $priceToString = $priceToString.' - '.$priceMaxSize;
             endif;
-        endif;
+        // endif;
         return $priceToString;
+    }
+    private function getPriceSizeMax(){
+        $sessionCurrency = Session::get('currency');
+        $priceMaxSize = 0;
+        $productSizes = $this->productSizes()->with(['currencies' => function($query) use($sessionCurrency) {
+            $query->where('code', $sessionCurrency);
+        }])->cursor();
+        foreach($productSizes as $productSize):
+            foreach($productSize->currencies as $currency):
+                if($priceMaxSize <= $currency->pivot->price):
+                    $priceMaxSize = $currency->pivot->price;
+                endif;
+            endforeach;
+        endforeach;
+        return $priceMaxSize;
     }
     public function hasPromotion(){
         $hasPromotion = false;
@@ -137,5 +147,16 @@ class Product extends Model implements Viewable
     }
     public function dateToString(){
         return Carbon::parse($this->created_at)->toFormattedDateString();
+    }
+    public function imagePreview(){
+        $image = asset('assets/admin/media/svg/files/blank-image.svg');
+        if($this->image):
+            if(Storage::exists($this->image->url)):
+                $image = Storage::url($this->image->url);
+            else:
+                $image = $this->image->url;
+            endif;
+        endif;
+        return $image;
     }
 }

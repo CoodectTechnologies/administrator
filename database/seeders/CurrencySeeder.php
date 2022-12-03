@@ -19,15 +19,19 @@ class CurrencySeeder extends Seeder
             [
                 'name' => 'Peso méxicano',
                 'code' => 'MXN',
+                'symbol' => '$',
+                'default' => true
             ],
             [
                 'name' => 'Dólar estadounidense',
                 'code' => 'USD',
+                'symbol' => '$',
+                'default' => false
             ],
         ];
         Currency::insert($currencies);
-        Cache::forget('currency');
-        $currencies = Currency::orderBy('name')->get();
-        Cache::put('currency', $currencies);
+        Cache::forget('currencies');
+        $currencies = Currency::where('active', true)->orderBy('id')->get();
+        Cache::put('currencies', $currencies);
     }
 }

@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrencySeeder::class);
         $this->call(ProductCategorySeeder::class);
         $this->call(ProductGenderSeeder::class);
-        // $this->call(ProductSeeder::class);
+        $this->call(ProductSeeder::class);
         $this->call(ShippingZoneSeeder::class);
         // $this->call(OrderSeeder::class);
         // $this->call(ShippingAddressSeeder::class);

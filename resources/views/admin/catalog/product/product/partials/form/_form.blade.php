@@ -2,41 +2,44 @@
     <!--begin::Aside column-->
     <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
         <!--begin::Image-->
-        @include('admin.catalog.product.general.partials.form._image')
+        @include('admin.catalog.product.product.partials.form._image')
         <!--end::Image-->
         <!--begin::Status-->
-        @include('admin.catalog.product.general.partials.form._status')
+        @include('admin.catalog.product.product.partials.form._status')
         <!--end::Status-->
         <!--begin::Fetured-->
-        @include('admin.catalog.product.general.partials.form._featured')
+        @include('admin.catalog.product.product.partials.form._featured')
         <!--end::Fetured-->
         <!--begin:: Details-->
-        @include('admin.catalog.product.general.partials.form._detail')
+        @include('admin.catalog.product.product.partials.form._detail')
         <!--end:: Details-->
         <!--begin:: Graphic-->
-        @include('admin.catalog.product.general.partials.form._graphic')
-        <!--end:: Graphic-->        
+        @include('admin.catalog.product.product.partials.form._graphic')
+        <!--end:: Graphic-->
     </div>
     <!--end::Aside column-->
     <!--begin::Main column-->
     <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-        <!--begin::General options-->
-        @include('admin.catalog.product.general.partials.form._general')
-        <!--end::General options-->
+        <!--begin::General-->
+        @include('admin.catalog.product.product.partials.form._general')
+        <!--end::General-->
+        <!--begin::Prices-->
+        @include('admin.catalog.product.product.partials.form._price')
+        <!--end::Prices-->
         <!--begin::Description-->
-        @include('admin.catalog.product.general.partials.form._description')
+        @include('admin.catalog.product.product.partials.form._description')
         <!--end::Description-->
         <!--begin::Gallery-->
-        @include('admin.catalog.product.general.partials.form._gallery')
-        <!--end::Gallery-->                    
+        @include('admin.catalog.product.product.partials.form._gallery')
+        <!--end::Gallery-->
         <!--begin::Shipping class-->
-        @include('admin.catalog.product.general.partials.form._shipping-class')
+        @include('admin.catalog.product.product.partials.form._shipping-class')
         <!--end::Shipping class-->
         <!--begin::Dimension-->
-        @include('admin.catalog.product.general.partials.form._dimension')
+        @include('admin.catalog.product.product.partials.form._dimension')
         <!--end::Dimension-->
         <!--begin::Meta options-->
-        @include('admin.catalog.product.general.partials.form._meta-tag')
+        @include('admin.catalog.product.product.partials.form._meta-tag')
         <!--end::Meta options-->
         <!--end:: Save changes-->
         <div class="d-flex justify-content-end py-5">

@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->longText('detail');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->string('sku')->nullable();
             $table->integer('quantity')->nullable();
             $table->boolean('featured')->nullable()->default(false);

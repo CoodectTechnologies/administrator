@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Catalog\Product\General;
+namespace App\Http\Livewire\Admin\Catalog\Product\Product;
 
 use App\Models\Comment as ModelsComment;
 use Livewire\Component;
@@ -13,7 +13,7 @@ class Comment extends Component
         $this->comment = $comment;
     }
     public function render(){
-        return view('livewire.admin.catalog.product.general.comment');
+        return view('livewire.admin.catalog.product.product.comment');
     }
     public function refused(){
         $this->comment->approved = false;

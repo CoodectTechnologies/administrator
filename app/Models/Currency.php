@@ -21,6 +21,9 @@ class Currency extends Model
         return "Una moneda ha sido {$eventName}";
     }
     public function products(){
-        return $this->belongsToMany(Product::class)->withTimestamps()->withPivot(['price']);
+        return $this->morphedByMany(Product::class, 'currenciable')->withPivot(['price']);
+    }
+    public function productSizes(){
+        return $this->morphedByMany(ProductSize::class, 'currenciable')->withPivot(['price']);
     }
 }

@@ -26,28 +26,6 @@
             <!--begin::Input group-->
             <div class="mb-10 fv-row col-lg-6">
                 <!--begin::Label-->
-                <label class="required form-label">Precio</label>
-                <!--end::Label-->
-                <!--begin::Input-->
-                <input wire:model.defer="product.price" required type="number" class="form-control mb-2 @error('product.price') 'invalid-feedback' @enderror" placeholder="Precio"/>
-                <!--end::Input-->
-                @error('product.price')<small class="form-text text-danger" role="alert">{{ $message }}</small>@enderror
-            </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
-            <div class="mb-10 fv-row col-lg-6">
-                <!--begin::Label-->
-                <label class="form-label">Precio promoción</label>
-                <!--end::Label-->
-                <!--begin::Input-->
-                <input wire:model.defer="product.price_promotion" type="number" class="form-control mb-2 @error('product.price_promotion') 'invalid-feedback' @enderror" placeholder="Precio con descuento"/>
-                <!--end::Input-->
-                @error('product.price_promotion')<small class="form-text text-danger" role="alert">{{ $message }}</small>@enderror
-            </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
-            <div class="mb-10 fv-row col-lg-6">
-                <!--begin::Label-->
                 <label class="form-label">Cantidad</label>
                 <!--end::Label-->
                 <!--begin::Input-->
@@ -75,7 +53,7 @@
         <!--begin::Input group-->
         <div class="mb-10 fv-row col-lg-12">
             <!--begin::Label-->
-            <label class="form-label">Link youtube</label>
+            <label class="form-label">Iframe youtube</label>
             <!--end::Label-->
             <!--begin::Input-->
             <input wire:model.defer="product.iframe_url" type="text" class="form-control mb-2 @error('product.iframe_url') 'invalid-feedback' @enderror" placeholder="iframe_url"/>

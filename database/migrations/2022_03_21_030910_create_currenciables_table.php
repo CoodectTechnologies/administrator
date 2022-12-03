@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductCurrencyTable extends Migration
+class CreateCurrenciablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateProductCurrencyTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_currency', function (Blueprint $table) {
+        Schema::create('currenciables', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('currency_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->morphs('currenciable');
             $table->float('price', 10);
             $table->timestamps();
         });

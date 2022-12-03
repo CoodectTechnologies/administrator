@@ -15,7 +15,7 @@
                         </svg>
                     </span>
                     <!--end::Svg Icon-->
-                    <input wire:model="search" type="search" class="form-control form-control-solid w-250px ps-14" placeholder="Buscar categoría" />
+                    <input wire:model="search" type="search" class="form-control form-control-solid w-250px ps-14" placeholder="Buscar producto" />
                 </div>
                 <!--end::Search-->
             </div>
@@ -55,8 +55,8 @@
             <!--end::Card toolbar-->
         </div>
         <!--end::Card header-->
-        
-        @include('admin.catalog.product.general.import.form')
+
+        @include('admin.catalog.product.product.import.form')
         <!--begin::Card body-->
         <div class="card-body py-4">
             <!--begin::Table-->
@@ -158,7 +158,7 @@
                                     </span>
                                     <!--end::Svg Icon-->
                                 </a>
-                                @include('admin.catalog.product.general.delete')
+                                @include('admin.catalog.product.product.delete')
                                 <!--end::Action=-->
                             </td>
                         </tr>

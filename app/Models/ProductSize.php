@@ -22,6 +22,9 @@ class ProductSize extends Model
     public function getDescriptionForEvent(string $eventName): string {
         return "Una medida de producto ha sido {$eventName}";
     }
+    public function currencies(){
+        return $this->morphToMany(Currency::class, 'currenciable')->withTimestamps()->withPivot(['price']);
+    }
     public function products(){
         return $this->belongsTo(Product::class);
     }

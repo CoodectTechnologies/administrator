@@ -20,6 +20,39 @@
             @error('currency.code') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
         </div>
         <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="fv-row mb-7">
+            <label class="fs-6 fw-bold form-label mb-2">
+                <span class="required">Simbolo</span>
+            </label>
+            <input wire:model.defer="currency.symbol" class="form-control form-control-solid @error('currency.symbol') 'invalid-feedback' @enderror" placeholder="Ej: $" name="" />
+            @error('currency.symbol') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="fv-row mb-7">
+            <label class="fs-6 fw-bold form-label mb-2">
+                <span class="required">Default</span>
+            </label>
+            <select wire:model.defer="currency.default" class="form-control form-control-solid @error('currency.default') 'invalid-feedback' @enderror">
+                <option value="0">No</option>
+                <option value="1">Si</option>
+            </select>
+            @error('currency.default') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
+        </div>
+        <!--end::Input group-->
+        <!--begin::Input group-->
+        <div class="fv-row mb-7">
+            <label class="fs-6 fw-bold form-label mb-2">
+                <span class="required">Activo</span>
+            </label>
+            <select wire:model.defer="currency.active" class="form-control form-control-solid @error('currency.active') 'invalid-feedback' @enderror">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+            @error('currency.active') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
+        </div>
+        <!--end::Input group-->
         <!--begin::Actions-->
         <div class="text-center pt-15">
             <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal"><i class="fa fa-arrow-left"></i></button>

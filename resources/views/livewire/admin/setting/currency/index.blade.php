@@ -37,8 +37,11 @@
                     <thead>
                         <!--begin::Table row-->
                         <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-                            <th class="min-w-125px">Nombre</th>
-                            <th class="min-w-250px">Código</th>
+                            <th class="min-w-100px">Nombre</th>
+                            <th class="min-w-100px">Código</th>
+                            <th class="min-w-100px">Simbolo</th>
+                            <th class="min-w-100px">Default</th>
+                            <th class="min-w-100px">Activo</th>
                             <th class="min-w-100px">Acciones</th>
                         </tr>
                         <!--end::Table row-->
@@ -50,6 +53,21 @@
                         <tr>
                             <td>{{ $currency->name }}</td>
                             <td>{{ $currency->code }}</td>
+                            <td>{{ $currency->symbol }}</td>
+                            <td>
+                                @if ($currency->default)
+                                    <span class="badge badge-info">Si</span>
+                                @else
+                                    <span class="badge badge-secondary">No</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if ($currency->active)
+                                    <span class="badge badge-success">Activo</span>
+                                @else
+                                    <span class="badge badge-secondary">Inactivo</span>
+                                @endif
+                            </td>
                             <td>
                                 @include('admin.setting.currency.edit')
                                 @include('admin.setting.currency.delete')

@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('head')
-    <title>Catalogo | Producto</title>    
+    <title>Catalogo | Producto</title>
 @endsection
 
 @section('toolbar')
@@ -21,7 +21,7 @@
 @section('content')
     <!--begin::Container-->
     <div id="kt_content_container" class="container-xxl">
-        @livewire('admin.catalog.product.general.index')
+        @livewire('admin.catalog.product.product.index')
     </div>
     <!--end::Container-->
 @endsection
