@@ -18,9 +18,11 @@ class Kernel extends ConsoleKernel
         //System
         $schedule->command('queue:work --stop-when-empty')->everyMinute()->withoutOverlapping();
         //Sitemap
-        $schedule->command('sitemap:generate')->daily();
+        $schedule->command('sitemap:generate')->daily()->withoutOverlapping();
         //Backup
-        $schedule->command('backup:run --only-db')->weekly();
+        $schedule->command('backup:run --only-db')->weekly()->withoutOverlapping();
+        //Promotion
+        $schedule->command('promotion:inactive')->daily()->withoutOverlapping();
     }
 
     /**
