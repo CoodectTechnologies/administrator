@@ -35,8 +35,9 @@
                 <span class="required">Default</span>
             </label>
             <select wire:model.defer="currency.default" class="form-control form-control-solid @error('currency.default') 'invalid-feedback' @enderror">
-                <option value="0">No</option>
+                <option value="">Selecciona una opción</option>
                 <option value="1">Si</option>
+                <option value="0">No</option>
             </select>
             @error('currency.default') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
         </div>

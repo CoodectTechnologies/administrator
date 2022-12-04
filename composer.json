@@ -25,6 +25,7 @@
         "lukeraymonddowning/honey": "^0.3.4",
         "maatwebsite/excel": "^3.1",
         "mercadopago/dx-php": "^2.4",
+        "spatie/array-to-xml": "^2.16",
         "spatie/laravel-activitylog": "^3.17",
         "spatie/laravel-backup": "^6.16",
         "spatie/laravel-permission": "^5.5",

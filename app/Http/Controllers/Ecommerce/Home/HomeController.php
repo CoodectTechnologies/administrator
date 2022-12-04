@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index(){
         $bannersPrimary = Cache::get('banners') ? Cache::get('banners')->where('module_web_id', 10) : [];
         $bannersSecondary = Cache::get('banners') ? Cache::get('banners')->where('module_web_id', 11) : [];
-        $productsFeatured = Product::query()->currencySession()->with(['image', 'images', 'comments'])->where('featured', true)->cursor();
+        $productsFeatured = Product::query()->currencySession()->validateProduct()->with(['image', 'images', 'comments'])->where('featured', true)->cursor();
         $partners = Cache::get('partners') ?? [];
         $productsViewRecents = $this->productsViewRecents();
         $categoriesFhater = ProductCategory::query()

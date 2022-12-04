@@ -5,6 +5,8 @@ use App\Http\Controllers\Ecommerce\Cart\CartController;
 use App\Http\Controllers\Ecommerce\Category\CategoryController;
 use App\Http\Controllers\Ecommerce\Contact\ContactController;
 use App\Http\Controllers\Ecommerce\Currency\CurrencyController;
+use App\Http\Controllers\Ecommerce\Feed\FacebookController;
+use App\Http\Controllers\Ecommerce\Feed\GoogleController;
 use App\Http\Controllers\Ecommerce\Home\HomeController;
 use App\Http\Controllers\Ecommerce\Product\ProductController;
 use App\Http\Controllers\Ecommerce\Language\LanguageController;
@@ -26,3 +28,9 @@ Route::resource('/categorias', CategoryController::class)->parameters(['categori
 Route::resource('/productos', ProductController::class)->parameters(['productos' => 'product'])->names('product');
 //Cart
 Route::get('/carrito', [CartController::class, 'index'])->name('cart.index');
+//Feed
+Route::prefix('feed')->name('feed.')->group(function (){
+    Route::redirect('/', '/ecommerce/feed/facebook');
+    Route::get('/facebook', [FacebookController::class, 'index'])->name('facebook.index');
+    Route::get('/google', [GoogleController::class, 'index'])->name('google.index');
+});

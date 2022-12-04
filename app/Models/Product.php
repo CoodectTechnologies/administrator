@@ -184,4 +184,7 @@ class Product extends Model implements Viewable
             $query->where('code', Session::get('currency'));
         });
     }
+    public function scopeValidateProduct($query){
+        return $query->where('status', 'Publicado');
+    }
 }

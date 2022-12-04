@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Log;
 class TestController extends Controller
 {
     public function index(){
-        $categories = ProductCategory::query()->with('allChildrens')->whereNull('parent_id')->get();
-        dd($categories);
+
     }
 }

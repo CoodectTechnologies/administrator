@@ -21,7 +21,7 @@ class Form extends Component
             'currency.name' => 'required|unique:currencies,name,'.$this->currency->id,
             'currency.code' => 'required|unique:currencies,code,'.$this->currency->id,
             'currency.symbol' => 'required',
-            'currency.default' => 'nullable',
+            'currency.default' => 'required',
             'currency.active' => 'required'
         ];
     }
@@ -30,6 +30,13 @@ class Form extends Component
     }
     public function store(){
         $this->validate();
+        if(
+            $this->currency->default &&
+            !$this->currency->active
+        ):
+            $this->emit('alert', 'warning', 'No es posible desactivar esta moneda ya que esta como default');
+            return false;
+        endif;
         $this->validateDefault();
         $this->currency->save();
         $this->saveCache();
@@ -39,7 +46,13 @@ class Form extends Component
     }
     public function update(){
         $this->validate();
-
+        if(
+            $this->currency->default &&
+            !$this->currency->active
+        ):
+            $this->emit('alert', 'warning', 'No es posible desactivar esta moneda ya que esta como default');
+            return false;
+        endif;
         $this->validateDefault();
         $this->currency->update();
         $this->saveCache();
@@ -47,13 +60,13 @@ class Form extends Component
         $this->emit('render');
     }
     private function validateDefault(){
-        if(!Currency::count()){
+        if(!Currency::count()):
             $this->currency->default = true;
-        }else{
-            if($this->currency->default){
-                Currency::query()->update(['default' => false]);
-            }
-        }
+        else:
+            if($this->currency->default):
+                Currency::query()->where('id', '<>', $this->currency->id)->update(['default' => false]);
+            endif;
+        endif;
     }
     private function saveCache(){
         Cache::forget('currencies');
