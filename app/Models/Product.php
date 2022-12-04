@@ -53,8 +53,8 @@ class Product extends Model implements Viewable
     public function currencies(){
         return $this->morphToMany(Currency::class, 'currenciable')->withTimestamps()->withPivot(['price']);
     }
-    public function productPromotions(){
-        return $this->belongsToMany(ProductPromotion::class)->withTimestamps();
+    public function promotions(){
+        return $this->morphToMany(Promotion::class, 'promotionable')->withTimestamps();
     }
     public function orders(){
         return $this->belongsToMany(Order::class)->withTimestamps()->withPivot(['color', 'size', 'quantity', 'price', 'subtotal', 'created_at']);
@@ -81,28 +81,45 @@ class Product extends Model implements Viewable
     public function viewUniques(){
         return views($this)->unique()->count();
     }
+    public function getPriceToString(){
+        $sessionCurrency = Session::get('currency');
+        $priceToString = '$'.number_format($this->getPrice(), 2).$sessionCurrency;
+        if($pricePromotion = $this->getPricePromotion()):
+            $pricePromotion = '$'.number_format($pricePromotion, 2).$sessionCurrency;
+            $priceToString = '<del>'.$priceToString.'</del> '.$pricePromotion;
+        else:
+            $priceMaxSize = $this->getPriceSizeMax();
+            if($priceMaxSize):
+                $priceMaxSize = '$'.number_format($priceMaxSize, 2).$sessionCurrency;
+                $priceToString = $priceToString.' - '.$priceMaxSize;
+            endif;
+        endif;
+        return $priceToString;
+    }
     public function getPrice(){
         $sessionCurrency = Session::get('currency');
         $currencyProduct = $this->currencies()->where('code', $sessionCurrency)->first();
         $price = $currencyProduct->pivot->price;
         return $price;
     }
-    public function priceToString(){
-        $sessionCurrency = Session::get('currency');
-        $priceToString = '$'.number_format($this->getPrice(), 2).$sessionCurrency;
-        // if($this->price_promotion):
-        //     $pricePromotion = '$'.number_format(currency($this->price_promotion), 2).$sessionCurrency;
-        //     $priceToString = '<del>'.$priceToString.'</del> '.$pricePromotion;
-        // else:
-            $priceMaxSize = $this->getPriceSizeMax();
-            if($priceMaxSize):
-                $priceMaxSize = '$'.number_format($priceMaxSize, 2).$sessionCurrency;
-                $priceToString = $priceToString.' - '.$priceMaxSize;
-            endif;
-        // endif;
-        return $priceToString;
+    public function getPricePromotion(){
+        $pricePromotion = 0;
+        if($promotion = Promotion::getPromotion($this)):
+            $price = $this->getPrice();
+            $pricePromotion = ($price - ((($promotion->percentage / 100)) * $price));
+        endif;
+        return $pricePromotion;
     }
-    private function getPriceSizeMax(){
+    public function getPriceFinal(){
+        $priceFinal = 0;
+        if($pricePromotion = $this->getPricePromotion()):
+            $priceFinal = $pricePromotion;
+        else:
+            $priceFinal = $this->getPrice();
+        endif;
+        return $priceFinal;
+    }
+    public function getPriceSizeMax(){
         $sessionCurrency = Session::get('currency');
         $priceMaxSize = 0;
         $productSizes = $this->productSizes()->with(['currencies' => function($query) use($sessionCurrency) {
@@ -117,17 +134,16 @@ class Product extends Model implements Viewable
         endforeach;
         return $priceMaxSize;
     }
-    public function hasPromotion(){
-        $hasPromotion = false;
-        if($this->price_promotion):
-            $hasPromotion = true;
+    public function getPromotionPercentage(){
+        $promotionPercentage = 0;
+        if($pricePromotion = $this->getPricePromotion()):
+            $price = $this->getPrice();
+            $promotionPercentage = number_format((($pricePromotion * 100) / $price) - 100, 2);
         endif;
-        return $hasPromotion;
+        return $promotionPercentage;
+
     }
-    public function promotionPercentage(){
-        return number_format((($this->price_promotion * 100) / $this->price) - 100, 2);
-    }
-    public function statusToString(){
+    public function getStatusToString(){
         if($this->status == 'Borrador'):
             return '<div class="badge badge-light-warning">'.$this->status.'</div>';
         elseif($this->status == 'Publicado'):
@@ -136,7 +152,7 @@ class Product extends Model implements Viewable
             return '<div class="badge badge-light-danger">Desconocido</div>';
         endif;
     }
-    public function isNew(){
+    public function getIsNew(){
         $isNew = false;
         $daysExpiredNew = 7; //Si un producto llega a los 7 días de ser creado, ya no será considerado nuevo
         $diffTime = Carbon::parse($this->created_at)->diffInDays(date('Y-m-d'));

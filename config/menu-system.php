@@ -231,6 +231,14 @@ return [
                     ]
                 ],
                 [
+                    'name' => 'Promociones',
+                    'icon' => 'fa-solid fa-percent',
+                    'urlName' => 'admin.promotion.index',
+                    'active' => 'admin.promotion.index',
+                    'canany' => ['promociones'],
+                    'submodules' => []
+                ],
+                [
                     'name' => 'Zonas de envío',
                     'icon' => 'fa-solid fa-truck',
                     'urlName' => 'admin.setting.shipping-zone',

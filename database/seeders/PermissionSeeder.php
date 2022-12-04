@@ -48,6 +48,8 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'producto categorías']);
         Permission::create(['name' => 'producto marcas']);
         Permission::create(['name' => 'producto géneros']);
+        Permission::create(['name' => 'promociones']);
+        Permission::create(['name' => 'cupones']);
         Permission::create(['name' => 'países']);
         Permission::create(['name' => 'estados']);
         Permission::create(['name' => 'ciudades']);

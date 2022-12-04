@@ -14,14 +14,15 @@
         <!--begin::Label-->
         <label class="form-label">Categorias</label>
         <!--end::Label-->
-        <!--begin::Select2-->
-        <select wire:model.defer="catalogCategoryArray" class="catalogCategoryArray form-select mb-2 @error('catalogCategoryArray') 'invalid-feedback' @enderror" data-control="select2" data-placeholder="Selecciona una opción" data-allow-clear="true" multiple="multiple">
-            <option value="">Selecciona una opción</option>
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+        <!--begin::Select-->
+        <select wire:model="catalogCategoryArray" multiple="multiple" class="form-select mb-2 @error('catalogCategoryArray') 'invalid-feedback' @enderror" style="height: 200px;">
+            <option value="">Sin categorias</option>
+            @foreach ($categories as $categoryFhater)
+                <option value="{{ $categoryFhater->id }}" style="font-weight: bold;">{{ $categoryFhater->name }}</option>
+                @include('admin.catalog.category.partials.form._category', ['categoryFhater' => $categoryFhater])
             @endforeach
         </select>
-        <!--end::Select2-->
+        <!--end::Select-->
         @error('catalogCategoryArray')<small class="form-text text-danger" role="alert">{{ $message }}</small>@enderror
         <!--end::Input group-->
         <!--begin::Button-->

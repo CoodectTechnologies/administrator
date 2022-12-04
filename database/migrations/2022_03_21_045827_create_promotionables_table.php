@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductProductPromotionTable extends Migration
+class CreatePromotionablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateProductProductPromotionTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_product_promotion', function (Blueprint $table) {
+        Schema::create('promotionables', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('product_promotion_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('promotion_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->morphs('promotionable');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateProductProductPromotionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_product_promotion');
+        Schema::dropIfExists('promotionables');
     }
 }

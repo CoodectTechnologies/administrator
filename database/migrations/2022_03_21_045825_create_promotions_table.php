@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductPromotionsTable extends Migration
+class CreatePromotionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateProductPromotionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_promotions', function (Blueprint $table) {
+        Schema::create('promotions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('percentage');
             $table->date('date_start');
             $table->date('date_end');
+            $table->enum('type', ['Todos', 'Categoría', 'Marca', 'Producto']);
+            $table->enum('conditional', ['Que no sean', 'Que sean', null])->nullable()->default(null);
             $table->boolean('active')->default(true);
-            $table->boolean('only_to_user_auth')->default(false);
             $table->boolean('include_to_variant')->default(false);
             $table->timestamps();
         });
@@ -33,6 +34,6 @@ class CreateProductPromotionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_promotions');
+        Schema::dropIfExists('promotions');
     }
 }

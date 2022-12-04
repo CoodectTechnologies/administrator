@@ -17,11 +17,11 @@
                     title="Add to Compare"></a>
             </div>
             <div class="product-label-group">
-                @if ($product->isNew())
+                @if ($product->getIsNew())
                     <label class="product-label label-new">New</label>
                 @endif
-                @if ($product->hasPromotion())
-                    <label class="product-label label-discount">{{ $product->promotionPercentage() }}%</label>
+                @if ($promotionPercentage = $product->getPromotionPercentage())
+                    <label class="product-label label-discount">{{ $promotionPercentage }}%</label>
                 @endif
             </div>
         </figure>
@@ -37,7 +37,7 @@
                 <a href="#" class="rating-reviews">({{ count($product->comments) }} Comentarios)</a>
             </div>
             <div class="product-price">
-                <ins class="new-price">{!! $product->priceToString() !!}</ins>
+                <ins class="new-price">{!! $product->getPriceToString() !!}</ins>
             </div>
         </div>
     </div>

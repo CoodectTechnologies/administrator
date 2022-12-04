@@ -101,7 +101,7 @@
                             <!--end::Category=-->
                              <!--begin::Price=-->
                              <td class="text-end pe-0">
-                                <span class="fw-bolder text-dark">{!! $product->priceToString() !!}</span>
+                                <span class="fw-bolder text-dark">{!! $product->getPriceToString() !!}</span>
                             </td>
                             <!--end::Price=-->
                             <!--begin::Qty=-->
@@ -134,7 +134,7 @@
                             <!--begin::Status=-->
                             <td class="text-end pe-0">
                                 <!--begin::Badges-->
-                                {!! $product->statusToString() !!}
+                                {!! $product->getStatusToString() !!}
                                 <!--end::Badges-->
                             </td>
                             <!--end::Status=-->

@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('head')
-    <title>{{ $service->name }}</title>    
+    <title>{{ $service->name }}</title>
 @endsection
 
 @section('toolbar')
@@ -41,7 +41,7 @@
 @section('content')
     <!--begin::Container-->
     <div id="kt_content_container" class="container-xxl">
-        @livewire('admin.service.form', ['service' => $service, 'method' => 'store'], key('create'))
+        @livewire('admin.service.form', ['service' => $service, 'method' => 'update'], key($service->id))
     </div>
     <!--end::Container-->
 @endsection

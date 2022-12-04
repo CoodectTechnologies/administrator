@@ -61,7 +61,7 @@
             <!--begin::Input group-->
             <div class="fv-row mb-7">
                 <label class="fs-6 fw-bold form-label mb-2">
-                    <span class="">Categoría padre @json($category->parent_id)</span>
+                    <span class="">Categoría padre</span>
                 </label>
                 <div>
                     <!--begin::Select2-->

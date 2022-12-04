@@ -26,7 +26,7 @@ class ProductBrand extends Model
     }
     public function getRouteKeyName(){
         return 'slug';
-    }    
+    }
     public function sluggable(): array {
         return [
             'slug' => [
@@ -36,6 +36,12 @@ class ProductBrand extends Model
     }
     public function image(){
         return $this->morphOne(Image::class, 'imageable');
+    }
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+    public function promotions(){
+        return $this->morphToMany(Promotion::class, 'promotionable')->withTimestamps();
     }
     public function imagePreview(){
         $image = asset('assets/admin/media/svg/files/blank-image.svg');
@@ -47,9 +53,6 @@ class ProductBrand extends Model
             endif;
         endif;
         return $image;
-    }
-    public function products(){
-        return $this->hasMany(Product::class);
     }
     public function dateToString(){
         return Carbon::parse($this->created_at)->toFormattedDateString();

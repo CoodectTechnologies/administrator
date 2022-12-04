@@ -60,6 +60,9 @@ class ProductCategory extends Model
     public function products(){
         return $this->belongsToMany(Product::class);
     }
+    public function promotions(){
+        return $this->morphToMany(Promotion::class, 'promotionable')->withTimestamps();
+    }
     public function dateToString(){
         return Carbon::parse($this->created_at)->toFormattedDateString();
     }

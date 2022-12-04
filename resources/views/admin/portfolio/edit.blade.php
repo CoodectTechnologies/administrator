@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('head')
-    <title>{{ $project->name }}</title>    
+    <title>{{ $project->name }}</title>
 @endsection
 
 @section('toolbar')
@@ -41,7 +41,7 @@
 @section('content')
     <!--begin::Container-->
     <div id="kt_content_container" class="container-xxl">
-        @livewire('admin.portfolio.form', ['project' => $project, 'method' => 'store'], key('create'))
+        @livewire('admin.portfolio.form', ['project' => $project, 'method' => 'update'], key($service->id))
     </div>
     <!--end::Container-->
 @endsection

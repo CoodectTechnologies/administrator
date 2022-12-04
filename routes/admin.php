@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Package\FeatureController;
 use App\Http\Controllers\Admin\Package\PackageController;
 use App\Http\Controllers\Admin\Partner\PartnerController;
 use App\Http\Controllers\Admin\Portfolio\PortfolioController;
+use App\Http\Controllers\Admin\Promotion\PromotionController;
 use App\Http\Controllers\Admin\QuestionAnswer\QuestionAnswerController;
 use App\Http\Controllers\Admin\Service\ServiceController;
 use App\Http\Controllers\Admin\Setting\AccessPayment\AccessPaymentController;
@@ -121,6 +122,8 @@ Route::prefix('catalog')->name('catalog.')->group(function (){
     Route::middleware(['can:producto géneros'])->get('/gender', [CatalogGenderController::class, 'index'])->name('gender.index');
     Route::middleware(['can:productos'])->resource('/product', CatalogProductController::class)->names('product');
 });
+//Promotion
+Route::middleware(['can:promociones'])->resource('/promotion', PromotionController::class)->names('promotion');
 //Order
 Route::middleware(['can:ordenes'])->resource('/order', OrderController::class)->names('order');
 //Test

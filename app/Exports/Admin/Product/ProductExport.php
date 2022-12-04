@@ -53,7 +53,7 @@ class ProductExport implements FromCollection, WithHeadings, WithMapping, WithCu
             $registration->status,
             $registration->iframe_url,
             $registration->user ? $registration->user->name : '',
-            $registration->imagePreview(),
+            config('app.url').$registration->imagePreview(),
             $registration->images->pluck('url'),
             count($registration->comments),
             count($registration->orders),

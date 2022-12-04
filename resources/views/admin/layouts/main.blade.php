@@ -13,6 +13,7 @@
 		<!--end::Global Stylesheets Bundle-->
 		<script defer src="{{ asset('assets/admin/js/custom/alpine/alpine.js') }}"></script>
         <link href="{{ asset('assets/admin/fontawesome/css/all.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
 		@include('admin.components.favicons')
         @livewireStyles
         @yield('head')
