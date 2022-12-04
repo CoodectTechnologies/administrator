@@ -20,6 +20,9 @@ class Currency extends Model
     public function getDescriptionForEvent(string $eventName): string {
         return "Una moneda ha sido {$eventName}";
     }
+    public function promotions(){
+        return $this->belongsToMany(Promotion::class)->withTimestamps();
+    }
     public function products(){
         return $this->morphedByMany(Product::class, 'currenciable')->withPivot(['price']);
     }

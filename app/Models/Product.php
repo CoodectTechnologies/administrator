@@ -97,9 +97,12 @@ class Product extends Model implements Viewable
         return $priceToString;
     }
     public function getPrice(){
+        $price = 0;
         $sessionCurrency = Session::get('currency');
         $currencyProduct = $this->currencies()->where('code', $sessionCurrency)->first();
-        $price = $currencyProduct->pivot->price;
+        if(isset($currencyProduct->pivot->price)):
+            $price = $currencyProduct->pivot->price;
+        endif;
         return $price;
     }
     public function getPricePromotion(){
@@ -122,9 +125,9 @@ class Product extends Model implements Viewable
     public function getPriceSizeMax(){
         $sessionCurrency = Session::get('currency');
         $priceMaxSize = 0;
-        $productSizes = $this->productSizes()->with(['currencies' => function($query) use($sessionCurrency) {
+        $productSizes = $this->productSizes()->with('currencies')->whereHas('currencies', function($query) use($sessionCurrency) {
             $query->where('code', $sessionCurrency);
-        }])->cursor();
+        })->cursor();
         foreach($productSizes as $productSize):
             foreach($productSize->currencies as $currency):
                 if($priceMaxSize <= $currency->pivot->price):
@@ -174,5 +177,11 @@ class Product extends Model implements Viewable
             endif;
         endif;
         return $image;
+    }
+    //Scopes
+    public function scopeCurrencySession($query){
+        return $query->whereHas('currencies', function($query){
+            $query->where('code', Session::get('currency'));
+        });
     }
 }

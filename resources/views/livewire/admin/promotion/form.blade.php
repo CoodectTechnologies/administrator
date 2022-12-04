@@ -78,6 +78,22 @@
                             @error('promotion.include_to_variant')<small class="form-text text-danger" role="alert">{{ $message }}</small>@enderror
                         </div>
                         <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="fv-row">
+                            <!--begin::Label-->
+                            <label class="form-label required">Monedas a las que impacta esta promoción</label>
+                            <!--end::Label-->
+                            @foreach ($currencies as $currency)
+                                <div class="form-check form-check-custom form-check-success form-check-solid mb-2">
+                                    <input wire:model.defer='currenciesArray' id="currency-{{ $currency->id }}" class="form-check-input @error('currenciesArray') 'invalid-feedback' @enderror" type="checkbox" name="currenciesArray[]" value="{{ $currency->id }}" />
+                                    <label class="form-check-label" for="currency-{{ $currency->id }}">
+                                        {{ $currency->code }} ({{ $currency->name }})
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <!--end::Input group-->
+                        @error('currenciesArray')<small class="form-text text-danger" role="alert">{{ $message }}</small>@enderror
                     </div>
                 </div>
             </div>
@@ -139,7 +155,6 @@
                                     </div>
                                     <!--end::Input group-->
                                 </div>
-
                             </div>
                         </div>
                         <!--end::Input group-->

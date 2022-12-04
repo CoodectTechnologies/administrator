@@ -52,10 +52,8 @@
                             <th class="min-w-100px">Porcentage</th>
                             <th class="min-w-100px">Inicio</th>
                             <th class="min-w-100px">Fin</th>
-                            <th class="min-w-100px">Tipo</th>
-                            <th class="min-w-100px">Condicional</th>
                             <th class="min-w-100px">Activo</th>
-                            <th class="min-w-100px">Aplica a variantes</th>
+                            <th class="min-w-100px">Monedas</th>
                             <th class="min-w-100px">Acciones</th>
                         </tr>
                         <!--end::Table row-->
@@ -70,8 +68,6 @@
                                 <td>{{ $promotion->percentage }}%</td>
                                 <td>{{ $promotion->dateStartToString() }}</td>
                                 <td>{{ $promotion->dateEndToString() }}</td>
-                                <td>{{ $promotion->type }}</td>
-                                <td>{{ $promotion->conditional ?? 'N/A' }}</td>
                                 <td>
                                     @if ($promotion->active)
                                         <span class="badge badge-success">Activo</span>
@@ -80,11 +76,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($promotion->include_to_variant)
-                                        <span class="badge badge-info">Si</span>
-                                    @else
-                                        <span class="badge badge-primary">No</span>
-                                    @endif
+                                    @foreach ($promotion->currencies as $currency)
+                                        <span class="badge badge-primary">{{ $currency->code }}</span>
+                                    @endforeach
                                 </td>
                                 <!--begin::Action=-->
                                 <td class="">

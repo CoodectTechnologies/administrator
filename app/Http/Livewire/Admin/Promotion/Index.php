@@ -11,7 +11,7 @@ class Index extends Component
     protected $listeners = ['render'];
 
     public function render(){
-        $promotions = Promotion::query()->with('products')->orderBy('id', 'desc')->cursor();
+        $promotions = Promotion::query()->with(['products', 'currencies'])->orderBy('id', 'desc')->cursor();
         return view('livewire.admin.promotion.index', compact('promotions'));
     }
     public function destroy(Promotion $promotion){

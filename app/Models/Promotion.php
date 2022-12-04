@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Promotion extends Model
@@ -21,6 +22,9 @@ class Promotion extends Model
 
     public function getDescriptionForEvent(string $eventName): string {
         return "Una promoción ha sido {$eventName}";
+    }
+    public function currencies(){
+        return $this->belongsToMany(Currency::class)->withTimestamps();
     }
     public function products(){
         return $this->morphedByMany(Product::class, 'promotionable')->withTimestamps();
@@ -40,12 +44,18 @@ class Promotion extends Model
     //Gets
     public static function getPromotion(Product $product){
         $oPromotion = null;
-        $promotions = Self::validatePromotion()->orderByDesc('id')->get();
+        $promotions = Self::query()
+        ->whereHas('currencies', function($query){ $query->where('code', Session::get('currency')); })
+        ->where('active', true)
+        ->whereDate('date_start', '<=', date('Y-m-d'))
+        ->whereDate('date_end', '>', date('Y-m-d'))
+        ->orderByDesc('id')
+        ->cursor();
         foreach($promotions as $promotion):
             switch($promotion->type):
                 case 'Todos':
                     $oPromotion = $promotion;
-                    break 2;
+                    break;
                 case 'Producto':
                     $productId = $product->id;
                     $products = $promotion->products();
@@ -58,7 +68,7 @@ class Promotion extends Model
                     if($products):
                         $oPromotion = $promotion;
                     endif;
-                    break 2;
+                    break;
                 case 'Categoría':
                     $categoryIds = $product->productCategories()->pluck('product_category_id')->toArray();
                     $productCategories = $promotion->productCategories();
@@ -71,7 +81,7 @@ class Promotion extends Model
                     if($productCategories):
                         $oPromotion = $promotion;
                     endif;
-                    break 2;
+                    break;
                 case 'Marca':
                     $brandId = $product->product_brand_id;
                     $productBrands = $promotion->productBrands();
@@ -84,15 +94,9 @@ class Promotion extends Model
                     if($productBrands):
                         $oPromotion = $promotion;
                     endif;
-                    break 2;
+                    break;
             endswitch;
         endforeach;
         return $oPromotion;
-    }
-    //Scopes
-    public function scopeValidatePromotion($query){
-        return $query->where('active', true)
-        ->whereDate('date_start', '<=', date('Y-m-d'))
-        ->whereDate('date_end', '>', date('Y-m-d'));
     }
 }

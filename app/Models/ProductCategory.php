@@ -70,7 +70,7 @@ class ProductCategory extends Model
     public function scopeAllProductsByCategory(){
         $ids = Self::_getIdsChildrens($this->id);
         $ids[] = $this->id;
-        $products = Product::query()->with('image', 'productCategories')->whereHas('productCategories', function($query) use($ids) {
+        $products = Product::query()->with('image', 'productCategories')->currencySession()->whereHas('productCategories', function($query) use($ids) {
             $query->whereIn('product_category_id', $ids);
         })->cursor();
         return $products;

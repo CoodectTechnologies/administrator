@@ -75,7 +75,7 @@
                 <p class="copyright">Copyright © {{ date('Y') }} {{ config('app.name') }}. {{ __('All Rights Reserved') }}.</p>
             </div>
             <div class="footer-right">
-                <span class="payment-label mr-lg-8">Pagos seguros</span>
+                <span class="payment-label mr-lg-8">{{ __('Secure payments') }}</span>
                 <figure class="payment">
                     <img src="{{ asset('assets/ecommerce/images/payment.png') }}" alt="payments" width="159" height="25" />
                 </figure>

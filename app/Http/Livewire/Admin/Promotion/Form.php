@@ -7,6 +7,7 @@ use App\Models\ProductBrand;
 use App\Models\ProductCategory;
 use Livewire\Component;
 use App\Models\Promotion;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 
 class Form extends Component
@@ -14,6 +15,7 @@ class Form extends Component
     public $promotion;
     public $method;
     public $promotionablesArray = [];
+    public $currenciesArray = [];
     public $search;
     protected $queryString = ['search' => ['except' => '']];
 
@@ -32,18 +34,21 @@ class Form extends Component
     public function mount(Promotion $promotion, $method){
         $this->promotion = $promotion;
         $this->method = $method;
+        $this->currenciesArray = $this->promotion->currencies()->pluck('currency_id')->toArray();
         $this->loadModels();
         $this->loadPromotionables();
     }
     public function render(){
+        $currencies = Cache::get('currency') ?? [];
         $models = $this->loadModels();
-        return view('livewire.admin.promotion.form', compact('models'));
+        return view('livewire.admin.promotion.form', compact('currencies', 'models'));
     }
     public function store(){
         $this->validate();
         $this->validateCustom();
         $this->promotion->save();
         $this->savePromotionables();
+        $this->saveCurrencies();
         $this->emit('alert', 'success', 'Promoción agregada con éxito');
         $this->emit('render');
         Redirect::route('admin.promotion.index');
@@ -53,6 +58,7 @@ class Form extends Component
         $this->validateCustom();
         $this->promotion->update();
         $this->savePromotionables();
+        $this->saveCurrencies();
         $this->emit('alert', 'success', 'Promoción actualizada con éxito');
         $this->emit('render');
         Redirect::route('admin.promotion.index');
@@ -79,6 +85,9 @@ class Form extends Component
                     break;
             endswitch;
         endif;
+    }
+    private function saveCurrencies(){
+        $this->promotion->currencies()->sync($this->currenciesArray);
     }
     private function loadModels(){
         $models = [];

@@ -51,9 +51,12 @@ class ProductSize extends Model
         return $priceToString;
     }
     public function getPrice(){
+        $price = 0;
         $sessionCurrency = Session::get('currency');
         $currencyProductSize = $this->currencies()->where('code', $sessionCurrency)->first();
-        $price = $currencyProductSize->pivot->price;
+        if(isset($currencyProductSize->pivot->price)):
+            $price = $currencyProductSize->pivot->price;
+        endif;
         return $price;
     }
     public function getPricePromotion(){
