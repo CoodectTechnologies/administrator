@@ -17,7 +17,7 @@ class Index extends Component
         $this->product = $product;
     }
     public function render(){
-        $sizes = $this->product->productSizes()->get();
+        $sizes = $this->product->productSizes()->with('currencies')->get();
         return view('livewire.admin.catalog.product.size.index', compact('sizes'));
     }
     public function destroy(ProductSize $size){

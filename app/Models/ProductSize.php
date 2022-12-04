@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Support\Facades\Session;
 
 class ProductSize extends Model
 {
@@ -25,14 +26,11 @@ class ProductSize extends Model
     public function currencies(){
         return $this->morphToMany(Currency::class, 'currenciable')->withTimestamps()->withPivot(['price']);
     }
-    public function products(){
+    public function product(){
         return $this->belongsTo(Product::class);
     }
     public function productColors(){
         return $this->belongsToMany(ProductColor::class);
-    }
-    public function priceToString(){
-        return '$'.number_format($this->price, 2, '.', ',');
     }
     public function validateSizeColorSelected($colorId){
         foreach($this->productColors as $color):
@@ -41,6 +39,41 @@ class ProductSize extends Model
             endif;
         endforeach;
         return false;
+    }
+    //Gets
+    public function getPriceToString(){
+        $sessionCurrency = Session::get('currency');
+        $priceToString = '$'.number_format($this->getPrice(), 2).$sessionCurrency;
+        if($pricePromotion = $this->getPricePromotion()):
+            $pricePromotion = '$'.number_format($pricePromotion, 2).$sessionCurrency;
+            $priceToString = '<del>'.$priceToString.'</del> '.$pricePromotion;
+        endif;
+        return $priceToString;
+    }
+    public function getPrice(){
+        $sessionCurrency = Session::get('currency');
+        $currencyProductSize = $this->currencies()->where('code', $sessionCurrency)->first();
+        $price = $currencyProductSize->pivot->price;
+        return $price;
+    }
+    public function getPricePromotion(){
+        $pricePromotion = 0;
+        if($promotion = Promotion::getPromotion($this->product)):
+            if($promotion->include_to_variant):
+                $price = $this->getPrice();
+                $pricePromotion = ($price - ((($promotion->percentage / 100)) * $price));
+            endif;
+        endif;
+        return $pricePromotion;
+    }
+    public function getPriceFinal(){
+        $priceFinal = 0;
+        if($pricePromotion = $this->getPricePromotion()):
+            $priceFinal = $pricePromotion;
+        else:
+            $priceFinal = $this->getPrice();
+        endif;
+        return $priceFinal;
     }
     public function dateToString(){
         return Carbon::parse($this->created_at)->toFormattedDateString();

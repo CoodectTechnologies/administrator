@@ -14,11 +14,23 @@
             <!--end::Input group-->
             <!--begin::Input group-->
             <div class="fv-row mb-7">
-                <label class="fs-6 fw-bold form-label mb-2">
-                    <span class="required">Precio</span>
-                </label>
-                <input type="number" required wire:model.defer="size.price" class="form-control form-control-solid @error('size.price') 'invalid-feedback' @enderror" placeholder="Ej: XL" name="" />
-                @error('size.price') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
+                <div class="row">
+                    @foreach ($currencies as $currency)
+                        <div class="col-lg-4">
+                            <!--begin::Input group-->
+                            <div class="fv-row">
+                                <!--begin::Label-->
+                                <label class="form-label" title="{{ $currency->name }}">Precio {{ $currency->code }}</label>
+                                <!--end::Label-->
+                                <!--begin::Editor-->
+                                <input wire:model.defer="priceSizeCurrenciesArray.{{ $currency->id }}.price" type="number" name="weight" class="form-control mb-2 @error('priceSizeCurrenciesArray.{{ $currency->id }}.price') 'invalid-feedback' @enderror" placeholder="{{ $currency->symbol }}"/>
+                                <!--end::Editor-->
+                                @error('priceSizeCurrenciesArray.{{ $currency->id }}.price')<small class="form-text text-danger" role="alert">{{ $message }}</small>@enderror
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                    @endforeach
+                </div>
             </div>
             <!--end::Input group-->
             <!--begin::Input group-->

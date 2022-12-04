@@ -65,7 +65,7 @@ class Form extends Component
         $this->loadRandomImagesTmpInputId();
     }
     public function render(){
-        $currencies = Cache::get('currencies') ? Cache::get('currencies')->where('active', true) : [];
+        $currencies = Cache::get('currencies') ?? [];
         $categories = ProductCategory::with(['allChildrens' => function($query){
             $query->orderBy('name', 'asc');
         }])->whereNull('parent_id')->orderBy('name', 'asc')->cursor();

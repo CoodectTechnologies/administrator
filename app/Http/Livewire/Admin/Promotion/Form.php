@@ -20,7 +20,7 @@ class Form extends Component
     protected function rules(){
         return [
             'promotion.name' => 'required',
-            'promotion.percentage' => 'required|min:1',
+            'promotion.percentage' => 'required|min:1|max:99',
             'promotion.date_start' => 'required|date',
             'promotion.date_end' => 'required|date',
             'promotion.type' => 'required',

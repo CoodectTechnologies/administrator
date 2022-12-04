@@ -92,7 +92,7 @@ class Promotion extends Model
     //Scopes
     public function scopeValidatePromotion($query){
         return $query->where('active', true)
-        ->whereDate('date_start', '>=', date('Y-m-d'))
-        ->whereDate('date_end', '>=', date('Y-m-d'));
+        ->whereDate('date_start', '<=', date('Y-m-d'))
+        ->whereDate('date_end', '>', date('Y-m-d'));
     }
 }

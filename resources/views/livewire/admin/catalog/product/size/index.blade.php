@@ -38,15 +38,13 @@
                         <!--begin::Table row-->
                         <tr>
                             <td>{{ $size->name }}</td>
-                            <td>{{ $size->priceToString() }}</td>
+                            <td>{!! $size->getPriceToString() !!}</td>
                             <td class="fw-bolder">
                                 @foreach ($size->productColors as $color)
-                                <a class="badge badge-light-primary fs-7 m-1">{{ $color->name }}</a>    
+                                <a class="badge badge-light-primary fs-7 m-1">{{ $color->name }}</a>
                                 @endforeach
                             </td>
-                            <td>
-                               {{ $size->dateToString() }}
-                            </td>
+                            <td>{{ $size->dateToString() }}</td>
                             <!--begin::Action=-->
                             <td class="">
                                 @include('admin.catalog.product.size.edit')
