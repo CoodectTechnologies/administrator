@@ -9,12 +9,12 @@
                 <div class="dropdown">
                     <a href="#currency"><span class="text-uppercase">{{ Session::get('currency') }}</span></a>
                     <div class="dropdown-box">
-                        <a href="{{ route('ecommerce.currency', 'MXN') }}">MXN</a>
-                        <a href="{{ route('ecommerce.currency', 'USD') }}">USD</a>
+                        @foreach (Cache::get('currencies') ?? [] as $currency)
+                            <a href="{{ route('ecommerce.currency', $currency->code) }}">{{ $currency->code }}</a>
+                        @endforeach
                     </div>
                 </div>
                 <!-- End of DropDown Menu -->
-
                 <div class="dropdown">
                     <a href="#language">
                         <img src="{{ asset('assets/ecommerce') }}/images/flags/{{ Session::get('language') }}.png" alt="{{ Session::get('language') }} {{ config('app.name') }}" width="14" height="8" class="dropdown-image" /> <span class="text-uppercase">{{ Session::get('language') }}</span>
@@ -37,7 +37,6 @@
                 @auth
                     <a href="#" class="d-lg-show">{{ __('My account') }}</a>
                 @endauth
-
                 @guest
                     <a href="#" class="d-lg-show login sign-in">
                         <i class="w-icon-account"></i>{{ __('Sign in') }}
@@ -45,12 +44,10 @@
                     <span class="delimiter d-lg-show">/</span>
                     <a href="#" class="ml-0 d-lg-show login register">{{ __('Register') }}</a>
                 @endguest
-
             </div>
         </div>
     </div>
     <!-- End of Header Top -->
-
     <div class="header-middle">
         <div class="container">
             <div class="header-left mr-md-4">
@@ -63,7 +60,7 @@
             </div>
             <div class="header-right ml-4">
                 <div class="header-call d-xs-show d-lg-flex align-items-center">
-                    <a href="tel:#" class="w-icon-call"></a>
+                    <a href="tel:{{ config('contact.phone') }}" class="w-icon-call"></a>
                     <div class="call-info d-xl-show">
                         <h4 class="chat font-weight-normal font-size-md text-normal ls-normal text-light mb-0">
                             <a href="mailto:{{ config('contact.email') }}" class="text-capitalize">{{ __('Email') }} </a> o:</h4>
@@ -80,35 +77,35 @@
                 </a>
                 <div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
                     <div class="cart-overlay"></div>
-                    <a href="#" class="cart-toggle label-down link">
+                    <a href="{{ route('ecommerce.cart.index') }}" class="cart-toggle label-down link">
                         <i class="w-icon-cart">
-                            <span class="cart-count">2</span>
+                            <span class="cart-count">{{ Cart::count() }}</span>
                         </i>
                         <span class="cart-label">{{ __('Cart') }}</span>
                     </a>
                     <div class="dropdown-box">
                         <div class="products">
-                            <div class="product product-cart">
-                                <div class="product-detail">
-                                    <a href="product-default.html" class="product-name">Beige knitted
-                                        elas<br>tic
-                                        runner shoes</a>
-                                    <div class="price-box">
-                                        <span class="product-quantity">1</span>
-                                        <span class="product-price">$25.68</span>
+                            @foreach (Cart::content() as $item)
+                                <div class="product product-cart">
+                                    <div class="product-detail">
+                                        <a href="{{ route('ecommerce.product.show', $item->model) }}" class="product-name">
+                                            {{ $item->name }}
+                                        </a>
+                                        <div class="price-box">
+                                            <span class="product-quantity">{{ $item->qty }}</span>
+                                            <span class="product-price">{{ $item->subtotal() }}</span>
+                                        </div>
                                     </div>
+                                    <figure class="product-media">
+                                        <a href="{{ route('ecommerce.product.show', $item->model) }}">
+                                            <img src="{{ $item->model->imageProduct() }}" alt="{{ $item->name }}" height="84" width="94" />
+                                        </a>
+                                    </figure>
+                                    <button class="btn btn-link btn-close">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                 </div>
-                                <figure class="product-media">
-                                    <a href="product-default.html">
-                                        <img src="{{ asset('assets/ecommerce') }}/images/cart/product-1.jpg" alt="product" height="84"
-                                            width="94" />
-                                    </a>
-                                </figure>
-                                <button class="btn btn-link btn-close">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-
+                            @endforeach
                             <div class="product product-cart">
                                 <div class="product-detail">
                                     <a href="product-default.html" class="product-name">Blue utility
@@ -130,15 +127,13 @@
                                 </button>
                             </div>
                         </div>
-
                         <div class="cart-total">
                             <label>Subtotal:</label>
-                            <span class="price">$58.67</span>
+                            <span class="price">{{ Cart::subtotal() }}</span>
                         </div>
-
                         <div class="cart-action">
-                            <a href="cart.html" class="btn btn-dark btn-outline btn-rounded">View Cart</a>
-                            <a href="checkout.html" class="btn btn-primary  btn-rounded">Checkout</a>
+                            <a href="{{ route('ecommerce.cart.index') }}" class="btn btn-dark btn-outline btn-rounded">Ver carrito</a>
+                            <a href="{{ route('ecommerce.checkout.index') }}" class="btn btn-primary  btn-rounded">Checkout</a>
                         </div>
                     </div>
                     <!-- End of Dropdown Box -->
@@ -147,7 +142,6 @@
         </div>
     </div>
     <!-- End of Header Middle -->
-
     <div class="header-bottom sticky-content fix-top sticky-header">
         <div class="container">
             <div class="inner-wrap">
@@ -162,20 +156,6 @@
                         @include('ecommerce.layouts.menu.category')
                     </div>
                     <form method="get" action="#" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper mr-4 ml-4">
-                        {{-- <div class="select-box">
-                            <select id="category" name="category">
-                                <option value="">All Categories</option>
-                                <option value="4">Fashion</option>
-                                <option value="5">Furniture</option>
-                                <option value="6">Shoes</option>
-                                <option value="7">Sports</option>
-                                <option value="8">Games</option>
-                                <option value="9">Computers</option>
-                                <option value="10">Electronics</option>
-                                <option value="11">Kitchen</option>
-                                <option value="12">Clothing</option>
-                            </select>
-                        </div> --}}
                         <input type="text" class="form-control" name="search" id="search"
                             placeholder="{{ __('Search') }} ..." required />
                         <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>

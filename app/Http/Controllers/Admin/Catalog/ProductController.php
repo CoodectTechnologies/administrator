@@ -17,4 +17,7 @@ class ProductController extends Controller
     public function edit(Product $product){
         return view('admin.catalog.product.product.edit', compact('product'));
     }
+    public function show(Product $product){
+        return view('admin.catalog.product.product.show', compact('product'));
+    }
 }

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -31,6 +32,7 @@ class Form extends Component
     public $imageTmp, $imagesTmp = [], $imagesTmpInputId;
     public $catalogCategoryArray = [];
     public $priceCurrenciesArray = [];
+    public $technicalDatasheetTmp;
 
     public function rules(){
         return [
@@ -73,9 +75,7 @@ class Form extends Component
         $genders = ProductGender::orderBy('id', 'desc')->cursor();
         $shippingClasses = ShippingClass::orderBy('id', 'desc')->cursor();
         $productImages = $this->product->images()->orderBy('id', 'desc')->get();
-        $comments = $this->comments();
-        $lineChartModel = $this->graphViews();
-        return view('livewire.admin.catalog.product.product.form', compact('currencies', 'categories', 'brands', 'genders', 'shippingClasses', 'productImages', 'comments', 'lineChartModel'));
+        return view('livewire.admin.catalog.product.product.form', compact('currencies', 'categories', 'brands', 'genders', 'shippingClasses', 'productImages'));
     }
     public function hydrate(){
         $this->emit('renderJs');
@@ -84,44 +84,23 @@ class Form extends Component
         $this->validate();
         $this->validateNull();
         $this->product->user_id = Auth::id();
+        $this->_saveTechnicalDatasheet();
         $this->product->save();
         $this->save();
         $this->product = new Product();
-        session()->flash('alert', 'Producto agregado con éxito');
-        session()->flash('alert-type', 'success');
-        Redirect::route('admin.catalog.product.index');
+        Session::flash('alert', 'Producto agregado con éxito');
+        Session::flash('alert-type', 'success');
+        Redirect::route('admin.catalog.product.show', $this->product);
     }
     public function update(){
         $this->validate();
         $this->validateNull();
+        $this->_saveTechnicalDatasheet();
         $this->product->update();
         $this->save();
-        $this->emit('alert', 'success', 'Actualización con éxito');
-        $this->emit('render');
-    }
-    public function removeImageTemp($key){
-        if(array_splice($this->imagesTmp, $key, 1)):
-            $this->emit('alert', 'success', 'Imagen eliminada con éxito');
-        endif;
-    }
-    public function removeImageMain(){
-        if($this->product->image):
-            if(Storage::exists($this->product->image->url)):
-                Storage::delete($this->product->image->url);
-            endif;
-            $this->product->image()->delete();
-            $this->product->image = null;
-        endif;
-        $this->reset('imageTmp');
-        $this->emit('alert', 'success', 'Imagen eliminada con éxito');
-    }
-    public function removeImage(Image $image){
-        try{
-            $image->delete();
-            $this->emit('alert', 'success', 'Imagen eliminada con éxito');
-        }catch(Exception $e){
-            $this->emit('alert', 'warning', $e->getMessage());
-        }
+        Session::flash('alert', 'Producto actualizado con éxito');
+        Session::flash('alert-type', 'success');
+        Redirect::route('admin.catalog.product.show', $this->product);
     }
     private function save(){
         $this->savePrice();
@@ -161,28 +140,51 @@ class Form extends Component
     private function saveCategories(){
         $this->product->productCategories()->sync($this->catalogCategoryArray);
     }
-    private function graphViews(){
-        $lineChartModel = [];
-        if($this->product->id):
-            $views = $this->product->views()->select(
-                DB::raw('DATE_FORMAT(viewed_at, "%m-%Y") AS month2'),
-                DB::raw('DATE_FORMAT(viewed_at, "%b-%Y") AS month'),
-                DB::raw('COUNT(id) AS views')
-            )
-            ->whereYear('viewed_at', date('Y'))
-            ->orderBy('month2')
-            ->groupBy('month', 'month2')
-            ->get();
-            $lineChartModel =  new LineChartModel();
-            $lineChartModel = $lineChartModel->setTitle('Vistas del '.date('Y'));
-            foreach($views as $view):
-                $lineChartModel = $lineChartModel->addPoint($view->month, $view->views);
-            endforeach;
+    private function _saveTechnicalDatasheet(){
+        if($this->technicalDatasheetTmp):
+            $url = $this->technicalDatasheetTmp->store('public/product/technical-datasheet');
+            if($this->product->technical_datasheet):
+                if(Storage::exists($this->product->technical_datasheet)):
+                    Storage::delete($this->product->technical_datasheet);
+                endif;
+            endif;
+            $this->product->technical_datasheet = $url;
         endif;
-        return $lineChartModel;
     }
-    private function comments(){
-        return $this->product->comments()->orderBy('id', 'desc')->cursor();
+    public function removeImageTemp($key){
+        if(array_splice($this->imagesTmp, $key, 1)):
+            $this->emit('alert', 'success', 'Imagen eliminada con éxito');
+        endif;
+    }
+    public function removeImageMain(){
+        if($this->product->image):
+            if(Storage::exists($this->product->image->url)):
+                Storage::delete($this->product->image->url);
+            endif;
+            $this->product->image()->delete();
+            $this->product->image = null;
+        endif;
+        $this->reset('imageTmp');
+        $this->emit('alert', 'success', 'Imagen eliminada con éxito');
+    }
+    public function removeImage(Image $image){
+        try{
+            $image->delete();
+            $this->emit('alert', 'success', 'Imagen eliminada con éxito');
+        }catch(Exception $e){
+            $this->emit('alert', 'warning', $e->getMessage());
+        }
+    }
+    public function removeTechnicalDatasheet(){
+        if($this->product->technical_datasheet):
+            if(Storage::exists($this->product->technical_datasheet)):
+                Storage::delete($this->product->technical_datasheet);
+            endif;
+            $this->product->technical_datasheet = null;
+            $this->product->update();
+        endif;
+        $this->reset('technicalDatasheetTmp');
+        $this->emit('alert', 'success', 'Ficha tecnica eliminada con éxito');
     }
     private function loadRandomImagesTmpInputId(){
         $this->imagesTmpInputId = rand(1, 1000).'-'.$this->product->id;

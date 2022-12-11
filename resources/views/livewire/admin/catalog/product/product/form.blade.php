@@ -28,10 +28,6 @@
             <div wire:ignore.self class="tab-pane fade {{ $submodule === 'sizes' ? 'show active' : '' }}" id="kt_ecommerce_add_product_size" role="tab-panel">
                 @livewire('admin.catalog.product.size.index', ['product' => $product], key('product-size-'.$product->id))
             </div>
-            <!--end::Tab pane comments-->
-            <div wire:ignore.self class="tab-pane fade {{ $submodule === 'comments' ? 'show active' : '' }}" id="kt_ecommerce_comment" role="tap-panel">
-                @include('admin.catalog.product.product.comment.index')
-            </div>
         @endif
     </div>
     <!-- Modals -->

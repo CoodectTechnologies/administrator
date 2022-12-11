@@ -87,13 +87,13 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <!--begin::Thumbnail-->
-                                    <a href="{{ route('admin.catalog.product.edit', $product) }}" class="symbol symbol-50px">
+                                    <a href="{{ route('admin.catalog.product.show', $product) }}" class="symbol symbol-50px">
                                         <span class="symbol-label" style="background-image:url({{ $product->imagePreview() }});"></span>
                                     </a>
                                     <!--end::Thumbnail-->
                                     <div class="ms-5">
                                         <!--begin::Title-->
-                                        <a href="{{ route('admin.catalog.product.edit', $product) }}" class="text-gray-800 text-hover-primary fs-5 fw-bolder">{{ $product->name }}</a>
+                                        <a href="{{ route('admin.catalog.product.show', $product) }}" class="text-gray-800 text-hover-primary fs-5 fw-bolder">{{ $product->name }}</a>
                                         <!--end::Title-->
                                     </div>
                                 </div>
@@ -147,7 +147,13 @@
                             <!--end::Date=-->
                             <!--begin::Action=-->
                             <td>
-                                <!--begin::Update-->
+                                <!--begin::Show-->
+                                <a href="{{ route('admin.catalog.product.show', $product) }}" class="btn btn-icon btn-active-light-success w-30px h-30px me-3">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
+                                    <i class="fa fa-eye"></i>
+                                    <!--end::Svg Icon-->
+                                </a>
+                                <!--begin::Show-->
                                 <a href="{{ route('admin.catalog.product.edit', $product) }}" class="btn btn-icon btn-active-light-success w-30px h-30px me-3">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                                     <span class="svg-icon svg-icon-3">

@@ -22,7 +22,16 @@
             </div>
             <!--end::Card title-->
             <!--begin::Card toolbar-->
-            <div class="card-toolbar">
+            <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                <div class="w-100 mw-150px">
+                    <!--begin::Select2-->
+                    <select wire:model="statusFilter" class="form-select form-select-solid">
+                        <option value="">Todos</option>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
+                    <!--end::Select2-->
+                </div>
                 @include('admin.setting.country.create')
             </div>
             <!--end::Card toolbar-->
@@ -53,7 +62,13 @@
                             <td>{{ $country->code }}</td>
                             <td>{{ $country->name }}</td>
                             <td>{{ count($country->states) }}</td>
-                            <td>{{ $country->status ? 'Activo' : 'Inactivo' }}</td>
+                            <td>
+                                @if ($country->status)
+                                    <span class="badge badge-success">Activo</span>
+                                @else
+                                    <span class="badge badge-secondary">Inactivo</span>
+                                @endif
+                            </td>
                             <td>
                                 @include('admin.setting.country.edit')
                                 @include('admin.setting.country.delete')

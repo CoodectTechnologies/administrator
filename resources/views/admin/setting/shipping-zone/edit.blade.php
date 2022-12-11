@@ -1,49 +1,52 @@
- <!--begin::Update-->
- <button class="btn btn-icon btn-active-light-success w-30px h-30px me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_update_{{ $shippingZone->id }}">
-    <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
-    <span class="svg-icon svg-icon-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z" fill="black" />
-            <path opacity="0.3" d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z" fill="black" />
-        </svg>
-    </span>
-    <!--end::Svg Icon-->
-</button>
-<!--end::Update-->
+@extends('admin.layouts.main')
 
- <!--begin::Modal - Update permissions-->
- <div wire:ignore.self class="modal fade" id="kt_modal_update_{{ $shippingZone->id }}" tabindex="-1" aria-hidden="true">
-    <!--begin::Modal dialog-->
-    <div class="modal-dialog modal-dialog-centered mw-650px">
-        <!--begin::Modal content-->
-        <div class="modal-content">
-            <!--begin::Modal header-->
-            <div class="modal-header">
-                <!--begin::Modal title-->
-                <h2 class="fw-bolder">Actualizar zona de envío</h2>
-                <!--end::Modal title-->
-                <!--begin::Close-->
-                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
-                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                    <span class="svg-icon svg-icon-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon-->
-                </div>
-                <!--end::Close-->
-            </div>
-            <!--end::Modal header-->
-            <!--begin::Modal body-->
-            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                @livewire('admin.setting.shipping-zone.form', ['shippingZone' => $shippingZone, 'method' => 'update'], key($shippingZone->id))
-            </div>
-            <!--end::Modal body-->
+@section('head')
+    <title>{{ $shippingZone->name }}</title>
+@endsection
+
+@section('toolbar')
+    <!--begin::Container-->
+    <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+       <!--begin::Page title-->
+       <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+            <!--begin::Title-->
+            <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Editar zona de envío</h1>
+            <!--end::Title-->
+            <!--begin::Separator-->
+            <span class="h-20px border-gray-300 border-start mx-4"></span>
+            <!--end::Separator-->
+            <!--begin::Breadcrumb-->
+            <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-muted">
+                    <a href="{{ route('admin.setting.shipping-zone.index') }}" class="text-muted text-hover-primary">Zonas de envío</a>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="breadcrumb-item">
+                    <span class="bullet bg-gray-300 w-5px h-2px"></span>
+                </li>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-muted"><a href="{{ route('admin.setting.shipping-zone.show', $shippingZone) }}">{{ $shippingZone->name }}</a></li>
+                <!--end::Item-->
+            </ul>
+            <!--end::Breadcrumb-->
         </div>
-        <!--end::Modal content-->
+    <!--end::Page title-->
     </div>
-    <!--end::Modal dialog-->
-</div>
-<!--end::Modal - Update permissions-->
+    <!--end::Container-->
+@endsection
+
+@section('content')
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container-fluid">
+        <!--begin::Content -->
+        <div class="d-flex flex-column flex-lg-row">
+            @include('admin.setting.menu.index')
+            @livewire('admin.setting.shipping-zone.form', ['shippingZone' => $shippingZone, 'method' => 'update'])
+        </div>
+        <!--end::Content -->
+    </div>
+    <!--end::Container-->
+@endsection

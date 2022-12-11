@@ -81,6 +81,9 @@ class Product extends Model implements Viewable
     public function viewUniques(){
         return views($this)->unique()->count();
     }
+    public function getPromotion(){
+        return Promotion::getPromotion($this);
+    }
     public function getPriceToString(){
         $sessionCurrency = Session::get('currency');
         $priceToString = '$'.number_format($this->getPrice(), 2).$sessionCurrency;

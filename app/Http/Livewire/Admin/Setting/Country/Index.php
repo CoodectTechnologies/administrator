@@ -11,20 +11,26 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $perPage = 100;
+    public $perPage = 50;
     public $search;
     protected $queryString = ['search' => ['except' => '']];
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['render'];
 
+    //filters
+    public $statusFilter;
+
     public function updatingSearch(){
         $this->resetPage();
     }
     public function render(){
-        $countries = Country::query()->with('states')->orderBy('id', 'desc');
-        if($this->search){
+        $countries = Country::query()->with('states')->orderBy('name');
+        if($this->search):
             $countries = $countries->where('name', 'LIKE', "%{$this->search}%");
-        }
+        endif;
+        if($this->statusFilter):
+            $countries = $countries->where('status', $this->statusFilter);
+        endif;
         $countries = $countries->paginate($this->perPage);
         return view('livewire.admin.setting.country.index', compact('countries'));
     }

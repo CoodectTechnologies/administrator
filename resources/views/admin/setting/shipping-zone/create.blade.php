@@ -1,50 +1,52 @@
-<!--begin::Button-->
-<button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add">
-    <!--begin::Svg Icon | path: icons/duotune/general/gen035.svg-->
-    <span class="svg-icon svg-icon-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="black" />
-                <rect x="10.8891" y="17.8033" width="12" height="2" rx="1" transform="rotate(-90 10.8891 17.8033)" fill="black" />
-            <rect x="6.01041" y="10.9247" width="12" height="2" rx="1" fill="black" />
-        </svg>
-    </span>
-    <!--end::Svg Icon-->
-    Agregar zona de envío
-</button>
-<!--end::Button-->
-<!--begin::Modal - Add permissions-->
-<div wire:ignore.self class="modal fade" id="kt_modal_add" tabindex="-1" aria-hidden="true">
-    <!--begin::Modal dialog-->
-    <div class="modal-dialog modal-dialog-centered mw-650px">
-        <!--begin::Modal content-->
-        <div class="modal-content">
-            <!--begin::Modal header-->
-            <div class="modal-header">
-                <!--begin::Modal title-->
-                <h2 class="fw-bolder">Agregar nueva zona de envío</h2>
-                <!--end::Modal title-->
-                <!--begin::Close-->
-                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
-                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                    <span class="svg-icon svg-icon-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon-->
-                </div>
-                <!--end::Close-->
-            </div>
-            <!--end::Modal header-->
-            <!--begin::Modal body-->
-            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                @livewire('admin.setting.shipping-zone.form', ['method' => 'store'], key('create'))
-            </div>
-            <!--end::Modal body-->
-        </div>
-        <!--end::Modal content-->
+@extends('admin.layouts.main')
+
+@section('head')
+    <title>Crear zona de envío</title>
+@endsection
+
+@section('toolbar')
+    <!--begin::Container-->
+    <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+       <!--begin::Page title-->
+       <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+        <!--begin::Title-->
+        <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Nueva zona de envío</h1>
+        <!--end::Title-->
+        <!--begin::Separator-->
+        <span class="h-20px border-gray-300 border-start mx-4"></span>
+        <!--end::Separator-->
+        <!--begin::Breadcrumb-->
+        <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a href="{{ route('admin.setting.shipping-zone.index') }}" class="text-muted text-hover-primary">Zonas de envío</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item">
+                <span class="bullet bg-gray-300 w-5px h-2px"></span>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">Nuevo</li>
+            <!--end::Item-->
+        </ul>
+        <!--end::Breadcrumb-->
     </div>
-    <!--end::Modal dialog-->
-</div>
-<!--end::Modal - Add permissions-->
+    <!--end::Page title-->
+    </div>
+    <!--end::Container-->
+@endsection
+
+@section('content')
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container-fluid">
+        <!--begin::Content -->
+        <div class="d-flex flex-column flex-lg-row">
+            @include('admin.setting.menu.index')
+            @livewire('admin.setting.shipping-zone.form', ['method' => 'store'])
+        </div>
+        <!--end::Content -->
+    </div>
+    <!--end::Container-->
+@endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Setting\ShippingZone;
 
 use App\Models\ShippingZone;
+use App\Models\State;
 use Exception;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
@@ -26,12 +27,12 @@ class Index extends Component
     }
     public function render(){
         $this->shippingPriceDefault = config('shipping.price_default');
-        $shippingZones = ShippingZone::query()->with(['states', 'shippingClasses'])->orderBy('id', 'desc');
-        if($this->search){
+        $shippingZones = ShippingZone::query()->with(['country', 'states'])->orderBy('id', 'desc');
+        if($this->search):
             $shippingZones = $shippingZones->where('name', 'LIKE', "%{$this->search}%")
             ->orWhereRelation('states', 'name', 'LIKE', "%{$this->search}%");
-        }        
-        $shippingZones = $shippingZones->paginate($this->perPage);  
+        endif;
+        $shippingZones = $shippingZones->paginate($this->perPage);
         return view('livewire.admin.setting.shipping-zone.index', compact('shippingZones'));
     }
     public function destroy(ShippingZone $shippingZone){

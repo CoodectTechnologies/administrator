@@ -26,11 +26,12 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->longText('detail');
             $table->longText('description')->nullable();
-            $table->string('sku')->nullable();
+            $table->string('sku')->index()->nullable();
             $table->integer('quantity')->nullable();
             $table->boolean('featured')->nullable()->default(false);
             $table->enum('status', ['Publicado', 'Borrador'])->default('Publicado');
             $table->string('iframe_url')->nullable();
+            $table->text('technical_datasheet')->nullable();
 
             //Shipping
             $table->float('weight')->nullable();

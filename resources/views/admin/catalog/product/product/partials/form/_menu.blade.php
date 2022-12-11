@@ -4,7 +4,7 @@
         <a class="nav-link text-active-primary pb-4 {{ $submodule === null ? 'active' : '' }}" data-bs-toggle="tab" href="#kt_ecommerce_add_product_general">General</a>
     </li>
     <!--end:::Tab item-->
-    @if ($product->id)
+    @if ($product->exists)
         <!--begin:::Tab item-->
         <li class="nav-item">
             <a class="nav-link text-active-primary pb-4 {{ $submodule === 'colors' ? 'active' : '' }}" data-bs-toggle="tab" href="#kt_ecommerce_add_product_colors">Colores</a>
@@ -13,11 +13,6 @@
         <!--begin:::Tab item-->
         <li class="nav-item">
             <a class="nav-link text-active-primary pb-4 {{ $submodule === 'sizes' ? 'active' : '' }}" data-bs-toggle="tab" href="#kt_ecommerce_add_product_size">Medidas</a>
-        </li>
-        <!--end:::Tab item-->
-        <!--begin:::Tab item-->
-        <li class="nav-item">
-            <a class="nav-link text-active-primary pb-4 {{ $submodule === 'comments' ? 'active' : '' }}" data-bs-toggle="tab" href="#kt_ecommerce_comment">Comentarios</a>
         </li>
         <!--end:::Tab item-->
     @endif

@@ -15,6 +15,7 @@ class CreateShippingZonesTable extends Migration
     {
         Schema::create('shipping_zones', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('country_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('zip_codes')->nullable();
             $table->float('price');

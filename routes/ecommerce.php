@@ -3,6 +3,7 @@
 use App\Http\Controllers\Ecommerce\About\AboutController;
 use App\Http\Controllers\Ecommerce\Cart\CartController;
 use App\Http\Controllers\Ecommerce\Category\CategoryController;
+use App\Http\Controllers\Ecommerce\Checkout\CheckoutController;
 use App\Http\Controllers\Ecommerce\Contact\ContactController;
 use App\Http\Controllers\Ecommerce\Currency\CurrencyController;
 use App\Http\Controllers\Ecommerce\Feed\FacebookController;
@@ -28,6 +29,14 @@ Route::resource('/categorias', CategoryController::class)->parameters(['categori
 Route::resource('/productos', ProductController::class)->parameters(['productos' => 'product'])->names('product');
 //Cart
 Route::get('/carrito', [CartController::class, 'index'])->name('cart.index');
+//Checkout
+Route::prefix('/checkout')->name('checkout.')->group(function (){
+    Route::middleware('auth')->get('/', [CheckoutController::class, 'index'])->name('index');
+    Route::get('/guest', [CheckoutController::class, 'index'])->name('guest');
+    Route::get('/{order}/pago', [CheckoutController::class, 'payment'])->name('payment');
+    Route::get('/{order}/pago-mercadopago', [CheckoutController::class, 'paymentMercadoPago'])->name('payment.mercadopago');
+    Route::get('/{order}/completo', [CheckoutController::class, 'complete'])->name('complete');
+});
 //Feed
 Route::prefix('feed')->name('feed.')->group(function (){
     Route::redirect('/', '/ecommerce/feed/facebook');

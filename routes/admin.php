@@ -66,7 +66,7 @@ Route::prefix('setting')->name('setting.')->group(function (){
     //Web
     Route::middleware(['can:contacto'])->get('/contact', [ContactController::class, 'index'])->name('contact');
     //Ecommerce
-    Route::middleware(['can:zonas de envío'])->get('/shipping-zone', [ShippingZoneController::class, 'index'])->name('shipping-zone');
+    Route::middleware(['can:zonas de envío'])->resource('/shipping-zone', ShippingZoneController::class)->names('shipping-zone');
     Route::middleware(['can:clases de envío'])->get('/shipping-class', [ShippingclassController::class, 'index'])->name('shipping-class');
     Route::middleware(['can:países'])->get('/country', [CountryController::class, 'index'])->name('country');
     Route::middleware(['can:estados'])->get('/state', [StateController::class, 'index'])->name('state');

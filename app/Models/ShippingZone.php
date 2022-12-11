@@ -22,6 +22,9 @@ class ShippingZone extends Model
     public function getDescriptionForEvent(string $eventName): string {
         return "Una zona de envío ha sido {$eventName}";
     }
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
     public function states(){
         return $this->belongsToMany(State::class);
     }
@@ -34,9 +37,9 @@ class ShippingZone extends Model
     public function priceFreeOverToString(){
         if($this->free_shipping_over_to):
             return '$'.number_format($this->free_shipping_over_to, 2);
-        else: 
+        else:
             return 'No aplica';
-        endif;   
+        endif;
     }
     public function dateToString(){
         return Carbon::parse($this->created_at)->toFormattedDateString();

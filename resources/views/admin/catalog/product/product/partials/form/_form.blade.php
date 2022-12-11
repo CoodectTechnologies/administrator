@@ -4,6 +4,9 @@
         <!--begin::Image-->
         @include('admin.catalog.product.product.partials.form._image')
         <!--end::Image-->
+        <!--begin::Technical datasheet-->
+        @include('admin.catalog.product.product.partials.form._technical-datasheet')
+        <!--end::Technical datasheet-->
         <!--begin::Status-->
         @include('admin.catalog.product.product.partials.form._status')
         <!--end::Status-->
@@ -13,9 +16,6 @@
         <!--begin:: Details-->
         @include('admin.catalog.product.product.partials.form._detail')
         <!--end:: Details-->
-        <!--begin:: Graphic-->
-        @include('admin.catalog.product.product.partials.form._graphic')
-        <!--end:: Graphic-->
     </div>
     <!--end::Aside column-->
     <!--begin::Main column-->
