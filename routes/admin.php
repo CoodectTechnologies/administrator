@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Catalog\CategoryController as CatalogCategoryCont
 use App\Http\Controllers\Admin\Catalog\BrandController as CatalogBrandController;
 use App\Http\Controllers\Admin\Catalog\GenderController as CatalogGenderController;
 use App\Http\Controllers\Admin\Catalog\ProductController as CatalogProductController;
+use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Dashboard\Order\OrderController as DashboardOrderController;
 use App\Http\Controllers\Admin\Dashboard\Blog\BlogController as DashboardBlogController;
 use App\Http\Controllers\Admin\Dashboard\General\GeneralController as DashboardGeneralController;
@@ -124,6 +125,8 @@ Route::prefix('catalog')->name('catalog.')->group(function (){
 });
 //Promotion
 Route::middleware(['can:promociones'])->resource('/promotion', PromotionController::class)->names('promotion');
+//coupon
+Route::middleware(['can:cupones'])->resource('/coupon', CouponController::class)->names('coupon');
 //Order
 Route::middleware(['can:ordenes'])->resource('/order', OrderController::class)->names('order');
 //Test

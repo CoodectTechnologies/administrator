@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->foreignId('shipping_address_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('coupon_id')->nullable()->constrained()->onDelete('set null');
             $table->string('number')->nullable();
             $table->float('subtotal');
             $table->float('total');

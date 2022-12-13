@@ -23,6 +23,9 @@ class Currency extends Model
     public function promotions(){
         return $this->belongsToMany(Promotion::class)->withTimestamps();
     }
+    public function coupons(){
+        return $this->belongsToMany(Coupon::class)->withTimestamps();
+    }
     public function products(){
         return $this->morphedByMany(Product::class, 'currenciable')->withPivot(['price']);
     }

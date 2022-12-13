@@ -19,7 +19,7 @@
             <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                 <!--begin::Item-->
                 <li class="breadcrumb-item text-muted">
-                    <a href="{{ route('admin.catalog.product.index') }}" class="text-muted text-hover-primary">Propiedades</a>
+                    <a href="{{ route('admin.catalog.product.index') }}" class="text-muted text-hover-primary">Productos</a>
                 </li>
                 <!--end::Item-->
             </ul>

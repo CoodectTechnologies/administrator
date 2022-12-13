@@ -239,6 +239,14 @@ return [
                     'submodules' => []
                 ],
                 [
+                    'name' => 'Cupones',
+                    'icon' => 'fa-solid fa-ticket',
+                    'urlName' => 'admin.coupon.index',
+                    'active' => 'admin.coupon.index',
+                    'canany' => ['cupones'],
+                    'submodules' => []
+                ],
+                [
                     'name' => 'Zonas de envío',
                     'icon' => 'fa-solid fa-truck',
                     'urlName' => 'admin.setting.shipping-zone',

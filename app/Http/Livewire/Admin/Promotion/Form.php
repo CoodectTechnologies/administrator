@@ -39,7 +39,7 @@ class Form extends Component
         $this->loadPromotionables();
     }
     public function render(){
-        $currencies = Cache::get('currency') ?? [];
+        $currencies = Cache::get('currencies') ?? [];
         $models = $this->loadModels();
         return view('livewire.admin.promotion.form', compact('currencies', 'models'));
     }
