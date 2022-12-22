@@ -22,10 +22,16 @@
 .header-search.hs-expanded input.form-control {
     border-left: revert!important;
 }
+
 /* MENU */
 .menu>li:hover>a:not(.menu-title), .menu>li.active>a:not(.menu-title) {
     /* color: var(--secondary-color)!important; */
 }
 .menu>li:hover>.submenu, .menu>li:hover .megamenu, .menu>li.show>.submenu, .menu>li.show .megamenu {
     top: 0%!important;
+}
+
+/* BREADCRUMS */
+.breadcrumb {
+    background-color: transparent!important;
 }

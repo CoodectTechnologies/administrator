@@ -16,18 +16,25 @@ class ModuleWebSeeder extends Seeder
     {
         $moduleWebs = [
             //Web
-            ['name' => 'Inicio'], //Id: 1
-            ['name' => 'Nosotros'], //Id: 2
-            ['name' => 'Servicios'], //Id: 3
-            ['name' => 'Portafolio'], //Id: 4
-            ['name' => 'Team'], //Id: 5
-            ['name' => 'Blog'], //Id: 6
-            ['name' => 'Videos'], //Id: 7
-            ['name' => 'Videos'], //Id: 8
-            ['name' => 'Contacto'], //Id: 9
+            ['name' => 'Web - Inicio'],
+            ['name' => 'Web - Nosotros'],
+            ['name' => 'Web - Servicios'],
+            ['name' => 'Web - Portafolio'],
+            ['name' => 'Web - Team'],
+            ['name' => 'Web - Blog'],
+            ['name' => 'Web - Videos'],
+            ['name' => 'Web - Galeria'],
+            ['name' => 'Web - Contacto'],
             //Ecommerce
-            ['name' => 'Ecommerce principal'], //Id: 10
-            ['name' => 'Ecommerce secondario'], //Id: 11
+            ['name' => 'Ecommerce - Inicio'],
+            ['name' => 'Ecommerce - Nosotros'],
+            ['name' => 'Ecommerce - Servicios'],
+            ['name' => 'Ecommerce - Portafolio'],
+            ['name' => 'Ecommerce - Team'],
+            ['name' => 'Ecommerce - Blog'],
+            ['name' => 'Ecommerce - Videos'],
+            ['name' => 'Ecommerce - Galeria'],
+            ['name' => 'Ecommerce - Contacto'],
         ];
         ModuleWeb::insert($moduleWebs);
     }

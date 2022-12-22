@@ -1,20 +1,32 @@
+
+
 <div class="product-wrap">
     <div class="product text-center">
         <figure class="product-media">
             <a href="{{ route('ecommerce.product.show', $product) }}">
-                <img src="{{ $product->imagePreview() }}" alt="{{ $product->name }}" height="338">
+                <img src="{{ $product->imagePreview() }}" alt="{{ $product->name }}" width="300"/>
                 @if (count($product->images))
-                    <img src="{{ $product->images->first()->imagePreview() }}" alt="{{ $product->name }}" height="">
+                    <img src="{{ $product->images->first()->imagePreview() }}" alt="{{ $product->name }}" width="300">
                 @endif
             </a>
-            <div class="product-action-vertical">
-                <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
+            @if ($promotion = $product->getPromotion())
+                <div class="product-countdown-container">
+                    <div class="product-countdown countdown-compact" data-until="2023, 9, 9"
+                        data-format="DHMS" data-compact="false"
+                        data-labels-short="Days, Hours, Mins, Secs">
+                        00:00:00:00
+                    </div>
+                </div>
+            @endif
+            <div class="product-action-horizontal">
+                <a href="#" class="btn-product-icon btn-cart w-icon-cart"
+                    title="Add to cart"></a>
                 <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                    title="Add to wishlist"></a>
-                <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                    title="Quickview"></a>
+                    title="Wishlist"></a>
                 <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                    title="Add to Compare"></a>
+                    title="Compare"></a>
+                <a href="#" class="btn-product-icon btn-quickview w-icon-search"
+                    title="Quick View"></a>
             </div>
             <div class="product-label-group">
                 @if ($product->getIsNew())
@@ -26,18 +38,25 @@
             </div>
         </figure>
         <div class="product-details">
-            <h4 class="product-name">
-                <a href="{{ route('ecommerce.product.show', $product) }}">{{ $product->name }}</a>
-            </h4>
+            <div class="product-cat">
+                @foreach ($product->productCategories as $productCategory)
+                    <a href="{{ route('ecommerce.product.index', ['category' => $productCategory->slug]) }}">{{ $productCategory->name }}</a>
+                @endforeach
+            </div>
+            <h3 class="product-name">
+                <a href="{{ route('ecommerce.product.show', $product) }}">{{ $productCategory->name }}</a>
+            </h3>
             <div class="ratings-container">
                 <div class="ratings-full">
-                    <span class="ratings" style="width: 50%;"></span>
+                    <span class="ratings" style="width: 100%;"></span>
                     <span class="tooltiptext tooltip-top"></span>
                 </div>
-                <a href="#" class="rating-reviews">({{ count($product->comments) }} Comentarios)</a>
+                <a href="{{ route('ecommerce.product.show', $product) }}#comments" class="rating-reviews">({{ count($product->comments) }} Comentarios)</a>
             </div>
-            <div class="product-price">
-                <ins class="new-price">{!! $product->getPriceToString() !!}</ins>
+            <div class="product-pa-wrapper">
+                <div class="product-price">
+                    {!! $product->getPriceToString() !!}
+                </div>
             </div>
         </div>
     </div>

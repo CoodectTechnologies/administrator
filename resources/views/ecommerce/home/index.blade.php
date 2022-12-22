@@ -15,6 +15,10 @@
     <meta name="twitter:title" content="{{ config('app.name') }} - Ecommerce" />
 @endsection
 
+@section('skin')
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/ecommerce/css/demo2.min.css') }}">
+@endsection
+
 @section('content')
     <div class="intro-section">
         <div class="owl-carousel owl-theme owl-nav-inner owl-dot-inner row gutter-no cols-1 animation-slider"

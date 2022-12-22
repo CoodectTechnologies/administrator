@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(){
-
+        return view('ecommerce.product.index');
     }
     public function show(Product $product){
         $this->addToViewRecent($product->id);
-
     }
     private function addToViewRecent($id){
         //Agregar cookie

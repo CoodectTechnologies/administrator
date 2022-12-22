@@ -249,8 +249,8 @@ return [
                 [
                     'name' => 'Zonas de envío',
                     'icon' => 'fa-solid fa-truck',
-                    'urlName' => 'admin.setting.shipping-zone',
-                    'active' => 'admin.setting.shipping-zone',
+                    'urlName' => 'admin.setting.shipping-zone.index',
+                    'active' => 'admin.setting.shipping-zone*',
                     'canany' => ['zonas de envío'],
                     'submodules' => []
                 ],

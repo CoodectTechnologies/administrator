@@ -88,8 +88,8 @@ class Product extends Model implements Viewable
         $sessionCurrency = Session::get('currency');
         $priceToString = '$'.number_format($this->getPrice(), 2).$sessionCurrency;
         if($pricePromotion = $this->getPricePromotion()):
-            $pricePromotion = '$'.number_format($pricePromotion, 2).$sessionCurrency;
-            $priceToString = '<del>'.$priceToString.'</del> '.$pricePromotion;
+            $pricePromotion = '<ins class="new-price">'.'$'.number_format($pricePromotion, 2).$sessionCurrency.'</ins>';
+            $priceToString = '<del class="old-price">'.$priceToString.'</del> '.$pricePromotion;
         else:
             $priceMaxSize = $this->getPriceSizeMax();
             if($priceMaxSize):

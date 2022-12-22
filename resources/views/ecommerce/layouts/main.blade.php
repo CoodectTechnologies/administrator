@@ -30,7 +30,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/ecommerce') }}/vendor/owl-carousel/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/ecommerce') }}/vendor/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/ecommerce') }}/vendor/magnific-popup/magnific-popup.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/ecommerce') }}/css/demo2.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/style.css') }}">
+    @yield('skin')
     <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/custom.css') }}">
 
     {{-- Livewire --}}
