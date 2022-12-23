@@ -49,7 +49,6 @@ class Form extends Component
         $this->banner->save();
         $this->saveImage();
         $this->banner = new Banner();
-        Cache::forget('banners');
         $this->reset('imageTmp');
         $this->emit('alert', 'success', 'Banner agregado con éxito');
         $this->emit('render');
@@ -61,7 +60,6 @@ class Form extends Component
         $this->saveVideo();
         $this->banner->update();
         $this->saveImage();
-        Cache::forget('banners');
         $this->emit('alert', 'success', 'Banner actualizado con éxito');
         $this->emit('render');
     }
@@ -117,7 +115,7 @@ class Form extends Component
     }
     private function reOrder(){
         if($this->order != $this->banner->order):
-            $bannersToOrder = Banner::where('order', '>=', $this->banner->order)->cursor();
+            $bannersToOrder = Banner::where('order', '>=', $this->banner->order)->where('module_web_id', $this->banner->module_web_id)->cursor();
             foreach($bannersToOrder as $bannerToOrder):
                 $bannerToOrder->order = $bannerToOrder->order + 1;
                 $bannerToOrder->update();

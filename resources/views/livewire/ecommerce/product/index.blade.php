@@ -8,7 +8,6 @@
                     <!-- Start of Sidebar Overlay -->
                     <div class="sidebar-overlay"></div>
                     <a class="sidebar-close" href="#"><i class="close-icon"></i></a>
-
                     <!-- Start of Sidebar Content -->
                     <div class="sidebar-content scrollable">
                         <!-- Start of Sticky Sidebar -->
@@ -34,7 +33,6 @@
                                 </ul>
                             </div>
                             <!-- End of Collapsible Widget -->
-
                             <!-- Start of Collapsible Widget -->
                             <div class="widget widget-collapsible">
                                 <h3 class="widget-title">
@@ -58,7 +56,6 @@
                                 </div>
                             </div>
                             <!-- End of Collapsible Widget -->
-
                             <!-- Start of Collapsible widget -->
                             <div class="widget widget-collapsible">
                                 <h3 class="widget-title"><span>{{ __('Brand') }}</span></h3>
@@ -74,38 +71,49 @@
                                 </ul>
                             </div>
                             <!-- End of Collapsible Widget -->
-
                         </div>
                         <!-- End of Sidebar Content -->
                     </div>
                     <!-- End of Sidebar Content -->
                 </aside>
                 <!-- End of Shop Sidebar -->
-
                 <!-- Start of Main Content -->
                 <div class="main-content">
-                    <!-- Start of Shop Banner -->
-                    <div class="shop-default-banner shop-boxed-banner banner d-flex align-items-center mb-6 br-xs"
-                        style="background-image: url(https://portotheme.com/html/wolmart/assets/images/shop/banner1.jpg); background-color: #FFC74E;">
-                        <div class="banner-content">
-                            <h4 class="banner-subtitle font-weight-bold">Accessories Collection</h4>
-                            <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-10">Smart
-                                Watches
-                            </h3>
-                            <a href="shop-banner-sidebar.html"
-                                class="btn btn-dark btn-rounded btn-icon-right">
-                                Discover Now
-                                <i class="w-icon-long-arrow-right"></i>
-                            </a>
+                    @if (count($banners))
+                        <div class="owl-carousel owl-theme row cols-lg-5 cols-md-4 cols-2 product-deals-wrapper appear-animate mb-7"
+                            data-owl-options="{
+                                'nav': true,
+                                'dots': true,
+                                'items': 1,
+                                'autoplay': true,
+                                'margin': 20
+                            }">
+                            @foreach ($banners as $banner)
+                                <!-- Start of Shop Banner -->
+                                <div class="shop-default-banner shop-boxed-banner banner d-flex align-items-center mb-6 br-xs"
+                                    style="background-image: url({{ $banner->imagePreview() }});">
+                                    <div class="banner-content">
+                                        <h4 class="banner-subtitle font-weight-bold">{{ $banner->subtitle }}</h4>
+                                        <h3 class="banner-title text-white text-uppercase font-weight-bolder ls-10">
+                                            {{ $banner->title }}
+                                        </h3>
+                                        @if ($banner->btn_url)
+                                            <a href="{{ $banner->btn_url }}" class="btn btn-dark btn-rounded btn-icon-right">
+                                                {{ $banner->btn_text }}
+                                                <i class="w-icon-long-arrow-right"></i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                </div>
+                                <!-- End of Shop Banner -->
+                            @endforeach
                         </div>
-                    </div>
-                    <!-- End of Shop Banner -->
-
+                    @endif
                     <nav class="toolbox sticky-toolbox sticky-content fix-top">
                         <div class="toolbox-left">
                             <a href="#" class="btn btn-primary btn-outline btn-rounded left-sidebar-toggle btn-icon-left d-block d-lg-none"><i class="w-icon-category"></i><span>{{ __('Filters') }}</span></a>
                             <div class="toolbox-item toolbox-sort select-box text-dark">
-                                <label>{{ __('Sort By') }} :</label>
+                                <label>{{ __('Sort by') }} :</label>
                                 <select wire:model="orderByFilter" name="orderByFilter" class="form-control">
                                     <option value="">{{ __('Default sorting') }}</option>
                                     <option value="price-low">{{ __('Sort by price: low to high') }}</option>
@@ -125,16 +133,21 @@
                         </div>
                     </nav>
                     <div class="product-wrapper row cols-md-3 cols-sm-2 cols-2">
-                        @foreach ($products as $product)
+                        @forelse ($products as $product)
                             @include('ecommerce.product.partials._product')
-                        @endforeach
+                        @empty
+                            <div class="alert alert-warning alert-simple alert-inline">
+                                <h4 class="alert-title">No se han encontrado productos</h4>
+                                {{ request()->search ? '"'.request()->search.'"' : '' }}
+                            </div>
+                        @endforelse
                     </div>
                     <div class="toolbox toolbox-pagination justify-content-between">
                         <p class="showing-info mb-2 mb-sm-0">
                             {{ __('Showing') }}<span>{{($products->currentpage()-1)*$products->perpage()+1}} - {{$products->currentpage()*$products->perpage()}}
                                 de  {{$products->total()}}</span>{{ __('Products') }}
                         </p>
-                       {{ $products->links() }}
+                    {{ $products->links() }}
                     </div>
                 </div>
                 <!-- End of Main Content -->

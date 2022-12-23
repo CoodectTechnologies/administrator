@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire\Ecommerce\Product;
 
+use App\Models\Banner;
 use App\Models\Product;
 use App\Models\ProductBrand;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
@@ -52,12 +54,13 @@ class Index extends Component
         endif;
     }
     public function render(){
+        $banners = Banner::whereRelation('moduleWeb', 'name', 'Ecommerce - Productos')->cursor();
         $productCategories = ProductCategory::with('products')->cursor();
         $productBrands = ProductBrand::with('products')->cursor();
         $products = Product::with('productCategories')->currencySession()->validateProduct();
         $products = $this->filters($products);
         $products = $products->paginate($this->perPage);
-        return view('livewire.ecommerce.product.index', compact('products', 'productCategories', 'productBrands'));
+        return view('livewire.ecommerce.product.index', compact('banners', 'products', 'productCategories', 'productBrands'));
     }
     public function filters($products){
         if($this->search):

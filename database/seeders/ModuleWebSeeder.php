@@ -27,6 +27,9 @@ class ModuleWebSeeder extends Seeder
             ['name' => 'Web - Contacto'],
             //Ecommerce
             ['name' => 'Ecommerce - Inicio'],
+            ['name' => 'Ecommerce - Categorias'],
+            ['name' => 'Ecommerce - Productos'],
+            ['name' => 'Ecommerce - Colecciones'],
             ['name' => 'Ecommerce - Nosotros'],
             ['name' => 'Ecommerce - Servicios'],
             ['name' => 'Ecommerce - Portafolio'],

@@ -15,16 +15,12 @@ class Index extends Component
     public $module;
 
     public function render(){
-        if(Cache::has('banners')):
-            $banners = Cache::get('banners');
-        else:
-            $banners = Banner::with(['image', 'moduleWeb'])->orderBy('order')->get();
-            Cache::put('banners', $banners);
-        endif;
+        $modulesWeb = ModuleWeb::orderBy('id')->cursor();
+        $banners = Banner::with(['image', 'moduleWeb']);
         if($this->module):
             $banners = $banners->where('module_web_id', $this->module);
         endif;
-        $modulesWeb = ModuleWeb::orderBy('id')->cursor();
+        $banners = $banners->orderBy('order')->cursor();
         return view('livewire.admin.banner.index', compact('banners', 'modulesWeb'));
     }
     public function destroy(Banner $banner){
@@ -41,7 +37,6 @@ class Index extends Component
                 endif;
             endif;
             $banner->delete();
-            Cache::forget('banners');
             $this->emit('alert', 'success', 'Eliminación con éxito');
         }catch(Exception $e){
             $this->emit('alert', 'error', 'Ocurrio un error en la eliminación: '.$e->getMessage());
