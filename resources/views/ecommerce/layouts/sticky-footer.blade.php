@@ -32,7 +32,7 @@
                     </div>
                     <figure class="product-media">
                         <a href="product-default.html">
-                            <img src="assets/images/cart/product-1.jpg" alt="product" height="84" width="94" />
+                            <img src="https://portotheme.com/html/wolmart/assets/images/cart/product-1.jpg" alt="product" height="84" width="94" />
                         </a>
                     </figure>
                     <button class="btn btn-link btn-close">
@@ -53,7 +53,7 @@
                     </div>
                     <figure class="product-media">
                         <a href="product-default.html">
-                            <img src="assets/images/cart/product-2.jpg" alt="product" width="84" height="94" />
+                            <img src="https://portotheme.com/html/wolmart/assets/images/cart/product-2.jpg" alt="product" width="84" height="94" />
                         </a>
                     </figure>
                     <button class="btn btn-link btn-close">

@@ -22,6 +22,8 @@
 
     {{-- Noscript --}}
     <noscript>Your browser does not support JavaScript!</noscript>
+    {{-- Script defer --}}
+    <script defer src="{{ asset('assets/admin/js/custom/alpine/alpine.js') }}"></script>
 
     {{-- Css --}}
     <link rel="stylesheet" href="{{ asset('assets/ecommerce/css/var.css') }}">
@@ -56,7 +58,7 @@
         @include('ecommerce.layouts.footer')
     </div>
 
-    @include('ecommerce.layouts.sticky-footer')
+    {{-- @include('ecommerce.layouts.sticky-footer') --}}
 
     <!-- Start of Scroll Top -->
     <a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="fas fa-chevron-up"></i></a>

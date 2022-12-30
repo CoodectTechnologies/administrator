@@ -17,6 +17,7 @@ class CreateProductColorsTable extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->string('name');
+            $table->string('hexadecimal');
             $table->timestamps();
         });
     }

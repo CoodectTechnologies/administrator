@@ -166,7 +166,7 @@
                 }
             }}">
             @foreach ($productsFeatured as $productFeatured)
-                @include('ecommerce.product.partials._product', ['product' => $productFeatured])
+                @include('ecommerce.product.partials.index._product', ['product' => $productFeatured])
             @endforeach
         </div>
         <!-- End of Product Deals Warpper -->
@@ -240,7 +240,7 @@
                         }
                     }">
                         @foreach ($categoryFhater->allProductsByCategory() as $product)
-                            @include('ecommerce.product.partials._product')
+                            @include('ecommerce.product.partials.index._product')
                         @endforeach
                     </div>
                     <!-- End fo Carousel -->

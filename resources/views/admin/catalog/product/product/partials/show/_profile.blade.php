@@ -52,11 +52,7 @@
                         </div>
                         <!--begin::Menu item-->
                         <div class="menu-item px-3">
-                            @if ($product->featured)
-                                <a href="#" class="menu-link px-3" wire:click.prevent="featuredRemove">Remover destacado</a>
-                            @else
-                                <a href="#" class="menu-link px-3" wire:click.prevent="featuredMake">Destacar propiedad</a>
-                            @endif
+                            <a href="#" class="menu-link px-3" >En espera de opciones</a>
                         </div>
                     </div>
                     <!--end::Menu 3-->

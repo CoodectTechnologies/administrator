@@ -134,7 +134,7 @@
                     </nav>
                     <div class="product-wrapper row cols-md-3 cols-sm-2 cols-2">
                         @forelse ($products as $product)
-                            @include('ecommerce.product.partials._product')
+                            @include('ecommerce.product.partials.index._product')
                         @empty
                             <div class="alert alert-warning alert-simple alert-inline">
                                 <h4 class="alert-title">No se han encontrado productos</h4>

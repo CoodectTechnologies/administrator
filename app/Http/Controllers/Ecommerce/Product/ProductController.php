@@ -13,6 +13,7 @@ class ProductController extends Controller
     }
     public function show(Product $product){
         $this->addToViewRecent($product->id);
+        return view('ecommerce.product.show', compact('product'));
     }
     private function addToViewRecent($id){
         //Agregar cookie

@@ -63,9 +63,11 @@ class ProductSeeder extends Seeder
             //COLORES
             $color1 = $product->productColors()->create([
                 'name' => 'Rojo',
+                'hexadecimal' => '#e91616',
             ]);
             $color2 = $product->productColors()->create([
                 'name' => 'Azul',
+                'hexadecimal' => '#2331c4',
             ]);
             //MEDIDAS
             $size1 = $product->productSizes()->create(['name' => 'Chico']);

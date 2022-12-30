@@ -8,12 +8,10 @@ use App\Models\ProductBrand;
 use App\Models\ProductCategory;
 use App\Models\ProductGender;
 use App\Models\ShippingClass;
-use Asantibanez\LivewireCharts\Models\LineChartModel;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -133,7 +131,7 @@ class Form extends Component
         if($this->imagesTmp):
             foreach ($this->imagesTmp as $imgTmp):
                 $url = $imgTmp->store('public/catalog/product/gallery');
-                imagesManager($url, 1920, $this->product);
+                imagesManager($url, 800, $this->product);
             endforeach;
         endif;
     }

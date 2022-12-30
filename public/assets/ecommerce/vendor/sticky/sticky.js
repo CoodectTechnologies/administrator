@@ -25,7 +25,7 @@
 			timeout = setTimeout(delayed, threshold || 100);
 		};
 	};
-	// smartresize 
+	// smartresize
 	jQuery.fn[sr] = function (fn) { return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
 
 })(jQuery, 'smartresize');
@@ -402,8 +402,8 @@
 			$el.themePin(this.options);
 
 			setTimeout(function() {
-				if ( typeof Wolmart.sticky_top_height != 'undefined' && $el.data('themePin').pad ) {
-					$el.data('themePin').pad.top = Wolmart.sticky_top_height;
+				if ( typeof Coodect.sticky_top_height != 'undefined' && $el.data('themePin').pad ) {
+					$el.data('themePin').pad.top = Coodect.sticky_top_height;
 				}
 			}, 300);
 
@@ -417,8 +417,8 @@
 
 				var $parent = $el.parent();
 
-				if ( typeof Wolmart.sticky_top_height != 'undefined' && $el.data('themePin').pad) {
-					$el.data('themePin').pad.top = Wolmart.sticky_top_height;
+				if ( typeof Coodect.sticky_top_height != 'undefined' && $el.data('themePin').pad) {
+					$el.data('themePin').pad.top = Coodect.sticky_top_height;
 				}
 
 				$el.outerWidth($parent.width());

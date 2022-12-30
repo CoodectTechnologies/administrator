@@ -1,5 +1,5 @@
 /**
- * Wolmart Javascript File
+ * Coodect Javascript File
  *
  * @version 1.0
  */
@@ -22,12 +22,12 @@ $.extend($.easing, {
 });
 
 /**
- * Wolmart Object
+ * Coodect Object
  */
-window.Wolmart = {};
+window.Coodect = {};
 
 /**
- * Wolmart Base
+ * Coodect Base
  */
 (function ($) {
 
@@ -36,36 +36,36 @@ window.Wolmart = {};
      *
      * @var jQuery jQuery window handle
      */
-    Wolmart.$window = $(window);
+    Coodect.$window = $(window);
 
     /**
      * jQuery Body Handle
      *
      * @var jQuery jQuery body handle
      */
-    Wolmart.$body = $(document.body);
+    Coodect.$body = $(document.body);
 
     /**
      * Status
      *
      * @var string Status
      */
-    Wolmart.status = '';
+    Coodect.status = '';
 
     /**
      * Check if the browser is internet explorer.
      *
      * @var boolean isIE
      */
-    Wolmart.isIE = navigator.userAgent.indexOf('Trident') >= 0;
+    Coodect.isIE = navigator.userAgent.indexOf('Trident') >= 0;
 
     /**
      * Check if the browser is internet explorer.
      *
      * @var boolean isIE
      */
-    Wolmart.isEdge = navigator.userAgent.indexOf('Edge') >= 0;
-    Wolmart.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    Coodect.isEdge = navigator.userAgent.indexOf('Edge') >= 0;
+    Coodect.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     /**
      * Make a macro task
@@ -74,7 +74,7 @@ window.Wolmart = {};
      * @param {number} delay
      * @return {void}
      */
-    Wolmart.call = function (fn, delay) {
+    Coodect.call = function (fn, delay) {
         setTimeout(fn, delay);
     }
 
@@ -84,7 +84,7 @@ window.Wolmart = {};
      * @param {string} options
      * @return {object} options
      */
-    Wolmart.parseOptions = function (options) {
+    Coodect.parseOptions = function (options) {
         return 'string' == typeof options ?
             JSON.parse(options.replace(/'/g, '"').replace(';', '')) :
             {};
@@ -97,7 +97,7 @@ window.Wolmart = {};
      * @param {object} vars
      * @return {string} parsed template
      */
-    Wolmart.parseTemplate = function (template, vars) {
+    Coodect.parseTemplate = function (template, vars) {
         return template.replace(/\{\{(\w+)\}\}/g, function () {
             return vars[arguments[1]];
         });
@@ -109,7 +109,7 @@ window.Wolmart = {};
      * @param {string} id
      * @return {HTMLElement} element
      */
-    Wolmart.byId = function (id) {
+    Coodect.byId = function (id) {
         return document.getElementById(id);
     }
 
@@ -120,7 +120,7 @@ window.Wolmart = {};
      * @param {HTMLElement} element this can be omitted.
      * @return {HTMLCollection}
      */
-    Wolmart.byTag = function (tagName, element) {
+    Coodect.byTag = function (tagName, element) {
         return element ?
             element.getElementsByTagName(tagName) :
             document.getElementsByTagName(tagName);
@@ -133,7 +133,7 @@ window.Wolmart = {};
      * @param {HTMLElement} element this can be omitted.
      * @return {HTMLCollection}
      */
-    Wolmart.byClass = function (className, element) {
+    Coodect.byClass = function (className, element) {
         return element ?
             element.getElementsByClassName(className) :
             document.getElementsByClassName(className);
@@ -147,7 +147,7 @@ window.Wolmart = {};
      * @param {string} value Cookie value
      * @param {number} exdays Expire period
      */
-    Wolmart.setCookie = function (name, value, exdays) {
+    Coodect.setCookie = function (name, value, exdays) {
         var date = new Date();
         date.setTime(date.getTime() + (exdays * 24 * 60 * 60 * 1000));
         document.cookie = name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
@@ -159,7 +159,7 @@ window.Wolmart = {};
      * @param {string} name Cookie name
      * @return {string} Cookie value
      */
-    Wolmart.getCookie = function (name) {
+    Coodect.getCookie = function (name) {
         var n = name + "=";
         var ca = document.cookie.split(';');
         for (var i = 0; i < ca.length; ++i) {
@@ -180,7 +180,7 @@ window.Wolmart = {};
      * @param {string|jQuery} selector
      * @return {jQuery|Object} jQuery Object or {each: $.noop}
      */
-    Wolmart.$ = function (selector) {
+    Coodect.$ = function (selector) {
         if (selector instanceof jQuery) {
             return selector;
         }
@@ -193,7 +193,7 @@ window.Wolmart = {};
      * @param {HTMLElement} el
      * @return {boolean}
      */
-    Wolmart.isOnScreen = function (el) {
+    Coodect.isOnScreen = function (el) {
 
         var a = window.pageXOffset,
             b = window.pageYOffset,
@@ -215,7 +215,7 @@ window.Wolmart = {};
      * @param {object} options
      * @return {boolean}
      */
-    // Wolmart.appear = (function () {
+    // Coodect.appear = (function () {
     //     var checks = [],
     //         timerId = false,
     //         one;
@@ -224,7 +224,7 @@ window.Wolmart = {};
     //         for (var i = checks.length; i--;) {
     //             one = checks[i];
 
-    //             if (Wolmart.isOnScreen(one.el)) {
+    //             if (Coodect.isOnScreen(one.el)) {
     //                 one.fn && one.fn.call(one.el);
     //                 checks.splice(i, 1);
     //             }
@@ -237,11 +237,11 @@ window.Wolmart = {};
 
     //     return function (el, fn) {
     //         checks.push({ el: el, fn: fn });
-    //         timerId || (timerId = Wolmart.requestTimeout(checkAll, 100));
+    //         timerId || (timerId = Coodect.requestTimeout(checkAll, 100));
     //     }
     // })();
 
-    Wolmart.appear = function (el, fn, intObsOptions) {
+    Coodect.appear = function (el, fn, intObsOptions) {
 		var interSectionObserverOptions = {
 			rootMargin: '0px 0px 200px 0px',
 			threshold: 0,
@@ -280,7 +280,7 @@ window.Wolmart = {};
      * @param {function} fn
      * @param {number} delay
      */
-    Wolmart.requestTimeout = function (fn, delay) {
+    Coodect.requestTimeout = function (fn, delay) {
         var handler = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
         if (!handler) {
             return setTimeout(fn, delay);
@@ -307,7 +307,7 @@ window.Wolmart = {};
      * @param {number} step
      * @param {number} timeOut
      */
-    Wolmart.requestInterval = function (fn, step, timeOut) {
+    Coodect.requestInterval = function (fn, step, timeOut) {
         var handler = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
         if (!handler) {
             if (!timeOut)
@@ -343,7 +343,7 @@ window.Wolmart = {};
      *
      * @param {number} timerId
      */
-    Wolmart.deleteTimeout = function (timerId) {
+    Coodect.deleteTimeout = function (timerId) {
         if (!timerId) {
             return;
         }
@@ -362,7 +362,7 @@ window.Wolmart = {};
      *
      * @param {string} selector
      */
-    Wolmart.setTab = function (selector) {
+    Coodect.setTab = function (selector) {
 
         function _activeTab(e) {
             var $this = $(this);
@@ -394,7 +394,7 @@ window.Wolmart = {};
             });
         }
 
-        Wolmart.$body
+        Coodect.$body
             .on('click', '.tab .nav-link', _activeTab) // tab nav link
             .on('click', '.link-to-tab', _linkToTab);  // link to tab
     }
@@ -404,9 +404,9 @@ window.Wolmart = {};
      *
      * @param {string} selector
      */
-    Wolmart.initCartAction = function (selector) {
+    Coodect.initCartAction = function (selector) {
         // Cart dropdown is offcanvas type
-        Wolmart.$body
+        Coodect.$body
             .on('click', selector, function (e) {
                 $('.cart-dropdown').addClass('opened');
                 e.preventDefault();
@@ -425,9 +425,9 @@ window.Wolmart = {};
      * initScrollTopButton
      *
      */
-    Wolmart.initScrollTopButton = function () {
+    Coodect.initScrollTopButton = function () {
         // register scroll top button
-        var domScrollTop = Wolmart.byId('scroll-top');
+        var domScrollTop = Coodect.byId('scroll-top');
 
         domScrollTop.addEventListener('click', function (e) {
             $('html, body').animate({ scrollTop: 0 }, 600);
@@ -442,14 +442,14 @@ window.Wolmart = {};
             }
         }
 
-        Wolmart.call(refreshScrollTop, 500);
+        Coodect.call(refreshScrollTop, 500);
         window.addEventListener('scroll', refreshScrollTop, { passive: true });
     }
 
     /**
      * Sticky Default Options
      */
-    Wolmart.stickyDefaultOptions = {
+    Coodect.stickyDefaultOptions = {
         minWidth: 992,
         maxWidth: 20000,
         top: false,
@@ -457,14 +457,14 @@ window.Wolmart = {};
         scrollMode:true
     }
 
-    Wolmart.stickyToolboxOptions = {
+    Coodect.stickyToolboxOptions = {
         minWidth: 0,
         maxWidth: 767,
         top: false,
         scrollMode: true
     }
 
-    Wolmart.stickyProductOptions =  {
+    Coodect.stickyProductOptions =  {
         minWidth: 0,
         maxWidth: 20000,
         scrollMode: true,
@@ -479,14 +479,14 @@ window.Wolmart = {};
 	 * @param {number} timeStamp
 	 * @return {boolean}
 	 */
-	Wolmart.windowResized = function (timeStamp) {
-		if (timeStamp == Wolmart.resizeTimeStamp) {
-			return Wolmart.resizeChanged;
+	Coodect.windowResized = function (timeStamp) {
+		if (timeStamp == Coodect.resizeTimeStamp) {
+			return Coodect.resizeChanged;
 		}
-		Wolmart.resizeChanged = Wolmart.canvasWidth != window.innerWidth;
-		Wolmart.canvasWidth = window.innerWidth;
-		Wolmart.resizeTimeStamp = timeStamp;
-		return Wolmart.resizeChanged;
+		Coodect.resizeChanged = Coodect.canvasWidth != window.innerWidth;
+		Coodect.canvasWidth = window.innerWidth;
+		Coodect.resizeTimeStamp = timeStamp;
+		return Coodect.resizeChanged;
     }
 
     /**
@@ -498,31 +498,31 @@ window.Wolmart = {};
 	 * @param {Object} options
 	 * @return {void}
 	 */
-	Wolmart.stickyContent = (function () {
+	Coodect.stickyContent = (function () {
 		function StickyContent($el, options) {
 			return this.init($el, options);
 		}
 
 		function refreshAll() {
-			Wolmart.$window.trigger('sticky_refresh.wolmart', {
+			Coodect.$window.trigger('sticky_refresh.Coodect', {
 				index: 0,
 				offsetTop: 0
 			});
 		}
 
 		function refreshAllSize(e) {
-			if (!e || Wolmart.windowResized(e.timeStamp)) {
-				Wolmart.$window.trigger('sticky_refresh_size.wolmart');
+			if (!e || Coodect.windowResized(e.timeStamp)) {
+				Coodect.$window.trigger('sticky_refresh_size.Coodect');
 				refreshAll();
 			}
 		}
 
 		StickyContent.prototype.init = function ($el, options) {
 			this.$el = $el;
-			this.options = $.extend(true, {}, Wolmart.stickyDefaultOptions, options, Wolmart.parseOptions($el.attr('data-sticky-options')));
-			Wolmart.$window
-				.on('sticky_refresh.wolmart', this.refresh.bind(this))
-				.on('sticky_refresh_size.wolmart', this.refreshSize.bind(this));
+			this.options = $.extend(true, {}, Coodect.stickyDefaultOptions, options, Coodect.parseOptions($el.attr('data-sticky-options')));
+			Coodect.$window
+				.on('sticky_refresh.Coodect', this.refresh.bind(this))
+				.on('sticky_refresh_size.Coodect', this.refreshSize.bind(this));
 		}
 
 		StickyContent.prototype.refreshSize = function (e) {
@@ -552,7 +552,7 @@ window.Wolmart = {};
 				beWrap || this.unwrap();
             }
 
-            Wolmart.sticky_top_height = 0;
+            Coodect.sticky_top_height = 0;
 
 			e && setTimeout(this.refreshSize.bind(this), 50);
 		}
@@ -600,13 +600,13 @@ window.Wolmart = {};
                         this.onFixed && this.onFixed();
 
                         // for only sticky cart form.
-                        $el.hasClass('product-sticky-content') && Wolmart.$body.addClass('addtocart-fixed');
+                        $el.hasClass('product-sticky-content') && Coodect.$body.addClass('addtocart-fixed');
 					} else {
 						$el.removeClass('fixed').css('margin-top', '').css('margin-bottom', '');
 						this.onUnfixed && this.onUnfixed();
 
                         // for only sticky cart form.
-                        $el.hasClass('product-sticky-content') && Wolmart.$body.removeClass('addtocart-fixed');
+                        $el.hasClass('product-sticky-content') && Coodect.$body.removeClass('addtocart-fixed');
 					}
 					this.scrollPos = pageYOffset;
 				} else {
@@ -618,7 +618,7 @@ window.Wolmart = {};
 				if ($el.is('.fixed.fix-top')) {
                     data.offsetTop += $el[0].offsetHeight;
 
-                    Wolmart.sticky_top_height = data.offsetTop;
+                    Coodect.sticky_top_height = data.offsetTop;
 				} else if ($el.is('.fixed.fix-bottom')) {
 					data.offsetBottom += $el[0].offsetHeight;
 				}
@@ -628,20 +628,20 @@ window.Wolmart = {};
 				this.onUnfixed && this.onUnfixed();
 
                 // for only sticky cart form.
-                $el.hasClass('product-sticky-content') && Wolmart.$body.removeClass('addtocart-fixed');
+                $el.hasClass('product-sticky-content') && Coodect.$body.removeClass('addtocart-fixed');
 			}
 		}
 
-		Wolmart.$window.on('wolmart_complete', function () {
+		Coodect.$window.on('Coodect_complete', function () {
 			window.addEventListener('scroll', refreshAll, { passive: true });
-			Wolmart.$window.on('resize', refreshAllSize);
+			Coodect.$window.on('resize', refreshAllSize);
             setTimeout(function(){
                 refreshAllSize();
             }, 300);
 		})
 
 		return function (selector, options) {
-			Wolmart.$(selector).each(function () {
+			Coodect.$(selector).each(function () {
 				var $this = $(this);
 				$this.data('sticky-content') || $this.data('sticky-content', new StickyContent($this, options));
 			})
@@ -656,19 +656,19 @@ window.Wolmart = {};
      * @requires themePluginParallax
      * @param {string} selector
      */
-    Wolmart.parallax = function (selector, options) {
+    Coodect.parallax = function (selector, options) {
         if ($.fn.themePluginParallax) {
-            Wolmart.$(selector).each(function () {
+            Coodect.$(selector).each(function () {
                 var $this = $(this);
                 $this.themePluginParallax(
-                    $.extend(true, Wolmart.parseOptions($this.attr('data-parallax-options')), options)
+                    $.extend(true, Coodect.parseOptions($this.attr('data-parallax-options')), options)
                 );
             });
         }
     }
 
-    Wolmart.skrollrParallax = function() {
-        if (Wolmart.isMobile) {
+    Coodect.skrollrParallax = function() {
+        if (Coodect.isMobile) {
 			return;
 		}
 
@@ -676,7 +676,7 @@ window.Wolmart = {};
 			return;
 		}
 
-		if ( Wolmart.$('.skrollable').length ) {
+		if ( Coodect.$('.skrollable').length ) {
 			skrollr.init( { forceHeight: false } );
 		}
     }
@@ -688,9 +688,9 @@ window.Wolmart = {};
 	 * @param {string|jQuery} selector
 	 * @return {void}
 	 */
-	Wolmart.initFloatingParallax = function ( ) {
+	Coodect.initFloatingParallax = function ( ) {
 		if ( $.fn.parallax ) {
-			Wolmart.$('.floating-item' ).each( function ( e ) {
+			Coodect.$('.floating-item' ).each( function ( e ) {
 				var $this = $( this );
 				if ( $this.data( 'parallax' ) ) {
 					$this.parallax( 'disable' );
@@ -705,7 +705,7 @@ window.Wolmart = {};
 	}
 
 
-    Wolmart.isotopeOptions = {
+    Coodect.isotopeOptions = {
         itemsSelector: '.grid-item',
         layoutMode: 'masonry',
         percentPosition: true,
@@ -721,22 +721,22 @@ window.Wolmart = {};
      * @param {string} selector,
      * @param {object} options
      */
-    Wolmart.isotopes = function (selector, options) {
+    Coodect.isotopes = function (selector, options) {
         if (typeof imagesLoaded === 'function' && $.fn.isotope) {
             var self = this;
 
-            Wolmart.$(selector).each(function () {
+            Coodect.$(selector).each(function () {
                 var $this = $(this),
                     settings = $.extend(true, {},
                         self.isotopeOptions,
-                        Wolmart.parseOptions($this.attr('data-grid-options')),
+                        Coodect.parseOptions($this.attr('data-grid-options')),
                         options ? options : {}
                     );
-                Wolmart.lazyLoad($this);
+                Coodect.lazyLoad($this);
 
                 $this.imagesLoaded(function () {
                     settings.customInitHeight && $this.height($this.height());
-                    settings.customDelay && Wolmart.call(function () {
+                    settings.customDelay && Coodect.call(function () {
                         $this.isotope(settings);
                     }, parseInt(settings.customDelay));
 
@@ -754,10 +754,10 @@ window.Wolmart = {};
      * @requires isotope
      * @param {string} selector
      */
-    Wolmart.initNavFilter = function (selector) {
+    Coodect.initNavFilter = function (selector) {
         if ($.fn.isotope) {
 
-            Wolmart.$(selector).on('click', function (e) {
+            Coodect.$(selector).on('click', function (e) {
                 var $this = $(this),
                     filterValue = $this.attr('data-filter'),
                     filterTarget = $this.parent().parent().attr('data-target');
@@ -765,7 +765,7 @@ window.Wolmart = {};
                 (filterTarget ? $(filterTarget) : $('.grid'))
                     .isotope({ filter: filterValue })
                     .isotope('on', 'arrangeComplete', function () {
-                        Wolmart.$window.trigger('appear.check');
+                        Coodect.$window.trigger('appear.check');
                     });
 
                 $this.parent().siblings().children().removeClass('active');
@@ -783,8 +783,8 @@ window.Wolmart = {};
      * Find all .ratings-full from root, and initialized tooltip.
      * @param {HTMLElement} root
      */
-    Wolmart.ratingTooltip = function (root) {
-        var els = Wolmart.byClass('ratings-full', root ? root : document.body),
+    Coodect.ratingTooltip = function (root) {
+        var els = Coodect.byClass('ratings-full', root ? root : document.body),
             len = els.length;
         var ratingHandler = function () {
             var res = parseInt( this.firstElementChild.style.width.slice( 0, -1 ) ) / 20;
@@ -804,8 +804,8 @@ window.Wolmart = {};
      * Find all .progress-bar and set its value
      * @param { String } selector
      */
-    Wolmart.setProgressBar = function (selector) {
-        Wolmart.$(selector).each(function () {
+    Coodect.setProgressBar = function (selector) {
+        Coodect.$(selector).each(function () {
             var $this = $(this),
                 sales_count = $this.parent().find('mark')[0].innerHTML,
                 percent = '';
@@ -828,8 +828,8 @@ window.Wolmart = {};
      *
      * @param {string} selector
      */
-    Wolmart.alert = function (selector) {
-        Wolmart.$body.on('click', selector + ' .btn-close', function (e) {
+    Coodect.alert = function (selector) {
+        Coodect.$body.on('click', selector + ' .btn-close', function (e) {
             e.preventDefault();
             $(this).closest(selector).fadeOut(function () {
                 $(this).remove();
@@ -845,8 +845,8 @@ window.Wolmart = {};
      *
      * @param {String} selector
      */
-    Wolmart.accordion = function (selector) {
-        Wolmart.$body.on('click', selector, function (e) {
+    Coodect.accordion = function (selector) {
+        Coodect.$body.on('click', selector, function (e) {
             var $this = $(this),
                 $body = $this.closest('.card').find($this.attr('href')),
                 $parent = $this.closest('.accordion');
@@ -859,7 +859,7 @@ window.Wolmart = {};
                         toggleSlide($body);
                 } else if ($body.hasClass('collapsed')) {
                     if ($parent.find('.expanded').length > 0) {
-                        if (Wolmart.isIE) {
+                        if (Coodect.isIE) {
                             toggleSlide($parent.find('.expanded'), function () {
                                 toggleSlide($body);
                             });
@@ -894,7 +894,7 @@ window.Wolmart = {};
     }
 
 
-    Wolmart.animationOptions = {
+    Coodect.animationOptions = {
         name: 'fadeIn',
         duration: '1.2s',
         delay: '.2s'
@@ -906,13 +906,13 @@ window.Wolmart = {};
      *
      * @param {String} selector
      */
-    Wolmart.appearAnimate = function (selector) {
-        Wolmart.$(selector).each(function () {
+    Coodect.appearAnimate = function (selector) {
+        Coodect.$(selector).each(function () {
             var el = this;
 
-            Wolmart.appear(el, function () {
+            Coodect.appear(el, function () {
                 if (el.classList.contains('appear-animate')) {
-                    var settings = $.extend({}, Wolmart.animationOptions, Wolmart.parseOptions(el.getAttribute('data-animation-options')));
+                    var settings = $.extend({}, Coodect.animationOptions, Coodect.parseOptions(el.getAttribute('data-animation-options')));
 
                     setTimeout(function () {
                         el.style['animation-duration'] = settings.duration;
@@ -931,9 +931,9 @@ window.Wolmart = {};
      *
      * @param {String} selector
      */
-    Wolmart.countDown = function (selector) {
+    Coodect.countDown = function (selector) {
         if ($.fn.countdown) {
-            Wolmart.$(selector).each(function () {
+            Coodect.$(selector).each(function () {
                 var $this = $(this),
                     untilDate = $this.data('until'),
                     compact = $this.data('compact'),
@@ -983,9 +983,9 @@ window.Wolmart = {};
      * @param {string} selector
      * @param {object} option
      */
-    Wolmart.priceSlider = function (selector, option) {
+    Coodect.priceSlider = function (selector, option) {
         if (typeof noUiSlider === 'object') {
-            Wolmart.$(selector).each(function () {
+            Coodect.$(selector).each(function () {
                 var self = this;
 
                 noUiSlider.create(self, $.extend(true, {
@@ -1012,9 +1012,9 @@ window.Wolmart = {};
 
 
     /**
-     * Wolmart Stickysidebar Options
+     * Coodect Stickysidebar Options
      */
-    Wolmart.stickySidebarOptions = {
+    Coodect.stickySidebarOptions = {
         autoInit: true,
         minWidth: 991,
         containerSelector: '.sticky-sidebar-wrapper',
@@ -1031,7 +1031,7 @@ window.Wolmart = {};
      * @requires themeSticky
      * @param {string} selector
      */
-    Wolmart.stickySidebar = function (selector) {
+    Coodect.stickySidebar = function (selector) {
         if ($.fn.themeSticky) {
             var top = 0;
             if ( ! $('.sticky-sidebar > .filter-actions').length && $(window).width() >= 992) {
@@ -1044,34 +1044,34 @@ window.Wolmart = {};
                 });
             }
 
-            Wolmart.$(selector).each(function () {
+            Coodect.$(selector).each(function () {
                 var $this = $(this);
-                $this.themeSticky($.extend({}, Wolmart.stickySidebarOptions, {padding: {top: top}}, Wolmart.parseOptions($this.attr('data-sticky-options'))));
+                $this.themeSticky($.extend({}, Coodect.stickySidebarOptions, {padding: {top: top}}, Coodect.parseOptions($this.attr('data-sticky-options'))));
             });
 
             function recalcSticky() {
-                Wolmart.$(selector).trigger('recalc.pin');
+                Coodect.$(selector).trigger('recalc.pin');
                 $(window).trigger('appear.check');
             }
 
             setTimeout(recalcSticky, 300);
-            Wolmart.$window.on('click', '.tab .nav-link', function () {
+            Coodect.$window.on('click', '.tab .nav-link', function () {
                 setTimeout(recalcSticky);
             });
         }
     }
 
     /**
-     * Wolmart Image Zoom Options
+     * Coodect Image Zoom Options
      */
-    Wolmart.zoomImageOptions = {
+    Coodect.zoomImageOptions = {
         responsive: true,
         borderSize: 0,
         zoomType: 'inner',
         onZoomIn: true,
         magnify: 1.1,
     };
-    Wolmart.zoomImageObjects = [];
+    Coodect.zoomImageObjects = [];
 
     /**
      * zoomImageOptions
@@ -1080,16 +1080,16 @@ window.Wolmart = {};
      * @requires zoom
      * @param {jQuery} $el
      */
-    Wolmart.zoomImage = function ($el) {
+    Coodect.zoomImage = function ($el) {
 
         if ($.fn.zoom && $el) {
             (('string' === typeof $el) ? $($el) : $el)
                 .find('img').each(function () {
                     var $this = $(this);
-                    Wolmart.zoomImageOptions.target = $this.parent();
-                    Wolmart.zoomImageOptions.url = $this.attr('data-zoom-image');
-                    $this.zoom( Wolmart.zoomImageOptions );
-                    Wolmart.zoomImageObjects.push($this);
+                    Coodect.zoomImageOptions.target = $this.parent();
+                    Coodect.zoomImageOptions.url = $this.attr('data-zoom-image');
+                    $this.zoom( Coodect.zoomImageOptions );
+                    Coodect.zoomImageObjects.push($this);
                 });
         }
     }
@@ -1098,8 +1098,8 @@ window.Wolmart = {};
      * zoomImageOnResize
      *
      */
-    Wolmart.zoomImageOnResize = function () {
-        Wolmart.zoomImageObjects.forEach(function ($img) {
+    Coodect.zoomImageOnResize = function () {
+        Coodect.zoomImageObjects.forEach(function ($img) {
             $img.each(function () {
                 var zoom = $(this).data('zoom');
                 zoom && zoom.refresh();
@@ -1123,7 +1123,7 @@ window.Wolmart = {};
      * @param {string} selector
      * @param {boolean} force
      */
-    Wolmart.lazyLoad = function (selector, force) {
+    Coodect.lazyLoad = function (selector, force) {
         function load() {
             this.setAttribute('src', this.getAttribute('data-src'));
             this.addEventListener('load', function () {
@@ -1133,11 +1133,11 @@ window.Wolmart = {};
         }
 
         // Lazyload Images
-        Wolmart.$(selector).find('.lazy-img').each(function () {
+        Coodect.$(selector).find('.lazy-img').each(function () {
             if ('undefined' != typeof force && force) {
                 load.call(this);
             } else {
-                Wolmart.appear(this, load);
+                Coodect.appear(this, load);
             }
         });
     }
@@ -1147,12 +1147,12 @@ window.Wolmart = {};
      * initPopup
      *
      */
-    Wolmart.initPopup = function (options, preset) {
+    Coodect.initPopup = function (options, preset) {
 
         // Newsletter popup
-        if (Wolmart.$body.hasClass('home') && Wolmart.getCookie('hideNewsletterPopup') !== 'true') {
+        if (Coodect.$body.hasClass('home') && Coodect.getCookie('hideNewsletterPopup') !== 'true') {
             setTimeout(function () {
-                Wolmart.popup({
+                Coodect.popup({
                     items: {
                         src: 'assets/ajax/newsletter.html'
                     },
@@ -1162,7 +1162,7 @@ window.Wolmart = {};
                     callbacks: {
                         beforeClose: function () {
                             // if "do not show" is checked
-                            $('#hide-newsletter-popup')[0].checked && Wolmart.setCookie('hideNewsletterPopup', true, 7);
+                            $('#hide-newsletter-popup')[0].checked && Coodect.setCookie('hideNewsletterPopup', true, 7);
                         }
                     },
                 });
@@ -1170,9 +1170,9 @@ window.Wolmart = {};
         }
 
         // Video popup
-        Wolmart.$body.on( 'click', '.btn-iframe', function ( e ) {
+        Coodect.$body.on( 'click', '.btn-iframe', function ( e ) {
             e.preventDefault();
-            Wolmart.popup( {
+            Coodect.popup( {
                 items: {
                     src: '<video src="' + $( e.currentTarget ).attr( 'href' ) + '" autoplay loop controls>',
                     type: "inline"
@@ -1182,11 +1182,11 @@ window.Wolmart = {};
         } );
 
         // Login popup
-        Wolmart.$body
+        Coodect.$body
             .on('click', '.sign-in', function(e) {
                 e.preventDefault();
 
-                Wolmart.popup ( {
+                Coodect.popup ( {
                     items: {
                         src: $( e.currentTarget ).attr( 'href' )
                     }
@@ -1195,7 +1195,7 @@ window.Wolmart = {};
 
             .on( 'click', '.register', function ( e ) {
                 e.preventDefault();
-                Wolmart.popup( {
+                Coodect.popup( {
                     items: {
                         src: $( e.currentTarget ).attr( 'href' )
                     },
@@ -1213,10 +1213,10 @@ window.Wolmart = {};
      * initNotificationAlert
      *
      */
-    Wolmart.initNotificationAlert = function () {
-        if (Wolmart.$body.hasClass('has-notification')) {
+    Coodect.initNotificationAlert = function () {
+        if (Coodect.$body.hasClass('has-notification')) {
             setTimeout(function () {
-                Wolmart.$body.addClass('show-notification');
+                Coodect.$body.addClass('show-notification');
             }, 5000);
         }
     }
@@ -1228,10 +1228,10 @@ window.Wolmart = {};
      * @requires jQuery.countTo
      * @param {String} selector
      */
-    Wolmart.countTo = function (selector) {
+    Coodect.countTo = function (selector) {
         if ($.fn.countTo) {
-            Wolmart.$(selector).each(function () {
-                Wolmart.appear(this, function () {
+            Coodect.$(selector).each(function () {
+                Coodect.appear(this, function () {
                     var $this = $(this);
                     setTimeout(function () {
                         $this.countTo({
@@ -1245,7 +1245,7 @@ window.Wolmart = {};
         }
     }
 
-    Wolmart.minipopupOption = {
+    Coodect.minipopupOption = {
         // info
         productClass: '', // ' product-cart', ' product-list-sm'
         imageSrc: '',
@@ -1277,7 +1277,7 @@ window.Wolmart = {};
     /**
 	 * @class MiniPopup
 	 */
-    Wolmart.Minipopup = (function () {
+    Coodect.Minipopup = (function () {
         // Private Members
         var $area,
             offset = 0,
@@ -1302,7 +1302,7 @@ window.Wolmart = {};
                 var self = this;
                 var area = document.createElement('div');
                 area.className = "minipopup-area";
-                Wolmart.byClass('page-wrapper')[0].appendChild(area);
+                Coodect.byClass('page-wrapper')[0].appendChild(area);
                 $area = $(area);
 
                 // bind methods
@@ -1312,10 +1312,10 @@ window.Wolmart = {};
 
             open: function (options, callback) {
                 var self = this,
-                    settings = $.extend(true, {}, Wolmart.minipopupOption, options),
+                    settings = $.extend(true, {}, Coodect.minipopupOption, options),
                     $box;
 
-                $box = $(Wolmart.parseTemplate(settings.template, settings));
+                $box = $(Coodect.parseTemplate(settings.template, settings));
                 self.space = settings.space;
 
                 // open
@@ -1337,7 +1337,7 @@ window.Wolmart = {};
                         .on('mouseup', function () {
                             self.close($(this).index());
                         });
-                    Wolmart.$body.on('touchstart', function () {
+                    Coodect.$body.on('touchstart', function () {
                         self.resume();
                     });
 
@@ -1399,8 +1399,8 @@ window.Wolmart = {};
      * @param {String} selector
      */
 
-    Wolmart.headerToggleSearch = function ( selector ) {
-        var $search = Wolmart.$( selector );
+    Coodect.headerToggleSearch = function ( selector ) {
+        var $search = Coodect.$( selector );
         $search.find( '.form-control' )
             .on( 'focusin', function ( e ) {
                 $search.addClass( 'show' );
@@ -1410,19 +1410,19 @@ window.Wolmart = {};
             } );
 
         // Initialize sticky footer's search toggle.
-        Wolmart.$body.on( 'click', '.sticky-footer .search-toggle', function ( e ) {
+        Coodect.$body.on( 'click', '.sticky-footer .search-toggle', function ( e ) {
             $( this ).parent().toggleClass( 'show' );
             e.preventDefault();
         } );
     }
-    Wolmart.scrollTo = function (target, duration) {
+    Coodect.scrollTo = function (target, duration) {
 		var _duration = typeof duration == 'undefined' ? 0 : duration;
 		var offset;
 
 		if (typeof target == 'number') {
 			offset = target;
 		} else {
-			var $target = Wolmart.$(target);
+			var $target = Coodect.$(target);
 			if (!$target.length || $target.css('display') == 'none') {
 				return;
 			}
@@ -1441,18 +1441,18 @@ window.Wolmart = {};
 
 (function ($) {
     /**
-     * Wolmart Menu Plugins
+     * Coodect Menu Plugins
      */
 
     // Private members
     var showMobileMenu = function (e) {
         e.preventDefault();
-        Wolmart.$body.addClass('mmenu-active');
+        Coodect.$body.addClass('mmenu-active');
 
     };
     var hideMobileMenu = function (e) {
         e.preventDefault();
-        Wolmart.$body.removeClass('mmenu-active');
+        Coodect.$body.removeClass('mmenu-active');
     };
 
     /**
@@ -1480,7 +1480,7 @@ window.Wolmart = {};
             });
 
             // calc megamenu position
-            Wolmart.$window.on('resize', function () {
+            Coodect.$window.on('resize', function () {
                 $('.main-nav megamenu').each(function () {
                     var $this = $(this),
                         left = $this.offset().left,
@@ -1532,12 +1532,12 @@ window.Wolmart = {};
                     })
                 }
                 if ($menu.hasClass('with-sidebar')) {
-                    var sidebar = Wolmart.byClass('sidebar');
+                    var sidebar = Coodect.byClass('sidebar');
                     if (sidebar.length) {
                         $menu.find('.dropdown-box').css('width', sidebar[0].offsetWidth - 20);
 
                         // set category menu's width same as sidebar.
-                        Wolmart.$window.on('resize', function () {
+                        Coodect.$window.on('resize', function () {
                             $menu.find('.dropdown-box').css('width', (sidebar[0].offsetWidth - 20));
                         });
                     }
@@ -1559,7 +1559,7 @@ window.Wolmart = {};
             $('.mobile-menu-toggle').on('click', showMobileMenu);
             $('.mobile-menu-overlay').on('click', hideMobileMenu);
             $('.mobile-menu-close').on('click', hideMobileMenu);
-            Wolmart.$window.on('resize', hideMobileMenu);
+            Coodect.$window.on('resize', hideMobileMenu);
         },
         initFilterMenu: function () {
             $('.search-ul li').each(function () {
@@ -1601,11 +1601,11 @@ window.Wolmart = {};
         }
     }
 
-    Wolmart.menu = Menu;
+    Coodect.menu = Menu;
 })(jQuery);
 
 /**
- * Wolmart Dependent Plugin - Slider
+ * Coodect Dependent Plugin - Slider
  *
  * @requires OwlCarousel
  * @instance multiple
@@ -1638,7 +1638,7 @@ function Slider($el, options) {
             len = els.length;
         for (i = 0; i < len; ++i) {
             if (!els[i].classList.contains('active')) {
-                var animates = Wolmart.byClass('appear-animate', els[i]),
+                var animates = Coodect.byClass('appear-animate', els[i]),
                     j;
                 for (j = animates.length - 1; j >= 0; --j) {
                     animates[j].classList.remove('appear-animate');
@@ -1679,8 +1679,8 @@ function Slider($el, options) {
         $el.find('.owl-item.active .slide-animate').each(function () {
             var $animation_item = $(this),
                 settings = $.extend(true, {},
-                    Wolmart.animationOptions,
-                    Wolmart.parseOptions($animation_item.data('animation-options'))
+                    Coodect.animationOptions,
+                    Coodect.parseOptions($animation_item.data('animation-options'))
                 ),
                 duration = settings.duration,
                 delay = settings.delay,
@@ -1700,7 +1700,7 @@ function Slider($el, options) {
                     $animation_item.css('width', width);
                 }
                 duration = duration ? duration : '0.75s';
-                var temp = Wolmart.requestTimeout(function () {
+                var temp = Coodect.requestTimeout(function () {
                     $animation_item.addClass('show-content');
                 }, (delay ? Number((delay).slice(0, -1)) * 1000 + 200 : 200));
 
@@ -1722,7 +1722,7 @@ function Slider($el, options) {
         self.prev = self.next;
         $el.find( '.owl-item .slide-animate' ).each( function () {
             var $animation_item = $( this ),
-                settings = $.extend( true, {}, Wolmart.animationOptions, Wolmart.parseOptions( $animation_item.data( 'animation-options' ) ) );
+                settings = $.extend( true, {}, Coodect.animationOptions, Coodect.parseOptions( $animation_item.data( 'animation-options' ) ) );
             $animation_item.removeClass( settings.name );
         } );
     }
@@ -1737,13 +1737,13 @@ function Slider($el, options) {
                 /* clear all animations that are running. */
                 if ( $el.hasClass( "animation-slider" ) ) {
                     for ( var i = 0; i < self.timers.length; i++ ) {
-                        Wolmart.deleteTimeout( self.timers[ i ] );
+                        Coodect.deleteTimeout( self.timers[ i ] );
                     }
                     self.timers = [];
                 }
                 $el.find( '.owl-item.active .slide-animate' ).each( function () {
                     var $animation_item = $( this ),
-                        settings = $.extend( true, {}, Wolmart.animationOptions, Wolmart.parseOptions( $animation_item.data( 'animation-options' ) ) ),
+                        settings = $.extend( true, {}, Coodect.animationOptions, Coodect.parseOptions( $animation_item.data( 'animation-options' ) ) ),
                         duration = settings.duration,
                         delay = settings.delay,
                         aniName = settings.name;
@@ -1757,7 +1757,7 @@ function Slider($el, options) {
 
                     duration = duration ? duration : '0.75s';
                     $animation_item.addClass( 'show-content' );
-                    var temp = Wolmart.requestTimeout( function () {
+                    var temp = Coodect.requestTimeout( function () {
                         $animation_item.css( 'transition-property', '' );
                         $animation_item.css( 'transition-delay', '' );
                         $animation_item.css( 'transition-duration', '' );
@@ -1784,7 +1784,7 @@ function Slider($el, options) {
     }
 
     Slider.zoomImage = function () {
-        Wolmart.zoomImage(this.$element);
+        Coodect.zoomImage(this.$element);
     }
 
     Slider.zoomImageRefresh = function () {
@@ -1796,8 +1796,8 @@ function Slider($el, options) {
                 if (typeof zoom !== 'undefined') {
                     zoom.refresh();
                 } else {
-                    Wolmart.zoomImageOptions.zoomContainer = $this.parent();
-                    $this.zoom(Wolmart.zoomImageOptions);
+                    Coodect.zoomImageOptions.zoomContainer = $this.parent();
+                    $this.zoom(Coodect.zoomImageOptions);
                 }
             }
         });
@@ -1835,7 +1835,7 @@ function Slider($el, options) {
         this.prev = 1;
         this.next = 1;
 
-        Wolmart.lazyLoad( $el, true );
+        Coodect.lazyLoad( $el, true );
 
         var classes = $el.attr( 'class' ).split( ' ' ),
             settings = $.extend( true, {}, Slider.presets, Slider.defaults );
@@ -1852,7 +1852,7 @@ function Slider($el, options) {
         } );
 
         // extend user options
-        $.extend( true, settings, Wolmart.parseOptions( $el.attr( 'data-owl-options' ) ), options );
+        $.extend( true, settings, Coodect.parseOptions( $el.attr( 'data-owl-options' ) ), options );
 
         onSliderInitialized = onSliderInitialized.bind( this );
         onSliderTranslate = onSliderTranslate.bind( this );
@@ -1891,19 +1891,30 @@ function Slider($el, options) {
         }
     }
 
-    Wolmart.slider = function (selector, options) {
-        Wolmart.$(selector).each(function () {
+    Coodect.slider = function (selector, options) {
+        Coodect.$(selector).each(function () {
             var $this = $(this);
 
-            Wolmart.call(function () {
+            Coodect.call(function () {
                 new Slider($this, options);
             });
         });
     }
+
+    Coodect.reloadCarouselProductSingle = function(){
+        $(".owl-carousel").owlCarousel('destroy');
+        let intervalCarousel = setInterval(() => {
+            Coodect.slider('.owl-carousel');
+            let carouselComplet = document.querySelectorAll('.product-single-carousel > owl-stage-outer');
+            if(carouselComplet){
+                clearInterval(intervalCarousel);
+            }
+        }, 1000);
+    }
 })(jQuery);
 
 /**
- * Wolmart Plugin - Sidebar
+ * Coodect Plugin - Sidebar
  *
  * @instance multiple
  *
@@ -1938,11 +1949,11 @@ function Sidebar(name) {
 
             if (self.isNavigation) {
                 onResizeNavigationStyle = onResizeNavigationStyle.bind(this);
-                Wolmart.$window.on('resize', onResizeNavigationStyle);
+                Coodect.$window.on('resize', onResizeNavigationStyle);
             }
 
-            Wolmart.$window.on('resize', function () {
-                Wolmart.$body.removeClass(name + '-active');
+            Coodect.$window.on('resize', function () {
+                Coodect.$body.removeClass(name + '-active');
             });
 
             // Register toggle event
@@ -1957,7 +1968,7 @@ function Sidebar(name) {
             // Register close event
             self.$sidebar.find('.sidebar-overlay, .sidebar-close')
                 .on('click', function (e) {
-                    Wolmart.$body.removeClass(name + '-active');
+                    Coodect.$body.removeClass(name + '-active');
                     e.preventDefault();
                 });
         }
@@ -2013,7 +2024,7 @@ function Sidebar(name) {
             self.$sidebar.find('.sidebar-overlay .sidebar-close').css('margin-left', - (window.innerWidth - document.body.clientWidth));
 
             // activate sidebar
-            Wolmart.$body
+            Coodect.$body
                 .toggleClass(self.name + '-active')
                 .removeClass('closed');
         }
@@ -2023,7 +2034,7 @@ function Sidebar(name) {
         }, 400);
     }
 
-    Wolmart.sidebar = function (name) {
+    Coodect.sidebar = function (name) {
         return new Sidebar().init(name);
     }
 })(jQuery);
@@ -2031,7 +2042,7 @@ function Sidebar(name) {
 
 
 /**
- * Wolmart Dependent Plugin - Shop
+ * Coodect Dependent Plugin - Shop
  *
  * @requires
  */
@@ -2042,7 +2053,7 @@ function Sidebar(name) {
         var selector = '.select-menu';
 
         // show or hide select menu
-        Wolmart.$body.on( 'mousedown', '.select-menu', function ( e ) {
+        Coodect.$body.on( 'mousedown', '.select-menu', function ( e ) {
             var $selectMenu = $( e.currentTarget ),
                 $target = $( e.target ),
                 isOpened = $selectMenu.hasClass( 'opened' );
@@ -2106,11 +2117,11 @@ function Sidebar(name) {
             e.preventDefault();
         } );
 
-        Wolmart.$body.on( 'click', '.select-menu a', function ( e ) {
+        Coodect.$body.on( 'click', '.select-menu a', function ( e ) {
             e.preventDefault();
         } );
 
-        Wolmart.$body.on( 'click', '.selected-item i', function ( e ) {
+        Coodect.$body.on( 'click', '.selected-item i', function ( e ) {
             $( e.currentTarget ).parent().fadeOut( function () {
                 var $this = $( this ),
                     $link = $this.data( 'link' );
@@ -2129,11 +2140,11 @@ function Sidebar(name) {
         } );
 
         // if click outside of select menu, hide select menu
-        Wolmart.$body.on( 'mousedown', function ( e ) {
+        Coodect.$body.on( 'mousedown', function ( e ) {
             $( '.select-menu' ).removeClass( 'opened' );
         } );
 
-        Wolmart.$body.on( 'click', '.filter-items a', function ( e ) {
+        Coodect.$body.on( 'click', '.filter-items a', function ( e ) {
             var $ul = $( this ).closest( '.filter-items' );
             if ( !$ul.hasClass( 'search-ul' ) && !$ul.parent().hasClass( 'select-menu' ) ) {
                 $( this ).parent().toggleClass( 'active' );
@@ -2145,7 +2156,7 @@ function Sidebar(name) {
     var initProductCartAction = function () {
         var selector = '.product:not(.product-select) .btn-cart, .product-popup .btn-cart, .home .product-single .btn-cart';
 
-        Wolmart.$body.on('click', selector, function (e) {
+        Coodect.$body.on('click', selector, function (e) {
             e.preventDefault();
             var $this = $(this),
                 $product = $this.closest('.product, .product-popup');
@@ -2160,7 +2171,7 @@ function Sidebar(name) {
             setTimeout(function () {
                 $this.removeClass('load-more-overlay loading');
 
-                Wolmart.Minipopup.open({
+                Coodect.Minipopup.open({
                     productClass: ' product-cart',
                     name: $product.find('.product-name, .product-title').text(),
                     nameLink: $product.find('.product-name > a, .product-title > a').attr('href'),
@@ -2174,7 +2185,7 @@ function Sidebar(name) {
     }
 
     var initWishlistAction = function () {
-        Wolmart.$body.on('click', '.product:not(.product-single) .btn-wishlist', function (e) {
+        Coodect.$body.on('click', '.product:not(.product-single) .btn-wishlist', function (e) {
             e.preventDefault();
             var $this = $(this);
             $this.toggleClass('added').addClass('load-more-overlay loading');
@@ -2321,12 +2332,12 @@ function Sidebar(name) {
 
         initComparePopup();
 
-        Wolmart.$body
+        Coodect.$body
             .on('click', '.product .btn-compare', addToCompare)
             .on('click', '.compare-popup .btn-remove', removeCompare)
             .on('click', '.compare-popup .btn-clean', removeAllCompare)
 
-        Wolmart.$body.on('click', '.compare-popup-overlay', function () {
+        Coodect.$body.on('click', '.compare-popup-overlay', function () {
             $compare.removeClass('show');
         });
 
@@ -2337,16 +2348,16 @@ function Sidebar(name) {
         if ( !$popup.length) {
             return;
         }
-        Wolmart.$body.on('click', '.btn-quickview', function (e) {
+        Coodect.$body.on('click', '.btn-quickview', function (e) {
             e.preventDefault();
-            Wolmart.popup({
+            Coodect.popup({
                 items: {
                     src: $popup[0].outerHTML
                 },
                 callbacks: {
                     open: function () {
                         // this.wrap.imagesLoaded(function () {
-                            Wolmart.productSingle($('.mfp-product .product-single'));
+                            Coodect.productSingle($('.mfp-product .product-single'));
                         // });
                         Popup.defaults.callbacks.open();
                     }
@@ -2359,8 +2370,8 @@ function Sidebar(name) {
     // Public Properties
     var Shop = {
         init: function () {
-            Wolmart.call(Wolmart.ratingTooltip, 500);
-            Wolmart.call(Wolmart.setProgressBar('.progress-bar'), 500);
+            Coodect.call(Coodect.ratingTooltip, 500);
+            Coodect.call(Coodect.setProgressBar('.progress-bar'), 500);
             this.initProductType('slideup');
             this.initVariation();
             this.initProductsScrollLoad( '.scroll-load' );
@@ -2372,7 +2383,7 @@ function Sidebar(name) {
             initProductQuickview();
             initCompare();
 
-            Wolmart.priceSlider('.filter-price-slider');
+            Coodect.priceSlider('.filter-price-slider');
         },
 
         initProductType: function (type) {
@@ -2387,7 +2398,7 @@ function Sidebar(name) {
                 //     $this.height($this.height() - hidden_height);
                 // });
 
-                // $(Wolmart.byClass('product-slideup-content'))
+                // $(Coodect.byClass('product-slideup-content'))
                     // .on('mouseenter touchstart', function (e) {
                     //     console.log("Mouse enter");
                     //     var $this = $(this),
@@ -2427,7 +2438,7 @@ function Sidebar(name) {
             })
         },
         initProductsScrollLoad: function ( $obj ) {
-            var $wrapper = Wolmart.$( $obj )
+            var $wrapper = Coodect.$( $obj )
                 , top;
             var url = $( $obj ).data( 'url' );
             if ( !url ) {
@@ -2452,7 +2463,7 @@ function Sidebar(name) {
                                     $wrapper.find( '.product-wrap.fade:not(.in)' ).addClass( 'in' );
                                 }, 200 );
                                 $wrapper.data( 'load-state', 'loaded' );
-                                Wolmart.countDown($newItems.find('.product-countdown'));
+                                Coodect.countDown($newItems.find('.product-countdown'));
                             }, 500 );
                             var loadCount = parseInt( $wrapper.data( 'load-count' ) ? $wrapper.data( 'load-count' ) : 0 );
                             $wrapper.data( 'load-count', ++loadCount );
@@ -2471,11 +2482,11 @@ function Sidebar(name) {
         }
     }
 
-    Wolmart.shop = Shop;
+    Coodect.shop = Shop;
 })(jQuery);
 
 /**
- * Wolmart Plugin - QuantityInput
+ * Coodect Plugin - QuantityInput
  *
  * @instance multiple
  */
@@ -2539,7 +2550,7 @@ function QuantityInput($el) {
             })
             .on('mouseup', self.stop);
 
-        Wolmart.$body.on('mouseup', self.stop)
+        Coodect.$body.on('mouseup', self.stop)
             .on('touchend', self.stop)
             .on('touchcancel', self.stop);
     }
@@ -2551,9 +2562,9 @@ function QuantityInput($el) {
         self.value = self.$value.val();
 
         self.value < self.max && self.$value.val(++self.value);
-        self.increaseTimer = Wolmart.requestTimeout(function () {
+        self.increaseTimer = Coodect.requestTimeout(function () {
             self.speed = 1;
-            self.increaseTimer = Wolmart.requestInterval(function () {
+            self.increaseTimer = Coodect.requestInterval(function () {
                 self.$value.val(self.value = Math.min(self.value + Math.floor(self.speed *= 1.05), self.max));
             }, 50);
         }, 400);
@@ -2566,21 +2577,21 @@ function QuantityInput($el) {
         self.value = self.$value.val();
         self.value > self.min && self.$value.val(--self.value);
 
-        self.decreaseTimer = Wolmart.requestTimeout(function () {
+        self.decreaseTimer = Coodect.requestTimeout(function () {
             self.speed = 1;
-            self.decreaseTimer = Wolmart.requestInterval(function () {
+            self.decreaseTimer = Coodect.requestInterval(function () {
                 self.$value.val(self.value = Math.max(self.value - Math.floor(self.speed *= 1.05), self.min))
             }, 50);
         }, 400);
     }
 
     QuantityInput.prototype.stop = function (e) {
-        Wolmart.deleteTimeout(this.increaseTimer);
-        Wolmart.deleteTimeout(this.decreaseTimer);
+        Coodect.deleteTimeout(this.increaseTimer);
+        Coodect.deleteTimeout(this.decreaseTimer);
     }
 
-    Wolmart.initQtyInput = function (selector) {
-        Wolmart.$(selector).each(function () {
+    Coodect.initQtyInput = function (selector) {
+        Coodect.$(selector).each(function () {
             var $this = $(this);
 
             // if not initialized
@@ -2591,7 +2602,7 @@ function QuantityInput($el) {
 })(jQuery)
 
 /**
- * Wolmart Plugin - Popup
+ * Coodect Plugin - Popup
  *
  * @requires magnificPopup
  * @instance multiple
@@ -2670,13 +2681,13 @@ function Popup(options, preset) {
         }
     }
 
-    Wolmart.popup = function (options, preset) {
+    Coodect.popup = function (options, preset) {
         return new Popup(options, preset);
     }
 })(jQuery);
 
 /**
- * Wolmart Plugin - Product Single
+ * Coodect Plugin - Product Single
  *
  * @requires OwlCarousel
  * @requires zoom
@@ -2728,7 +2739,7 @@ function ProductSingle($el) {
 
         // refresh thumbs
         thumbsRefresh(self);
-        Wolmart.$window.on('resize', function () {
+        Coodect.$window.on('resize', function () {
             self.thumbsIsVertical = self._isPgVertical && window.innerWidth >= 992;
             thumbsRefresh(self);
         });
@@ -2853,7 +2864,7 @@ function ProductSingle($el) {
 
     // var goToReviewPan = function (e) {
     //     //e.preventDefault();
-    //     Wolmart.scrollTo($('.product-tabs > .nav a[href="' + this.getAttribute('href') + '"]').trigger('click'));
+    //     Coodect.scrollTo($('.product-tabs > .nav a[href="' + this.getAttribute('href') + '"]').trigger('click'));
     // }
 
     // Public Properties
@@ -2869,7 +2880,7 @@ function ProductSingle($el) {
         // bind
         if (self.isQuickView) {
             recalcDetailsHeight = recalcDetailsHeight.bind(this);
-            Wolmart.ratingTooltip();
+            Coodect.ratingTooltip();
         }
 
         // init thumbs
@@ -2899,9 +2910,9 @@ function ProductSingle($el) {
         //self.$wrapper.on('click', '.rating-reviews', goToReviewPan);
 
         // if this is created after document ready, init plugins
-        if ('complete' === Wolmart.status) {
-            Wolmart.slider($slider);
-            Wolmart.initQtyInput($el.find('.quantity'));
+        if ('complete' === Coodect.status) {
+            Coodect.slider($slider);
+            Coodect.initQtyInput($el.find('.quantity'));
         }
 
         // init sticky thumbnail
@@ -2937,7 +2948,7 @@ function ProductSingle($el) {
                 }
             }
         } else { // if thumb carousel
-            Wolmart.requestTimeout(function() {
+            Coodect.requestTimeout(function() {
                 self.$thumbs.data('owl.carousel') && self.$thumbs.data('owl.carousel').to(index);
             }, 100);
         }
@@ -2993,7 +3004,7 @@ function ProductSingle($el) {
         var target = $thumb.closest('.product-thumbs-sticky').find('.product-image-wrapper > :nth-child(' + newIndex + ')');
         if ( target.length ) {
             target = target.offset().top + 10;
-            Wolmart.scrollTo(target, 500);
+            Coodect.scrollTo(target, 500);
         }
 
         setTimeout(function () {
@@ -3005,7 +3016,7 @@ function ProductSingle($el) {
         var self = this;
         if (!this.isStickyScrolling) {
             self.$wrapper.find('.product-image-wrapper .product-image').each(function () {
-                if (Wolmart.isOnScreen(this)) {
+                if (Coodect.isOnScreen(this)) {
                     self.$wrapper.find('.product-thumbs > :nth-child(' + ($(this).index() + 1) + ')')
                         .addClass('active').siblings().removeClass('active');
                     return false;
@@ -3023,8 +3034,8 @@ function ProductSingle($el) {
         thumbImage.attr('src', src);
     }
 
-    Wolmart.productSingle = function (selector) {
-        Wolmart.$(selector).each(function() {
+    Coodect.productSingle = function (selector) {
+        Coodect.$(selector).each(function() {
             var $this = $(this);
             if ( ! $this.is('body > *') ) {
                 $this.data('product-single', new ProductSingle($this));
@@ -3035,7 +3046,7 @@ function ProductSingle($el) {
 })(jQuery);
 
 /**
- * Wolmart Plugin - Product Single Page
+ * Coodect Plugin - Product Single Page
  *
  * @requires Slider
  * @requires ProductSingle
@@ -3090,7 +3101,7 @@ function ProductSingle($el) {
                     closeOnScroll: false
                 });
                 photoSwipe.init();
-                Wolmart.photoSwipe = photoSwipe;
+                Coodect.photoSwipe = photoSwipe;
             }
         }
     }
@@ -3098,7 +3109,7 @@ function ProductSingle($el) {
     // Open Video
     function openVideo(e) {
         e.preventDefault();
-        Wolmart.popup( {
+        Coodect.popup( {
             items: {
                 src: '<video src="assets/video/memory-of-a-woman.mp4" autoplay loop controls>',
                 type: "inline"
@@ -3110,7 +3121,7 @@ function ProductSingle($el) {
     // Open 360 Degree
     function open360DegreeView(e) {
 		e.preventDefault();
-		Wolmart.popup({
+		Coodect.popup({
 			type: 'inline',
 			mainClass: "product-popupbox wm-fade product-360-popup",
 			preloader: false,
@@ -3228,15 +3239,15 @@ function ProductSingle($el) {
         refreshStickyProduct();
     }
 
-    Wolmart.initProductSinglePage = function() {
+    Coodect.initProductSinglePage = function() {
         // Zoom Image for grid type
-        Wolmart.zoomImage('.product-gallery .product-image');
+        Coodect.zoomImage('.product-gallery .product-image');
 
         stickyProduct('.product-sticky-content')
 
         // Register events
         if(!document.body.classList.contains('home')) {
-            Wolmart.$body
+            Coodect.$body
                 .on('click', '.product-image-full', openImageGallery)
                 .on('click', '.review-image img', openImageGallery)
                 .on('click', '.product-video-viewer', openVideo)
@@ -3288,7 +3299,7 @@ function Calendar(el, options) {
         self.element = $el;    // calendar container element
         self.settings = $.extend({}, true,
             Calendar.defaultOptions,
-            Wolmart.parseOptions($el.attr('data-calendar-options')),
+            Coodect.parseOptions($el.attr('data-calendar-options')),
             options
         ); // extend default options with user defined options
         self.today = new Date();
@@ -3427,17 +3438,17 @@ function Calendar(el, options) {
     }
 
 
-    Wolmart.calendar = function (selector, options) {
-        Wolmart.$(selector).each(function () {
+    Coodect.calendar = function (selector, options) {
+        Coodect.$(selector).each(function () {
             var $this = $(this);
 
-            Wolmart.call(function () {
+            Coodect.call(function () {
                 new Calendar($this, options);
             });
         });
     }
 
-    Wolmart.initVendor = function (selector) {
+    Coodect.initVendor = function (selector) {
         var $this = $(selector),
             $btnSearchVendor = $this.closest('.page-content').find('.toolbox .vendor-search-toggle'),
             $phone = $this.find('.store-phone');
@@ -3457,7 +3468,7 @@ function Calendar(el, options) {
         });
     }
 
-    Wolmart.slideContent = function (selector) {
+    Coodect.slideContent = function (selector) {
         var $this = $(selector),
             $content = $this.next();
 
@@ -3476,7 +3487,7 @@ function Calendar(el, options) {
     }
 
     // Login vendor in login page
-    Wolmart.initLoginVendor = function (selector) {
+    Coodect.initLoginVendor = function (selector) {
         var $this = $(selector),
             $LoginVendorPanel = $this.parent().find('.login-vendor'),
             $checkCustomer = $this.find('.check-customer'),
@@ -3496,80 +3507,80 @@ function Calendar(el, options) {
     }
 })(jQuery);
 /**
- * Wolmart Theme
+ * Coodect Theme
  */
 (function ($) {
 
     // Initialize Method while document is being loaded
-    Wolmart.prepare = function () {
-        Wolmart.$body.hasClass('with-flex-container') && window.innerWidth >= 1200 &&
-            Wolmart.$body.addClass('sidebar-active');
+    Coodect.prepare = function () {
+        Coodect.$body.hasClass('with-flex-container') && window.innerWidth >= 1200 &&
+            Coodect.$body.addClass('sidebar-active');
     };
 
     // Initialize Method while document is interactive
-    Wolmart.initLayout = function () {
+    Coodect.initLayout = function () {
         // do something later...
-        Wolmart.isotopes('.grid:not(.grid-float)');
-        Wolmart.stickySidebar('.sticky-sidebar');
+        Coodect.isotopes('.grid:not(.grid-float)');
+        Coodect.stickySidebar('.sticky-sidebar');
     };
 
     // Initialize Method after document has been loaded
-    Wolmart.init = function () {
+    Coodect.init = function () {
         // do something later...
-        Wolmart.appearAnimate('.appear-animate');                           // Run appear animation
-        Wolmart.slider('.owl-carousel');                                    // Initialize Slider
-        Wolmart.setTab('.nav-tabs');                                        // Initialize Tab
-        Wolmart.stickyContent('.sticky-header');                            // Initialize Sticky Content
-        Wolmart.stickyContent('.sticky-footer', {
+        Coodect.appearAnimate('.appear-animate');                           // Run appear animation
+        Coodect.slider('.owl-carousel');                                    // Initialize Slider
+        Coodect.setTab('.nav-tabs');                                        // Initialize Tab
+        Coodect.stickyContent('.sticky-header');                            // Initialize Sticky Content
+        Coodect.stickyContent('.sticky-footer', {
             minWidth: 0,
             maxWidth: 767,
             top: 150,
             hide: true,
             max_index: 2100
         });                                                                 // Initialize Sticky Footer
-        Wolmart.stickyContent( '.sticky-toolbox', Wolmart.stickyToolboxOptions );
-        Wolmart.stickyContent('.product-sticky-content', Wolmart.stickyProductOptions );
-        Wolmart.parallax('.parallax');                                      // Initialize Parallax
-        Wolmart.skrollrParallax();                                          // Initialize Skrollr Parallax
-        Wolmart.initFloatingParallax();                                     // Initialize Floating Parallax
-        Wolmart.menu.init();                                                // Initialize Menu
-        Wolmart.initScrollTopButton();                                      // Initialize scroll top button
-        Wolmart.shop.init();                                                // Initialize Shop
-        Wolmart.alert('.alert')                                             // Initialize Alert
-        Wolmart.accordion('.card-header > a')                               // Initialize Accordion
-        Wolmart.sidebar('sidebar');                                         // Initialize Sidebar
-        Wolmart.sidebar('right-sidebar');                                   // Initialize Right Sidebar
-        Wolmart.productSingle('.product-single');                           // Initialize all single products
-        Wolmart.initProductSinglePage();                                    // Initialize Single Product Page
-        Wolmart.initQtyInput('.quantity');                                  // Initialize Quantity Input
-        Wolmart.initNavFilter('.nav-filters .nav-filter')                   // Initialize Isotope Navigation Filters
-        Wolmart.calendar('.calendar-container');                            // Initialize Calendar
-        Wolmart.countDown('.product-countdown, .countdown');                // Initialize CountDown
-        // Wolmart.initPopup();                                                // Initialize Popup
-        Wolmart.initNotificationAlert();                                    // Initialize Notification Alert
-        Wolmart.countTo('.count-to');                                       // Initialize CountTo
-        Wolmart.initCartAction('.cart-offcanvas .cart-toggle');             // Initialize Product Cart
-        Wolmart.Minipopup.init();                                           // Initialize minipopup
-        Wolmart.headerToggleSearch('.hs-toggle');                           // Initialize Header toggle search
-        Wolmart.initVendor('.store');                                       // Initialize Vendor
-        Wolmart.slideContent('.login-toggle');                              // Initialize Slide Content
-        Wolmart.slideContent('.coupon-toggle');
-        Wolmart.slideContent('.checkbox-toggle');
-        Wolmart.initLoginVendor('.user-checkbox');                          // Initialize Vendor's Login
+        Coodect.stickyContent( '.sticky-toolbox', Coodect.stickyToolboxOptions );
+        // Coodect.stickyContent('.product-sticky-content', Coodect.stickyProductOptions );
+        Coodect.parallax('.parallax');                                      // Initialize Parallax
+        Coodect.skrollrParallax();                                          // Initialize Skrollr Parallax
+        Coodect.initFloatingParallax();                                     // Initialize Floating Parallax
+        Coodect.menu.init();                                                // Initialize Menu
+        Coodect.initScrollTopButton();                                      // Initialize scroll top button
+        Coodect.shop.init();                                                // Initialize Shop
+        Coodect.alert('.alert')                                             // Initialize Alert
+        Coodect.accordion('.card-header > a')                               // Initialize Accordion
+        Coodect.sidebar('sidebar');                                         // Initialize Sidebar
+        Coodect.sidebar('right-sidebar');                                   // Initialize Right Sidebar
+        Coodect.productSingle('.product-single');                           // Initialize all single products
+        Coodect.initProductSinglePage();                                    // Initialize Single Product Page
+        Coodect.initQtyInput('.quantity');                                  // Initialize Quantity Input
+        Coodect.initNavFilter('.nav-filters .nav-filter')                   // Initialize Isotope Navigation Filters
+        Coodect.calendar('.calendar-container');                            // Initialize Calendar
+        Coodect.countDown('.product-countdown, .countdown');                // Initialize CountDown
+        // Coodect.initPopup();                                             // Initialize Popup
+        Coodect.initNotificationAlert();                                    // Initialize Notification Alert
+        Coodect.countTo('.count-to');                                       // Initialize CountTo
+        Coodect.initCartAction('.cart-offcanvas .cart-toggle');             // Initialize Product Cart
+        Coodect.Minipopup.init();                                           // Initialize minipopup
+        Coodect.headerToggleSearch('.hs-toggle');                           // Initialize Header toggle search
+        Coodect.initVendor('.store');                                       // Initialize Vendor
+        Coodect.slideContent('.login-toggle');                              // Initialize Slide Content
+        Coodect.slideContent('.coupon-toggle');
+        Coodect.slideContent('.checkbox-toggle');
+        Coodect.initLoginVendor('.user-checkbox');                          // Initialize Vendor's Login
     };
 })(jQuery);
 
 
 /**
- * Wolmart Theme Initializer
+ * Coodect Theme Initializer
  */
 (function ($) {
     'use strict';
 
-    // Prepare Wolmart Theme
-    Wolmart.prepare();
+    // Prepare Coodect Theme
+    Coodect.prepare();
 
-    // Initialize Wolmart Theme
+    // Initialize Coodect Theme
     document.onreadystatechange = function () {
         if (document.readyState === "complete") {
         }
@@ -3577,12 +3588,12 @@ function Calendar(el, options) {
 
     window.onload = function () {
         // loaded
-        Wolmart.status = 'loaded';
+        Coodect.status = 'loaded';
         document.body.classList.add('loaded');
 
-        Wolmart.call(Wolmart.initLayout);
-        Wolmart.call(Wolmart.init);
-        Wolmart.status = 'complete';
-        Wolmart.$window.trigger('wolmart_complete');
+        Coodect.call(Coodect.initLayout);
+        Coodect.call(Coodect.init);
+        Coodect.status = 'complete';
+        Coodect.$window.trigger('Coodect_complete');
     }
 })(jQuery);

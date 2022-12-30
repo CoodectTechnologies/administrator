@@ -15,7 +15,7 @@
 <!--begin::Modal - Add permissions-->
 <div wire:ignore.self class="modal fade" id="kt_modal_add_catalog_product_color" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
-    <div class="modal-dialog modal-dialog-centered mw-650px">
+    <div class="modal-dialog modal-dialog-centered mw-750px">
         <!--begin::Modal content-->
         <div class="modal-content">
             <!--begin::Modal header-->

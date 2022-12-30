@@ -1,6 +1,6 @@
 
 /**
- * Wolmart Documentation Javascript File
+ * Coodect Documentation Javascript File
  */
 "use strict";
 
@@ -39,9 +39,9 @@
             } );
 
             // # Register events
-            Wolmart.$body.on( 'click', '.document-link', function ( e ) {
+            Coodect.$body.on( 'click', '.document-link', function ( e ) {
                 self.open( e.currentTarget.getAttribute( 'href' ).slice( 1 ) );
-                var mainContent = Wolmart.byClass( 'main-content' );
+                var mainContent = Coodect.byClass( 'main-content' );
                 mainContent.length && $( 'html' ).animate( { scrollTop: mainContent[0].offsetTop }, 600 );
             } );
 
@@ -64,11 +64,11 @@
 
             // show active
             if ( activeId && templates[activeId] ) {
-                Wolmart.byId( 'document-view' ).innerHTML = templates[activeId].text;
-                Wolmart.byId( 'document-title' ).textContent = templates[activeId].title;
-                Wolmart.byId( 'document-view' ).classList.remove( 'search-result' );
+                Coodect.byId( 'document-view' ).innerHTML = templates[activeId].text;
+                Coodect.byId( 'document-title' ).textContent = templates[activeId].title;
+                Coodect.byId( 'document-view' ).classList.remove( 'search-result' );
             }
-            $( Wolmart.byClass( 'document-link' ) ).parent( 'li' ).removeClass( 'show' );
+            $( Coodect.byClass( 'document-link' ) ).parent( 'li' ).removeClass( 'show' );
             $( '.document-link[href="#' + id + '"]' ).parent().addClass( 'show' );
         },
 
@@ -87,7 +87,7 @@
 
             var results = [];
 
-            Wolmart.byId( 'document-title' ).textContent = 'Search Result';
+            Coodect.byId( 'document-title' ).textContent = 'Search Result';
 
             // Perform search
             for ( var id in templates ) {
@@ -132,13 +132,13 @@
             for ( var id in results ) {
                 finalResult += results[id].text;
             }
-            Wolmart.byId( 'document-view' ).innerHTML = finalResult ? finalResult : '<h5 class="text-center">Nothing Found</h5>';
-            Wolmart.byId( 'document-view' ).classList.add( 'search-result' );
+            Coodect.byId( 'document-view' ).innerHTML = finalResult ? finalResult : '<h5 class="text-center">Nothing Found</h5>';
+            Coodect.byId( 'document-view' ).classList.add( 'search-result' );
         }
     }
 
-    Wolmart.docs = Docs;
-    $( window ).on( 'wolmart_complete', function () {
-        Wolmart.docs && Wolmart.docs.init();
+    Coodect.docs = Docs;
+    $( window ).on( 'Coodect_complete', function () {
+        Coodect.docs && Coodect.docs.init();
     } )
 } )();

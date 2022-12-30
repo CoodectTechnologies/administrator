@@ -118,7 +118,7 @@
                                 </div>
                                 <figure class="product-media">
                                     <a href="product-default.html">
-                                        <img src="{{ asset('assets/ecommerce') }}/images/cart/product-2.jpg" alt="product" width="84"
+                                        <img src="https://portotheme.com/html/wolmart/assets/images/cart/product-2.jpg" alt="product" width="84"
                                             height="94" />
                                     </a>
                                 </figure>
