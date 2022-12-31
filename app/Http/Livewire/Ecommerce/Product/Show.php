@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Ecommerce\Product;
 
+use App\Http\Controllers\Ecommerce\Cart\CartController;
 use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductSize;
@@ -15,11 +16,16 @@ class Show extends Component
     public $sizes;
     public $price;
 
-    public $colorFilter;
-    public $sizeFilter;
+    public $colorSelected;
+    public $sizeSelected;
     public $priceToString;
     public $quantity = 1;
 
+    protected function rules(){
+        return [
+            'quantity' => 'required',
+        ];
+    }
     public function mount(Product $product){
         $this->product = $product;
         $this->product->load(['images', 'productCategories', 'productSizes', 'productColors']);
@@ -38,50 +44,68 @@ class Show extends Component
         if(!$colorId):
             $this->colors = $this->product->productColors;
         else:
-            $this->colorFilter = ProductColor::findOrFail($colorId);
-            $this->loadGallery($this->colorFilter);
+            $this->colorSelected = ProductColor::findOrFail($colorId);
+            $this->loadGallery($this->colorSelected);
         endif;
     }
     public function loadSize($sizeId = null){
         if(!$sizeId):
             $this->sizes = $this->product->productSizes;
-            $this->reset('sizeFilter');
+            $this->reset('sizeSelected');
             $this->loadPrice();
         else:
-            $this->sizeFilter = ProductSize::findOrFail($sizeId);
-            if($this->colorFilter):
-                if(!$this->sizeFilter->validateSizeColorSelected($this->colorFilter->id)):
-                    $this->reset('colorFilter');
+            $this->sizeSelected = ProductSize::findOrFail($sizeId);
+            if($this->colorSelected):
+                if(!$this->sizeSelected->validateSizeColorSelected($this->colorSelected->id)):
+                    $this->reset('colorSelected');
                 endif;
             endif;
             $this->loadPrice();
         endif;
     }
     public function loadPrice(){
-        if(!$this->sizeFilter):
+        if(!$this->sizeSelected):
             $this->priceToString = $this->product->getPriceToString();
-            if($this->product->price_promotion):
-                $this->price = $this->product->price_promotion;
+            if($pricePromotion = $this->product->getPricePromotion()):
+                $this->price = $pricePromotion;
             else:
-                $this->price = $this->product->price;
+                $this->price = $this->product->getPrice();
             endif;
         else:
-            $this->priceToString = $this->sizeFilter->getPriceToString();
-            $this->price = $this->sizeFilter->price;
+            $this->priceToString = $this->sizeSelected->getPriceToString();
+            if($pricePromotion = $this->sizeSelected->getPricePromotion()):
+                $this->price = $pricePromotion;
+            else:
+                $this->price = $this->sizeSelected->getPrice();
+            endif;
         endif;
     }
     public function loadGallery($color = null){
         if($color):
             $this->gallery = $color->images()->get();
         else:
-            $this->gallery = $this->product->images()->get();
+            $imageMain = $this->product->image()->get();
+            $gallery = $this->product->images()->get();
+            $this->gallery = $imageMain->merge($gallery);
         endif;
     }
     public function addCart(){
-        $size = $this->sizeFilter ? $this->sizeFilter->name : null;
-        $color = $this->colorFilter ? $this->colorFilter->name : null;
-        $options = ['size' => $size, 'color' => $color];
-        // ShoppingCartController::store($this->product, $this->quantity, $this->price, $options);
-        // $this->emitTo('web.layouts.shopping-cart', 'renderShoppingCart');
+        $options = [
+            'size' => [
+                'id' => $this->sizeSelected ? $this->sizeSelected->id : null,
+                'name' => $this->sizeSelected ? $this->sizeSelected->name : null,
+            ],
+            'color' => [
+                'id' => $this->colorSelected ? $this->colorSelected->id : null,
+                'name' => $this->colorSelected ? $this->colorSelected->name : null,
+            ],
+            'imageCart' => isset($this->gallery[0]) ? $this->gallery[0]->imagePreview() : $this->product->imagePreview()
+        ];
+        CartController::store($this->product, $this->quantity, $this->price, $options);
+        $this->emitTo('ecommerce.layouts.cart', 'render');
+        $this->emit('notifyAddCart');
+    }
+    public function resetVariation(){
+        $this->reset('sizeSelected', 'colorSelected');
     }
 }

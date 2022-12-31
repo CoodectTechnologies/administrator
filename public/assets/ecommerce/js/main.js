@@ -2378,7 +2378,7 @@ function Sidebar(name) {
 
             // Functions for shop page
             initSelectMenu();
-            initProductCartAction();
+            // initProductCartAction();
             initWishlistAction();
             initProductQuickview();
             initCompare();

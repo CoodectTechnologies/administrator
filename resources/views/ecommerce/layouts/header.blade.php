@@ -75,69 +75,9 @@
                     <i class="w-icon-compare"></i>
                     <span class="compare-label d-lg-show">{{ __('Compare') }}</span>
                 </a>
-                <div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
-                    <div class="cart-overlay"></div>
-                    <a href="{{ route('ecommerce.cart.index') }}" class="cart-toggle label-down link">
-                        <i class="w-icon-cart">
-                            <span class="cart-count">{{ Cart::count() }}</span>
-                        </i>
-                        <span class="cart-label">{{ __('Cart') }}</span>
-                    </a>
-                    <div class="dropdown-box">
-                        <div class="products">
-                            @foreach (Cart::content() as $item)
-                                <div class="product product-cart">
-                                    <div class="product-detail">
-                                        <a href="{{ route('ecommerce.product.show', $item->model) }}" class="product-name">
-                                            {{ $item->name }}
-                                        </a>
-                                        <div class="price-box">
-                                            <span class="product-quantity">{{ $item->qty }}</span>
-                                            <span class="product-price">{{ $item->subtotal() }}</span>
-                                        </div>
-                                    </div>
-                                    <figure class="product-media">
-                                        <a href="{{ route('ecommerce.product.show', $item->model) }}">
-                                            <img src="{{ $item->model->imageProduct() }}" alt="{{ $item->name }}" height="84" width="94" />
-                                        </a>
-                                    </figure>
-                                    <button class="btn btn-link btn-close">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            @endforeach
-                            <div class="product product-cart">
-                                <div class="product-detail">
-                                    <a href="product-default.html" class="product-name">Blue utility
-                                        pina<br>fore
-                                        denim dress</a>
-                                    <div class="price-box">
-                                        <span class="product-quantity">1</span>
-                                        <span class="product-price">$32.99</span>
-                                    </div>
-                                </div>
-                                <figure class="product-media">
-                                    <a href="product-default.html">
-                                        <img src="https://portotheme.com/html/wolmart/assets/images/cart/product-2.jpg" alt="product" width="84"
-                                            height="94" />
-                                    </a>
-                                </figure>
-                                <button class="btn btn-link btn-close">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="cart-total">
-                            <label>Subtotal:</label>
-                            <span class="price">{{ Cart::subtotal() }}</span>
-                        </div>
-                        <div class="cart-action">
-                            <a href="{{ route('ecommerce.cart.index') }}" class="btn btn-dark btn-outline btn-rounded">Ver carrito</a>
-                            <a href="{{ route('ecommerce.checkout.index') }}" class="btn btn-primary  btn-rounded">Checkout</a>
-                        </div>
-                    </div>
-                    <!-- End of Dropdown Box -->
-                </div>
+
+                @livewire('ecommerce.layouts.cart')
+
             </div>
         </div>
     </div>

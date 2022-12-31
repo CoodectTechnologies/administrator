@@ -1,5 +1,4 @@
 <div>
-
     <!-- Start of Page Content -->
     <div class="page-content">
         <div class="container">
@@ -46,6 +45,18 @@
         Livewire.on('renderJs', function(){
             Coodect.reloadCarouselProductSingle();
             Coodect.productSingle('.product-single');
+        });
+        Livewire.on('notifyAddCart', function(){
+            var $this = $('.btn-cart'), $product = $this.closest('.product, .product-popup');
+            Coodect.Minipopup.open({
+                productClass: ' product-cart',
+                name: $product.find('.product-name, .product-title').text(),
+                nameLink: $product.find('.product-name > a, .product-title > a').attr('href'),
+                imageSrc: $product.find('.product-media img, .product-image:first-child img').attr('src'),
+                imageLink: $product.find('.product-name > a').attr('href'),
+                message: '<p>{{ __("has been added to cart") }}:</p>',
+                actionTemplate: '<a href="{{ route("ecommerce.cart.index") }}" class="btn btn-rounded btn-sm">{{ __("View Cart") }}</a><a href="{{ route("ecommerce.checkout.index") }}" class="btn btn-dark btn-rounded btn-sm">{{ __("Checkout") }}</a>'
+            });
         });
     </script>
 @endpush

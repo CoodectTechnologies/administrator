@@ -44,7 +44,7 @@
                 @endforeach
             </div>
             <h3 class="product-name">
-                <a href="{{ route('ecommerce.product.show', $product) }}">{{ $productCategory->name }}</a>
+                <a href="{{ route('ecommerce.product.show', $product) }}">{{ $product->name }}</a>
             </h3>
             <div class="ratings-container">
                 <div class="ratings-full">

@@ -39,7 +39,7 @@
             @foreach ($sizes as $size)
                 <button
                     wire:click="loadSize({{ $size->id }})"
-                    class="size {{ $sizeFilter ? ($sizeFilter->id == $size->id ? 'active' : '') : '' }}">
+                    class="size {{ $sizeSelected ? ($sizeSelected->id == $size->id ? 'active' : '') : '' }}">
                     {{ $size->name }}
                 </button>
             @endforeach
@@ -51,48 +51,45 @@
             @foreach ($colors as $color)
                 <button
                     wire:click="loadColor({{ $color->id }})"
-                    {{-- x-on:click="imagesByColor('{{ $color->id }}')" --}}
-                    class="color {{ $colorFilter ? ($colorFilter->id == $color->id ? 'active' : '') : '' }} "
+                    class="color {{ $colorSelected ? ($colorSelected->id == $color->id ? 'active' : '') : '' }} "
                     style="background-color: {{ $color->hexadecimal }}"
-                    {{ $sizeFilter ? (!$color->validateColorSizeSelected($sizeFilter->id) ? 'disabled' : '') : '' }}>
+                    {{ $sizeSelected ? (!$color->validateColorSizeSelected($sizeSelected->id) ? 'disabled' : '') : '' }}>
                 </button>
             @endforeach
         </div>
-        <a href="#" class="product-variation-clean">{{ __('Clean All') }}</a>
     </div>
-    <div class="product-variation-price">
-        <span></span>
-    </div>
-    <div>
+    @if($colorSelected || $sizeSelected)
+        <a wire:click.prevent="resetVariation" href="#" class="btn btn-link btn-primary btn-simple">{{ __('Clean All') }}</a>
+    @endif
+    <form wire:submit.prevent="addCart">
         <div class="fix-bottom product-sticky-content sticky-content">
             <div class="product-form container">
                 <div class="product-qty-form">
                     <div class="input-group">
-                        <input class="quantity form-control" type="number" value="0" min="1" max="10000000">
-                        <button class="quantity-plus w-icon-plus"></button>
-                        <button class="quantity-minus w-icon-minus"></button>
+                        <input wire:model.defer="quantity" required class="quantity form-control" type="number" min="1">
+                        <button wire:ignore type="button" class="quantity-plus w-icon-plus"></button>
+                        <button wire:ignore type="button" class="quantity-minus w-icon-minus"></button>
                     </div>
                 </div>
                 <button
-                    {{ count($colors) ? (!$colorFilter ? 'disaled' : '') : '' }}
-                    {{ count($sizes) ? (!$sizeFilter ? 'disaled' : '') : '' }}
-                    class="btn btn-primary btn-cart">
+                    {{ count($colors) ? (!$colorSelected ? ' disabled' : '') : '' }}
+                    {{ count($sizes) ? (!$sizeSelected ? ' disabled' : '') : '' }}
+                    wire:target="addCart"
+                    wire:loading.class="load-more-overlay loading"
+                    wire:loading.disabled
+                    class="btn btn-primary btn-cart"
+                    type="submit">
                     <i class="w-icon-cart"></i>
                     <span>{{ __('Add') }}</span>
                 </button>
             </div>
         </div>
-    </div>
+    </form>
     <div class="social-links-wrapper">
         <div class="social-links">
             <div class="social-icons social-no-color border-thin">
-                <a href="#" class="social-icon social-facebook w-icon-facebook"></a>
-                <a href="#" class="social-icon social-twitter w-icon-twitter"></a>
-                <a href="#"
-                    class="social-icon social-pinterest fab fa-pinterest-p"></a>
-                <a href="#" class="social-icon social-whatsapp fab fa-whatsapp"></a>
-                <a href="#"
-                    class="social-icon social-youtube fab fa-linkedin-in"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('ecommerce.product.show', $product) }}" class="social-icon social-facebook w-icon-facebook"></a>
+                <a href="whatsapp://send?text={{ $product->slug }}" data-action="share/whatsapp/share" class="social-icon social-whatsapp fab fa-whatsapp" target="_blank"> </a>
             </div>
         </div>
         <span class="divider d-xs-show"></span>

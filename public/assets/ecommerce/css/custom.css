@@ -39,7 +39,7 @@
 /* PRODUCTOS */
 .product-variations>.disabled,
 button.color:disabled,
-button.btn.btn-primary.btn-cart {
+button[disabled].btn-cart {
     cursor: not-allowed;
     opacity: 0.3;
 }
