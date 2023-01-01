@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Notifications\Admin\Contact;
+namespace App\Notifications\Contact;
 
 use App\Models\EmailWeb;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class ContactNew extends Notification
+class ContactCreate extends Notification
 {
     use Queueable;
 

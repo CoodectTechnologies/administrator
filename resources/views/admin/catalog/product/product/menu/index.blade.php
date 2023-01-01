@@ -7,7 +7,7 @@
     <!--end::Nav item-->
     <!--begin::Nav item-->
     <li class="nav-item mt-2">
-        <a wire:ignore.self class="nav-link text-active-primary ms-0 me-10 py-5 {{ $submodule === 'comment' ? 'active' : '' }}" data-bs-toggle="tab" href="#kt_product_comment_tab">Comentarios</a>
+        <a wire:ignore.self class="nav-link text-active-primary ms-0 me-10 py-5 {{ $submodule === 'comments' ? 'active' : '' }}" data-bs-toggle="tab" href="#kt_product_comment_tab">Comentarios</a>
     </li>
     <!--end::Nav item-->
 </ul>

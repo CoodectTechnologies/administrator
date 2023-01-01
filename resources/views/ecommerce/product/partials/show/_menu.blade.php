@@ -1,12 +1,9 @@
 <li class="nav-item">
-    <a href="#product-tab-description" class="nav-link active">{{ __('Description') }}</a>
+    <a href="#product-tab-description" class="nav-link ">{{ __('Description') }}</a>
 </li>
 <li class="nav-item">
-    <a href="#product-tab-description" class="nav-link">Specification</a>
+    <a href="#product-tab-video" class="nav-link">{{ __('Video') }}</a>
 </li>
 <li class="nav-item">
-    <a href="#product-tab-video" class="nav-link">Vendor Info</a>
-</li>
-<li class="nav-item">
-    <a href="#product-tab-comment" class="nav-link">Customer Reviews (3)</a>
+    <a href="#product-tab-reviews" class="nav-link active">{{ __('Comments') }}</a>
 </li>

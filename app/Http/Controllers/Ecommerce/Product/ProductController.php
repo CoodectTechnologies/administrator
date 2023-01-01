@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ecommerce\Product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 

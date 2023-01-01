@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Notifications\Admin\Susbcriber;
+namespace App\Notifications\Susbcriber;
 
 use App\Models\Subscriber;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
-class SubscriberNew extends Notification
+class SubscriberCreate extends Notification
 {
     use Queueable;
 

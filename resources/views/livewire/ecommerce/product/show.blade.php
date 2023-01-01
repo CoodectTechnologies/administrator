@@ -17,15 +17,15 @@
                             @include('ecommerce.product.partials.show._menu')
                         </ul>
                         <div wire:ignore.self class="tab-content">
-                            <div wire:ignore.self class="tab-pane active" id="product-tab-description">
+                            <div wire:ignore.self class="tab-pane " id="product-tab-description">
                                 {!! $product->description !!}
                             </div>
                             <div wire:ignore.self class="tab-pane" id="product-tab-video">
                                 {!! $product->iframe_url !!}
                             </div>
-                            <div wire:ignore.self class="tab-pane" id="product-tab-comment">
-                                @livewire('ecommerce.comment.form')
-                                @livewire('ecommerce.comment.index')
+                            <div wire:ignore.self class="tab-pane active" id="product-tab-reviews">
+                                @livewire('ecommerce.comment.form', ['model' => $product])
+                                @livewire('ecommerce.comment.index', ['model' => $product])
                             </div>
                         </div>
                     </div>

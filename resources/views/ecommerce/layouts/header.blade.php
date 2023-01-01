@@ -8,7 +8,7 @@
             <div class="header-right pr-0">
                 <div class="dropdown">
                     <a href="#currency"><span class="text-uppercase">{{ Session::get('currency') }}</span></a>
-                    <div class="dropdown-box">
+                    <div wire:ignore.self class="dropdown-box">
                         @foreach (Cache::get('currencies') ?? [] as $currency)
                             <a href="{{ route('ecommerce.currency', $currency->code) }}">{{ $currency->code }}</a>
                         @endforeach

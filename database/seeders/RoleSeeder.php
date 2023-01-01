@@ -26,24 +26,25 @@ class RoleSeeder extends Seeder
             Permission::all()->pluck('name')->toArray()
         );
         $copywriter->givePermissionTo([
-            'blog', 
-            'blog categorías', 
+            'blog',
+            'blog categorías',
             'blog etiquetas'
         ]);
         $productManager->givePermissionTo([
-            'ordenes', 
-            'productos', 
-            'producto categorías', 
-            'producto marcas', 
-            'producto géneros', 
-            'países', 
-            'estados', 
+            'ordenes',
+            'productos',
+            'producto categorías',
+            'producto marcas',
+            'producto géneros',
+            'comentarios',
+            'países',
+            'estados',
             'zonas de envío',
             'clases de envío'
         ]);
         $webManager->givePermissionTo([
-            'banners', 
-            'galería', 
+            'banners',
+            'galería',
             'team',
             'videos',
             'servicios',

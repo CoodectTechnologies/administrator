@@ -21,6 +21,7 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'logs']);
         Permission::create(['name' => 'backups']);
         Permission::create(['name' => 'módulos web']);
+        Permission::create(['name' => 'comentarios']);
 
         //WEB
         Permission::create(['name' => 'banners']);

@@ -55,10 +55,16 @@
     "Size" : "Medida",
     "Brand" : "Marca",
     "Color" : "Color",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : "",
-    "" : ""
+    "Description" : "Descripción",
+    "Comments" : "Comentarios",
+    "Video" : "Vídeo",
+    "Average rating" : "Promedio de puntuación",
+    "Submit your review" : "Envíenos su opinión",
+    "Your rating of this product" : "Su calificación de este producto",
+    "Write your review here" : "Escribe tu reseña aquí",
+    "Your name" : "Su nombre",
+    "Your email" : "Su correo",
+    "Submit review" : "Enviar opinión",
+    "Your email address will not be published. Required fields are marked" : "Su dirección de correo electrónico no será publicada. Los campos obligatorios están marcados",
+    "The comment has been sent, for security reasons it will be reviewed before being published" : "Se ha enviado el comentario, por motivos de seguridad seridad será revisado antes de ser publicado"
 }

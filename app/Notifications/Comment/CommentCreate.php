@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications\Admin\Comment;
+namespace App\Notifications\Comment;
 
 use App\Models\BlogPost;
 use App\Models\Product;
@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class CommentNew extends Notification
+class CommentCreate extends Notification
 {
     use Queueable;
 
@@ -22,7 +22,7 @@ class CommentNew extends Notification
         $this->model = $model;
         $this->comment = $comment;
         if($this->model instanceof Product):
-            $this->url = route('admin.catalog.product.edit', ['product' => $this->model, 'submodule' => 'comments']);
+            $this->url = route('admin.catalog.product.show', ['product' => $this->model, 'submodule' => 'comments']);
             $this->title = 'Nuevo comentario de producto';
 
         elseif($this->model instanceof BlogPost):
