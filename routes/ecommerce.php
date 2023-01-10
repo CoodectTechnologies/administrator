@@ -4,6 +4,7 @@ use App\Http\Controllers\Ecommerce\About\AboutController;
 use App\Http\Controllers\Ecommerce\Cart\CartController;
 use App\Http\Controllers\Ecommerce\Category\CategoryController;
 use App\Http\Controllers\Ecommerce\Checkout\CheckoutController;
+use App\Http\Controllers\Ecommerce\Compare\CompareController;
 use App\Http\Controllers\Ecommerce\Contact\ContactController;
 use App\Http\Controllers\Ecommerce\Currency\CurrencyController;
 use App\Http\Controllers\Ecommerce\Feed\FacebookController;
@@ -32,6 +33,8 @@ Route::resource('/productos', ProductController::class)->parameters(['productos'
 Route::get('/carrito', [CartController::class, 'index'])->name('cart.index');
 //Wishlist
 Route::get('/favoritos', [WishlistController::class, 'index'])->name('wishlist.index');
+//Compare
+Route::get('/comparar', [CompareController::class, 'index'])->name('compare.index');
 //Checkout
 Route::prefix('/checkout')->name('checkout.')->group(function (){
     Route::middleware('auth')->get('/', [CheckoutController::class, 'index'])->name('index');

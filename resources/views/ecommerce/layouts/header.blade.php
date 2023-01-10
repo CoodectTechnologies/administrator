@@ -73,10 +73,7 @@
                     </div>
                 </div>
                 @livewire('ecommerce.layouts.wishlist')
-                <a class="compare label-down link d-xs-show" href="#">
-                    <i class="w-icon-compare"></i>
-                    <span class="compare-label d-lg-show">{{ __('Compare') }}</span>
-                </a>
+                @livewire('ecommerce.layouts.compare')
                 @livewire('ecommerce.layouts.cart')
             </div>
         </div>

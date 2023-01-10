@@ -95,7 +95,7 @@
         <span class="divider d-xs-show"></span>
         <div class="product-link-wrapper d-flex">
             @livewire('ecommerce.wishlist.mini', ['product' => $product], key('wishlist-'.$product->id))
-            <a href="#" class="btn-product-icon btn-compare btn-icon-left w-icon-compare"><span></span></a>
+            @livewire('ecommerce.compare.mini', ['product' => $product], key('compare-'.$product->id))
         </div>
     </div>
 </div>

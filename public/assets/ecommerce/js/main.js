@@ -2207,13 +2207,13 @@ function Sidebar(name) {
                 '<div class="compare-popup">\
                     <div class="container">\
                         <div class="compare-title">\
-                            <h4 class="title title-center">Compare Products</h4>\
+                            <h4 class="title title-center">Comparar productos</h4>\
                         </div>\
                         <ul class="compare-product-list list-style-none">\
                             <li></li><li></li><li></li><li></li>\
                         </ul>\
-                        <a href="#" class="btn btn-clean">Clean All</a>\
-                        <a href="compare.html" class="btn btn-dark btn-rounded">Start Compare !</a>\
+                        <a href="#" class="btn btn-clean">Limpiar todo</a>\
+                        <a href="/ecommerce/comparar" class="btn btn-dark btn-rounded">Empezar a comparar</a>\
                     </div>\
                 </div>\
                 <div class="compare-popup-overlay">\

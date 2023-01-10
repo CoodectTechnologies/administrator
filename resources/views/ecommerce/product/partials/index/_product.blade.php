@@ -21,10 +21,7 @@
             <div class="product-action-horizontal">
                 @livewire('ecommerce.cart.mini', ['product' => $product], key('cart-'.$product->id))
                 @livewire('ecommerce.wishlist.mini', ['product' => $product], key('wishlist-'.$product->id))
-                <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                    title="Compare"></a>
-                <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                    title="Quick View"></a>
+                @livewire('ecommerce.compare.mini', ['product' => $product], key('compare-'.$product->id))
             </div>
             <div class="product-label-group">
                 @if ($product->getIsNew())
