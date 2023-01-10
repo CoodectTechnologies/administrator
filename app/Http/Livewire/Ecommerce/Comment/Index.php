@@ -9,7 +9,7 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $perPage = 20;
+    public $perPage = 10;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['render'];
 
@@ -20,7 +20,7 @@ class Index extends Component
         $this->model->load('comments');
     }
     public function render(){
-        $comments = $this->model->comments()->orderByDesc('id')->paginate($this->perPage, ['*'], 'page-comment');
+        $comments = $this->model->comments()->validate()->orderByDesc('id')->paginate($this->perPage, ['*'], 'page-comment');
         return view('livewire.ecommerce.comment.index', compact('comments'));
     }
 }

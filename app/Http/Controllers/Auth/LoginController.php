@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Closure;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class LoginController extends Controller
 {
@@ -43,6 +45,12 @@ class LoginController extends Controller
 
     public function authenticated($request , $user){
         Auth::logoutOtherDevices($request->password);
+        if(Route::has('ecommerce.cart.index')):
+            Cart::instance('default')->restore(Auth::id());
+        endif;
+        if(Route::has('ecommerce.wishlist.index')):
+            Cart::instance('wishlist')->restore(Auth::id());
+        endif;
         if($user->roles()->count()){
             return redirect()->route('admin.dashboard.general.index');
         }

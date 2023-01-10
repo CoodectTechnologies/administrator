@@ -10,7 +10,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Comment extends Model
 {
     use HasFactory, LogsActivity;
-    
+
     protected $guarded = [];
 
     //Logs
@@ -27,9 +27,10 @@ class Comment extends Model
     }
     public function commentable(){
         return $this->morphTo();
-    } 
+    }
+    //Gets
     public function imageUserPreview(){
-        $image = asset('assets/admin/media/logo/favicons/android-icon-192x192.png');
+        $image = asset('assets/admin/media/avatars/blank.png');
         if($this->user):
             $image = $this->user->imagePreview();
         endif;
@@ -37,5 +38,12 @@ class Comment extends Model
     }
     public function dateToString(){
         return Carbon::parse($this->created_at)->toFormattedDateString();
+    }
+    public function getPercentage(){
+        return ($this->stars * 100) / 5;
+    }
+    //Scope
+    public function scopeValidate($query){
+        return $query->where('approved', true);
     }
 }

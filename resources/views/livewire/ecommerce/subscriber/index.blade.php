@@ -15,7 +15,11 @@
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-6 col-md-9 mt-4 mt-lg-0 ">
-                    @include('ecommerce.components.alert')
+                    @if (session()->has('alert-subscriber'))
+                        <div class="alert alert-{{ session()->get('alert-type-subscriber') }} alert-simple alert-inline">
+                            <h4 class="alert-title">{{ session()->get('alert-subscriber') }}</h4>
+                        </div>
+                    @endif
                     <form wire:submit.prevent="store" class="input-wrapper input-wrapper-inline input-wrapper-rounded">
                         <input wire:model.defer="email" type="email" class="form-control mr-2 bg-white" name="email" id="email" placeholder="Ingresa tu correo electronico" />
                         <button wire:loading.attr="disabled" wire:target="store" class="btn btn-dark btn-rounded" type="submit">

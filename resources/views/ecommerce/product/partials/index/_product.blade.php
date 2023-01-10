@@ -19,10 +19,8 @@
                 </div>
             @endif
             <div class="product-action-horizontal">
-                <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                    title="Add to cart"></a>
-                <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                    title="Wishlist"></a>
+                @livewire('ecommerce.cart.mini', ['product' => $product], key('cart-'.$product->id))
+                @livewire('ecommerce.wishlist.mini', ['product' => $product], key('wishlist-'.$product->id))
                 <a href="#" class="btn-product-icon btn-compare w-icon-compare"
                     title="Compare"></a>
                 <a href="#" class="btn-product-icon btn-quickview w-icon-search"
@@ -48,7 +46,7 @@
             </h3>
             <div class="ratings-container">
                 <div class="ratings-full">
-                    <span class="ratings" style="width: 100%;"></span>
+                    <span class="ratings" style="width: {{ $product->getStarsPercentageAVG() }}%;"></span>
                     <span class="tooltiptext tooltip-top"></span>
                 </div>
                 <a href="{{ route('ecommerce.product.show', $product) }}#comments" class="rating-reviews">({{ count($product->comments) }} Comentarios)</a>

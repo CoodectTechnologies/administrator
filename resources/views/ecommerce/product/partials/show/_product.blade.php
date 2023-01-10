@@ -24,10 +24,10 @@
     <div class="product-price"><ins class="new-price">{{ $priceToString }}</ins></div>
     <div class="ratings-container">
         <div class="ratings-full">
-            <span class="ratings" style="width: 80%;"></span>
+            <span class="ratings" style="width: {{ $product->getStarsPercentageAVG() }}%;"></span>
             <span class="tooltiptext tooltip-top"></span>
         </div>
-        <a href="#product-tab-reviews" class="rating-reviews scroll-to">({{ count($product->comments) }}) {{ __('Comments') }}</a>
+        <a href="#product-tab-reviews" class="rating-reviews scroll-to">({{ $product->comments()->validate()->count() }}) {{ __('Comments') }}</a>
     </div>
     <div class="product-short-desc">
         {!! $product->detail !!}
@@ -94,10 +94,8 @@
         </div>
         <span class="divider d-xs-show"></span>
         <div class="product-link-wrapper d-flex">
-            <a href="#"
-                class="btn-product-icon btn-wishlist w-icon-heart"><span></span></a>
-            <a href="#"
-                class="btn-product-icon btn-compare btn-icon-left w-icon-compare"><span></span></a>
+            @livewire('ecommerce.wishlist.mini', ['product' => $product], key('wishlist-'.$product->id))
+            <a href="#" class="btn-product-icon btn-compare btn-icon-left w-icon-compare"><span></span></a>
         </div>
     </div>
 </div>

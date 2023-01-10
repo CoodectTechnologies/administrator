@@ -2,6 +2,7 @@
     <!-- Start of Page Content -->
     <div class="page-content">
         <div class="container">
+            @include('ecommerce.components.alert')
             <div class="row gutter-lg pb-5">
                 <div class="main-content">
                     <div class="product product-single row">
@@ -17,13 +18,13 @@
                             @include('ecommerce.product.partials.show._menu')
                         </ul>
                         <div wire:ignore.self class="tab-content">
-                            <div wire:ignore.self class="tab-pane " id="product-tab-description">
+                            <div wire:ignore.self class="tab-pane active" id="product-tab-description">
                                 {!! $product->description !!}
                             </div>
                             <div wire:ignore.self class="tab-pane" id="product-tab-video">
                                 {!! $product->iframe_url !!}
                             </div>
-                            <div wire:ignore.self class="tab-pane active" id="product-tab-reviews">
+                            <div wire:ignore.self class="tab-pane" id="product-tab-reviews">
                                 @livewire('ecommerce.comment.form', ['model' => $product])
                                 @livewire('ecommerce.comment.index', ['model' => $product])
                             </div>
@@ -54,7 +55,7 @@
                 nameLink: $product.find('.product-name > a, .product-title > a').attr('href'),
                 imageSrc: $product.find('.product-media img, .product-image:first-child img').attr('src'),
                 imageLink: $product.find('.product-name > a').attr('href'),
-                message: '<p>{{ __("has been added to cart") }}:</p>',
+                message: '<p>{{ __("Has been added to cart") }}:</p>',
                 actionTemplate: '<a href="{{ route("ecommerce.cart.index") }}" class="btn btn-rounded btn-sm">{{ __("View Cart") }}</a><a href="{{ route("ecommerce.checkout.index") }}" class="btn btn-dark btn-rounded btn-sm">{{ __("Checkout") }}</a>'
             });
         });

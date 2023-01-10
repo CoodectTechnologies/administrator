@@ -2,13 +2,13 @@
     <div class="cart-overlay"></div>
     <a href="{{ route('ecommerce.cart.index') }}" class="cart-toggle label-down link">
         <i class="w-icon-cart">
-            <span class="cart-count">{{ Cart::count() }}</span>
+            <span class="cart-count">{{ Cart::instance('default')->count() }}</span>
         </i>
         <span class="cart-label">{{ __('Cart') }}</span>
     </a>
     <div class="dropdown-box">
         <div class="products">
-            @forelse (Cart::content() as $item)
+            @forelse (Cart::instance('default')->content() as $item)
                 <div class="product product-cart">
                     <div class="product-detail">
                         <a href="{{ route('ecommerce.product.show', $item->model) }}" class="product-name">
@@ -21,7 +21,7 @@
                     </div>
                     <figure class="product-media">
                         <a href="{{ route('ecommerce.product.show', $item->model) }}">
-                            <img src="{{ $item->options->imageCart }}" alt="{{ $item->name }}" height="84" width="94" />
+                            <img src="{{ $item->options->image }}" alt="{{ $item->name }}" height="84" width="94" />
                         </a>
                     </figure>
                     <button
@@ -40,9 +40,9 @@
         </div>
         <div class="cart-total">
             <label>{{ __('Subtotal') }}:</label>
-            <span class="price">{{ Cart::subtotal() }} {{ session()->get('currency') }} </span>
+            <span class="price">{{ Cart::instance('default')->subtotal() }} {{ session()->get('currency') }} </span>
         </div>
-        @if (Cart::count())
+        @if (Cart::instance('default')->count())
             <div class="cart-action">
                 <a href="{{ route('ecommerce.cart.index') }}" class="btn btn-dark btn-outline btn-rounded">Ver carrito</a>
                 <a href="{{ route('ecommerce.checkout.index') }}" class="btn btn-primary  btn-rounded">Checkout</a>

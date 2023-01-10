@@ -34,8 +34,10 @@ class Show extends Component
         $this->loadSize();
     }
     public function render(){
-        $commentCount = $this->product->comments()->where('approved', true)->count();
-        return view('livewire.ecommerce.product.show', compact('commentCount'));
+        $commentCount = $this->product->comments()->validate()->count();
+        $productsRelated = $this->productsRelated();
+        $moreProducts = $this->moreProducts();
+        return view('livewire.ecommerce.product.show', compact('commentCount', 'productsRelated', 'moreProducts'));
     }
     public function hydrate(){
         $this->emit('renderJs');
@@ -99,7 +101,7 @@ class Show extends Component
                 'id' => $this->colorSelected ? $this->colorSelected->id : null,
                 'name' => $this->colorSelected ? $this->colorSelected->name : null,
             ],
-            'imageCart' => isset($this->gallery[0]) ? $this->gallery[0]->imagePreview() : $this->product->imagePreview()
+            'image' => isset($this->gallery[0]) ? $this->gallery[0]->imagePreview() : $this->product->imagePreview()
         ];
         CartController::store($this->product, $this->quantity, $this->price, $options);
         $this->emitTo('ecommerce.layouts.cart', 'render');
@@ -107,5 +109,18 @@ class Show extends Component
     }
     public function resetVariation(){
         $this->reset('sizeSelected', 'colorSelected');
+    }
+    private function productsRelated(){
+        $productsRelated = [];
+        if($category = $this->product->productCategories()->first()):
+            $productsRelated = Product::whereHas('productCategories', function($query) use($category) {
+                $query->whereIn('product_category_id', [$category->id]);
+            })->where('id', '<>', $this->product->id)->take(5)->cursor();
+        endif;
+        return $productsRelated;
+    }
+    private function moreProducts(){
+        $moreProducts = Product::with(['image', 'comments'])->inRandomOrder()->where('id', '<>', $this->product->id)->take(5)->cursor();
+        return $moreProducts;
     }
 }

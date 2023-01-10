@@ -1,17 +1,23 @@
 <div>
+    @if (session()->has('alert-comment'))
+        <div class="alert alert-{{ session()->get('alert-comment-type') }} alert-simple alert-inline">
+            <h4 class="alert-title">{{ session()->get('alert-comment') }}</h4>
+        </div>
+    @endif
+
     <div class="row mb-4">
         <div class="col-xl-4 col-lg-5 mb-4">
             <div class="ratings-wrapper">
                 <div class="avg-rating-container">
-                    <h4 class="avg-mark font-weight-bolder ls-50">3.3</h4>
+                    <h4 class="avg-mark font-weight-bolder ls-50">{{ $model->getStarsAVG() }}</h4>
                     <div class="avg-rating">
                         <p class="text-dark mb-1">{{ __('Average rating') }}</p>
                         <div class="ratings-container">
                             <div class="ratings-full">
-                                <span class="ratings" style="width: 60%;"></span>
+                                <span class="ratings" style="width: {{ $model->getStarsPercentageAVG() }}%;"></span>
                                 <span class="tooltiptext tooltip-top"></span>
                             </div>
-                            <a href="#" class="rating-reviews">(3 {{ __('Reviews') }})</a>
+                            <a href="#" class="rating-reviews">({{ $model->comments()->validate()->count() }} {{ __('Reviews') }})</a>
                         </div>
                     </div>
                 </div>
@@ -25,7 +31,7 @@
                             <span></span>
                         </div>
                         <div class="progress-value">
-                            <mark>70%</mark>
+                            <mark>{{ $model->getStarsPercentage(5) }}%</mark>
                         </div>
                     </div>
                     <div class="ratings-container">
@@ -37,7 +43,7 @@
                             <span></span>
                         </div>
                         <div class="progress-value">
-                            <mark>30%</mark>
+                            <mark>{{ $model->getStarsPercentage(4) }}%</mark>
                         </div>
                     </div>
                     <div class="ratings-container">
@@ -49,7 +55,7 @@
                             <span></span>
                         </div>
                         <div class="progress-value">
-                            <mark>40%</mark>
+                            <mark>{{ $model->getStarsPercentage(3) }}%</mark>
                         </div>
                     </div>
                     <div class="ratings-container">
@@ -61,7 +67,7 @@
                             <span></span>
                         </div>
                         <div class="progress-value">
-                            <mark>0%</mark>
+                            <mark>{{ $model->getStarsPercentage(2) }}%</mark>
                         </div>
                     </div>
                     <div class="ratings-container">
@@ -73,7 +79,7 @@
                             <span></span>
                         </div>
                         <div class="progress-value">
-                            <mark>0%</mark>
+                            <mark>{{ $model->getStarsPercentage(1) }}%</mark>
                         </div>
                     </div>
                 </div>
@@ -109,6 +115,7 @@
                             @error('comment.email') <small  class="form-text text-danger" role="alert">{{ $message }}</small> @enderror
                         </div>
                     </div>
+                    <x-honey recaptcha="contact"/>
                     <button
                         wire:target="store"
                         wire:loading.class="load-more-overlay loading"

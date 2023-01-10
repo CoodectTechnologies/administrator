@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Exception;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialController extends Controller
@@ -33,19 +35,25 @@ class SocialController extends Controller
                 ]);
             endif;
             if(!$user->connected_google):
-                session()->flash('alert', 'Se deshabilitó el inicio de sesión mediante Google. Contacte a soporte');
+                session()->flash('alert', __('Google login has been disabled. contact support'));
                 session()->flash('alert-type', 'warning');
                 return Redirect::route('login');
             else:
                 Auth::login($user);
+                if(Route::has('ecommerce.cart.index')):
+                    Cart::instance('default')->restore(Auth::id());
+                endif;
+                if(Route::has('ecommerce.wishlist.index')):
+                    Cart::instance('wishlist')->restore(Auth::id());
+                endif;
                 if($user->roles()->count()):
                     return Redirect::route('admin.dashboard.general.index');
                 else:
                     return Redirect::route('web.home.index');
                 endif;
-            endif; 
+            endif;
         }catch(Exception $exception){
-            session()->flash('alert', 'No se completo el inicio de sesión: '.$exception->getMessage());
+            session()->flash('alert', __('Login not complete').': '.$exception->getMessage());
             session()->flash('alert-type', 'warning');
             return Redirect::route('login');
         }

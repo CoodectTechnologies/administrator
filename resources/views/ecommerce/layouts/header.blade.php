@@ -36,13 +36,18 @@
                 <a href="#" class="d-lg-show">{{ __('Contact us') }}</a>
                 @auth
                     <a href="#" class="d-lg-show">{{ __('My account') }}</a>
+                    <span class="delimiter d-lg-show">/</span>
+                    <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" href="#" class="ml-0 d-lg-show login">{{ __('Logout') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 @endauth
                 @guest
-                    <a href="#" class="d-lg-show login sign-in">
+                    <a href="{{ route('login') }}" class="d-lg-show login sign-in">
                         <i class="w-icon-account"></i>{{ __('Sign in') }}
                     </a>
                     <span class="delimiter d-lg-show">/</span>
-                    <a href="#" class="ml-0 d-lg-show login register">{{ __('Register') }}</a>
+                    <a href="{{ route('register') }}" class="ml-0 d-lg-show login register">{{ __('Register') }}</a>
                 @endguest
             </div>
         </div>
@@ -67,17 +72,12 @@
                         <a href="tel:{{ config('contact.phone') }}" class="phone-number font-weight-bolder ls-50">{{ config('contact.phone') }}</a>
                     </div>
                 </div>
-                <a class="wishlist label-down link d-xs-show" href="#">
-                    <i class="w-icon-heart"></i>
-                    <span class="wishlist-label d-lg-show">{{ __('Wishlist') }}</span>
-                </a>
+                @livewire('ecommerce.layouts.wishlist')
                 <a class="compare label-down link d-xs-show" href="#">
                     <i class="w-icon-compare"></i>
                     <span class="compare-label d-lg-show">{{ __('Compare') }}</span>
                 </a>
-
                 @livewire('ecommerce.layouts.cart')
-
             </div>
         </div>
     </div>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Ecommerce\Feed\GoogleController;
 use App\Http\Controllers\Ecommerce\Home\HomeController;
 use App\Http\Controllers\Ecommerce\Product\ProductController;
 use App\Http\Controllers\Ecommerce\Language\LanguageController;
+use App\Http\Controllers\Ecommerce\Wishlist\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 //Home
@@ -29,6 +30,8 @@ Route::resource('/categorias', CategoryController::class)->parameters(['categori
 Route::resource('/productos', ProductController::class)->parameters(['productos' => 'product'])->names('product');
 //Cart
 Route::get('/carrito', [CartController::class, 'index'])->name('cart.index');
+//Wishlist
+Route::get('/favoritos', [WishlistController::class, 'index'])->name('wishlist.index');
 //Checkout
 Route::prefix('/checkout')->name('checkout.')->group(function (){
     Route::middleware('auth')->get('/', [CheckoutController::class, 'index'])->name('index');

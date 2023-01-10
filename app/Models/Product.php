@@ -167,6 +167,13 @@ class Product extends Model implements Viewable
         endif;
         return $isNew;
     }
+    public function getIsInStock(){
+        $isInStock = true;
+        if(!$this->quantity === null):
+            $isInStock = ($this->quantity > 0);
+        endif;
+        return $isInStock;
+    }
     public function dateToString(){
         return Carbon::parse($this->created_at)->toFormattedDateString();
     }
@@ -180,6 +187,28 @@ class Product extends Model implements Viewable
             endif;
         endif;
         return $image;
+    }
+    public function getStarsAVG(){
+        $starsAVG = 0;
+        $commentStars = $this->comments()->validate()->sum('stars');
+        $commentCounts = $this->comments()->validate()->count();
+        if($commentStars && $commentCounts):
+            $starsAVG = number_format(($commentStars / $commentCounts), 1);
+        endif;
+        return $starsAVG;
+    }
+    public function getStarsPercentageAVG(){
+        $getStarsAVG = $this->getStarsAVG();
+        return ($getStarsAVG * 100) / 5;
+    }
+    public function getStarsPercentage($qty){
+        $starsPercentage = 0;
+        $commentsTotal = $this->comments()->validate()->count();
+        $commentCounts = $this->comments()->where('stars', $qty)->validate()->count();
+        if($commentCounts):
+            $starsPercentage = ($commentCounts * 100) / $commentsTotal;
+        endif;
+        return floor($starsPercentage);
     }
     //Scopes
     public function scopeCurrencySession($query){
